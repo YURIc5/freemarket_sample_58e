@@ -107,7 +107,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |content|text|null: false|
-|user_id||references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |product_id|references|null: false, foreign_key: true|
 
 ### Association
@@ -130,7 +130,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |content|text|null: false|
-|item_id||references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
