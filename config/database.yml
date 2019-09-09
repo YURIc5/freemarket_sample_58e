@@ -50,5 +50,8 @@ test:
 production:
   <<: *default
   database: freemarket_sample_58e_production
-  username: freemarket_sample_58e
-  password: <%= ENV['FREEMARKET_SAMPLE_58E_DATABASE_PASSWORD'] %>
+  # username: freemarket_sample_58e
+  # password: <%= ENV['FREEMARKET_SAMPLE_58E_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
