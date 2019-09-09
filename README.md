@@ -1,24 +1,176 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|mail|string|null: false|
+|password|string|null: false|
+|name|string|null: false|
+|name_kana|string|null: false|
+|birthday|string|null: false|
+|phone_number|string|null: false|
+|address_id|references|null: false, foreign_key: true|
+|creditcard_id|references|null: false, foreign_key: true|
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :comments
+- has_many :evaluations
+- has_many :purchases
+- has_many :item_likes
 
-* Ruby version
+- has_one :address
+- has_one :creditcard
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## addressテーブル
 
-* Database initialization
+|Column|Type|Options|
+|------|----|-------|
+|postcode|int|null: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|block|int|null: false|
+|building|string|null: false|
 
-* How to run the test suite
+### Association
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+## creditcardテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|creditcard_number|int|null: false|
+|exp_month|int|null :false|
+|exp_year|int|null :false|
+|name|string|null :false|
+
+### Association
+- belongs_to :user
+
+
+## itemsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|description|text|null: false|
+|status|int|null: false|
+|responsibility|boolean|null :false|
+|location|string|null: false|
+|day|int|null :false|
+|price|int|null :false|
+|user_id|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
+
+### Association
+- has_many :comments
+- has_many :pictures
+- has_many :item_likes
+
+- belongs_to :user
+- belongs_to :purchase
+- belongs_to :category
+
+
+## itemsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|description|text|null: false|
+|status|int|null: false|
+|responsibility|boolean|null :false|
+|location|string|null: false|
+|day|int|null :false|
+|price|int|null :false|
+|user_id|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
+|purchase_id|references|null: false, foreign_key: true|
+
+### Association
+- has_many :comments
+- has_many :pictures
+- has_many :item_likes
+
+- belongs_to :user
+- belongs_to :category
+
+- has_one :purchase
+
+
+## commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|content|text|null: false|
+|user_id||references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+## categoryテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :items
+- has_many :ancestry
+
+## item_likesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|content|text|null: false|
+|item_id||references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+## evaluationテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|eva|int|null: false|
+|comment|text||
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+
+
+## purchaseテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|status|int|null: false|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+
+## picturesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
