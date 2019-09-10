@@ -1,0 +1,101 @@
+.single-container {
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+}
+
+.single-header{
+  height: 128px;
+  text-align: center;
+  img {
+    width: 185px;
+    height: 49px;
+    padding-top: 40px;
+  }
+}
+
+.login-panel {
+  margin: 0 auto;
+  width: 456px;
+  background-color: white;
+}
+
+.login-no-account {
+  text-align: center;
+  padding: 40px 64px; 
+  p {
+    font-size: 14px;
+  }
+  a {
+    display: block;
+    margin: 8px 0 0;
+    border: 1px solid #0099e8;
+    background: #0099e8;
+    color: #fff;
+    line-height: 40px;
+  }
+}
+
+.login-form-inner {
+  padding: 32px 64px;
+  border-top: 1px solid #eee;
+  .btn-default {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .btn-sns-facebook {
+    margin: 16px 0 0;
+    background: #385185;
+    color: #fff;
+  }
+  .btn-sns-google {
+    margin: 16px 0 0;
+    background: #fff no-repeat 3px top;
+    border: #979797 solid 1px;
+    color: #333;
+  }
+  #user_email {
+    height: 40px;
+    width: 100%;
+  }
+  #user_password {
+    height: 40px;
+    width: 100%;
+    margin-top: 30px;
+  }
+  .btn-red {
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+  }
+  .login-submit {
+    margin: 24px 0 0;
+  }
+}
+.single-footer {
+  padding: 40px 0;
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  background-color:#f5f5f5;;
+  ul {
+    display: flex;
+    li {
+      color: #333;
+      font-size: 13px; 
+      margin: 0 13px 0 13px;
+    }
+  }
+}
+
