@@ -108,10 +108,12 @@
 |content|text|null: false|
 |item_id|references|null: false, foreign_key: true|
 |user_id|references|null: false, foreign_key: true|
+|evaluation_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :evaluation
 
 
 ## evaluationテーブル
@@ -121,9 +123,11 @@
 |eva|int|null: false|
 |comment|text||
 |user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
+- belongs_to :item_id
 
 
 ## purchaseテーブル
