@@ -65,30 +65,6 @@
 |price|int|null :false|
 |user_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
-
-### Association
-- has_many :comments
-- has_many :pictures
-- has_many :item_likes
-
-- belongs_to :user
-- belongs_to :purchase
-- belongs_to :category
-
-
-## itemsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-|description|text|null: false|
-|status|int|null: false|
-|responsibility|boolean|null :false|
-|location|string|null: false|
-|day|int|null :false|
-|price|int|null :false|
-|user_id|references|null: false, foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
 |purchase_id|references|null: false, foreign_key: true|
 
 ### Association
@@ -123,7 +99,7 @@
 
 ### Association
 - has_many :items
-- has_many :ancestry
+- has_ancestry
 
 ## item_likesテーブル
 
