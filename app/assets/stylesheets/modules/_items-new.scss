@@ -1,25 +1,11 @@
-.main-container {
-  p {
-    
-  }
-  .sell-container {
-    .data-input {
-      .sell-container-inner {
-        .main-head {
-
-        }
-        .sell-form {
-          .upload-box {
-            .upload-head {
-
-            }
-
-          }
-        }
-        
-      }
+.single-container {
+  .single-main{
+    background-color: $light-grey;
+    .l-single-container {
+      width: 700px;
+      margin: 0 auto;
+      
     }
-  }
-  
+  } 
 }
 
