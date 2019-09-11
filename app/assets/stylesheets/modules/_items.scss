@@ -1,3 +1,209 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.main{
+  background-color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+
+
+
+  .top-image{
+    background-color: #253141;
+    height: 390px;
+    display: flex;
+    line-height: 100px;
+    align-items: center;
+    padding: 0 20px;
+    font-weight: bold;
+  }
+
+
+
+
+.popular{
+  padding: 56px 0px 30px;
+  background-color: rgb(255, 255, 255);
+  left: 50%;
+  margin-left: -50vw;
+  position: relative;
+  top: 0px;
+  width: 100vw;
+
+
+  .category{
+    margin-bottom: 16px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.4em;
+    font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+  }
+
+
+
+
+
+  .popularCategory{
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+  
+    // vertical-align: baseline;
+    margin: 0px;
+    padding: 0px;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    font: inherit;
+    box-sizing: border-box;
+    display: block;
+    // margin: 0;
+
+
+    .lists{
+      display: block;
+      text-align: center;
+      width: 100%;
+      // margin: -10px 0px 0px -10px;
+      // list-style: none;
+      // display: flex;
+      // list-style: none;
+    
+      // vertical-align: baseline;
+      // padding: 0px;
+      border-width: 0px;
+      border-style: initial;
+      border-color: initial;
+      border-image: initial;
+      font: inherit;
+    
+      box-sizing: border-box;
+    
+      // margin-block-start: 1em;
+      // margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      // padding-inline-start: 40px;
+    
+      white-space: nowrap;
+    }
+    .list{
+      margin: 10px 0px 0px 10px;
+      display: inline-block;
+      
+
+    }
+    a{
+      background-color: rgb(239, 239, 239);
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 15px;
+      padding: 8px 16px;
+    }
+  }
+
+
+
+  .new{
+    // padding: 42px 0px 100px;
+
+    // vertical-align: baseline;
+    // margin: 0px;
+    // border-width: 0px;
+    // border-style: initial;
+    // border-color: initial;
+    // border-image: initial;
+    // font: inherit;
+    height:900px;
+    width:900px;
+    margin: 0 auto;
+    background-color: #fffacd;
+
+    &__item{
+      padding: 40px;
+      color:#ffa500;
+      font-size:30px;
+      text-align: center;
+    }
+  }
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ul {
+  // display: block;
+  // list-style-type: disc;
+  // margin-block-start: 1em;
+  // margin-block-end: 1em;
+  // margin-inline-start: 0px;
+  // margin-inline-end: 0px;
+  // padding-inline-start: 40px;
+  
+  // display: flex;
+  // list-style: none;
+  // text-align: center;
+
+  // display: block;
+  // text-align: center;
+  // width: 100%;
+  // margin-top: -10px;
+  // margin-right: 0px;
+  // margin-bottom: 0px;
+  // margin-left: -10px;
+  // min-width: 768px
+// }
+
+
+
+
+
+// html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+// p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+// em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+// b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+// table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+// details, embed, figure, figcaption, footer, header, hgroup, main, menu,
+// nav, output, ruby, section, summary, time, mark, audio, video {
+//   vertical-align: baseline;
+//   margin: 0px;
+//   padding: 0px;
+//   border-width: 0px;
+//   border-style: initial;
+//   border-color: initial;
+//   border-image: initial;
+//   font: inherit;
+// }
+
+// *, ::before, ::after {
+//   box-sizing: border-box;
+// }
+
+// div {
+//   display: block;
+// }
+
+
+
+}
