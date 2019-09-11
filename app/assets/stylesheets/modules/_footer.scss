@@ -88,6 +88,7 @@ footer {
         }
     }
   .content-bottom {
+    display: flex;
     width: 1020px;
     margin: 30px auto 0px;
     padding-bottom: 30px;
@@ -95,6 +96,7 @@ footer {
     .brand-logo {
       display: inline-block;
       height: 33px;
+      width: auto;
       text-align: center;
       &__image {
         height: 33px;
