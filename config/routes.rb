@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :users, only: [:show] do
     resources :cards, only: [:index, :new, :create, :delete]
+    resources :items
   end
 end
