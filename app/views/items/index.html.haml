@@ -16,27 +16,10 @@
         %li.list
           %a.tag4 おもちゃ・ホビー・グッズ
 
-  .new
-    .item
-      .top
-        %h3.item__top__ladies
-          レディース新着アイテム
-        %a.item__top__mottomiru もっと見る
-      .box
-        .box__contents
-          .box__contents__content
-            %a.contentlink
-              %figure.figure
-                %figcaption
-                  %span
-                    111
-                .tag
-                  %span{"aria-label" => "Price"} ¥5,555
-                  .tag__image
-      .box
-        .box__contents
-          .box__contents__content
-            
+
+  = render partial: 'shared/contents'
+  = render partial: 'shared/contents'
+
 
   -# .new
   -#   .item
