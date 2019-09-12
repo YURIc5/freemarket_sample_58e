@@ -4,7 +4,54 @@
     .l-single-container {
       width: 700px;
       margin: 0 auto;
-      
+      .l-single-head {
+        padding: 32px 16px;
+        font-size: 22px;
+      } 
+      .sell-form {
+        border-top: 1px solid $light-grey;
+        .uploud-box {
+          width: 620px;
+          padding: 40px;
+          .uploud-head {
+            font-size: 16px;
+            font-weight: bold;
+          }
+          .form-require {
+
+          }
+          p {
+            margin: 8px 0 0;
+            line-height: 1.5;
+          }
+          .dropbox-container  {
+            display: block;
+            width: 620px;
+            margin: 16px auto 0;
+            .uploud-items {
+              display: inline;
+              &__have-item {
+                float: left;
+                display: block;
+              }
+            }
+            .uploud-dropbox {
+              width: 100%;
+              margin-left: 0;
+            }
+          }
+        }}
+        .sell-content {
+          padding: 40px;
+          border-top: 1px solid $light-grey;
+          .form_group {
+            margin: 0;
+            label {
+              font-weight: 600;
+              display: inline-block;
+            }
+          } 
+        }
     }
   } 
 }

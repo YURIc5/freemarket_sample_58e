@@ -2,16 +2,23 @@
   = render 'shared/sub_header'
   %main.single-main
     %section.l-single-container
-      %h2.l-single-head
+      %h2.l-single-head 商品の情報を入力
       %form.sell-form
         .uploud-box
           %h3.uploud-head 出品画像
           %span.form-require　必須
+          %p 最大10枚までアップロードできます
+          .dropbox-container 
+            .uploud-items
+              .uploud-items__have-item
+          .uploud-dropbox
+        .sell-content
+          .form_group
         .sell-content
         .sell-content
         .sell-content
         .sell-content
-        .sell-content
+  = render 'shared/sub_footer'
 
 
             
