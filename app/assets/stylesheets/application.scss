@@ -1,5 +1,6 @@
 @import "./reset";
 @import "font-awesome";
+@import "config/colors";
 @import "mixins/mixin";
 @import "modules/header";
 @import "modules/footer";
@@ -7,3 +8,4 @@
 @import "modules/items";
 @import "modules/users";
 @import "modules/devise";
+@import "modules/cards";
