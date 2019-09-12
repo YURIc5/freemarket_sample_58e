@@ -1,5 +1,7 @@
 .main
   .top-image
+    -# = link_to image_tag( 'top_image.jpg'), 'http://www.google.com'
+    .top-image2
   .popular
     %h2.category
       人気のカテゴリー
@@ -13,7 +15,67 @@
           %a.tag3 家電・スマホ・カメラ
         %li.list
           %a.tag4 おもちゃ・ホビー・グッズ
+
   .new
-    .new__item
-      %h3.new__item__ladies
-        レディース新着アイテム
+    .item
+      .top
+        %h3.item__top__ladies
+          レディース新着アイテム
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          .box__contents__content
+            %a.contentlink
+              %figure.figure
+                %figcaption
+                  %span
+                    111
+                .tag
+                  %span{"aria-label" => "Price"} ¥5,555
+                  .tag__image
+      .box
+        .box__contents
+          .box__contents__content
+            
+
+  -# .new
+  -#   .item
+  -#     .top
+  -#       %h3.item__top__ladies
+  -#         メンズ新着アイテム
+  -#       %a.item__top__mottomiru もっと見る
+  -#     .box
+  -#       .box__contents
+  -#         .box__contents__content
+  -#     .box
+  -#       .box__contents
+  -#         .box__contents__content
+
+          
+  -# .new
+  -#   .item
+  -#     .top
+  -#       %h3.item__top__ladies
+  -#         家電・スマホ・カメラ新着アイテム
+  -#       %a.item__top__mottomiru もっと見る
+  -#     .box
+  -#       .box__contents
+  -#         .box__contents__content
+  -#     .box
+  -#       .box__contents
+  -#         .box__contents__content
+
+  -# .new
+  -#   .item
+  -#     .top
+  -#       %h3.item__top__ladies
+  -#         おもちゃ・ホビー・グッズ新着アイテム
+  -#       %a.item__top__mottomiru もっと見る
+  -#     .box
+  -#       .box__contents
+  -#         .box__contents__content
+  -#     .box
+  -#       .box__contents
+  -#         .box__contents__content
+
+  %aside.sumaho
