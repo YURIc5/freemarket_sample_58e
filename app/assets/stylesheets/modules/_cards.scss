@@ -48,3 +48,104 @@
     }
   }
 }
+
+.create-new-content {
+  width: 652px;
+  h2 {
+    font-size: 24px;
+    padding: 8px 24px;
+    line-height: 1.4;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  form {
+    border-top: 1px solid #f5f5f5;
+    padding: 24px 16px 40px;
+    .form-main-content {
+      .text {
+        padding: 10px 16px 8px;
+        width: 100%;
+        margin: 8px 0 0;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      margin: 0 auto;
+      width: 343px;
+      // デフォルト作成
+      .label-default {
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .default-content {
+        margin: 24px 0 0;
+      }
+      .hissu {
+        background-color: $main-red;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        color: white;
+        border-radius: 2px;
+        font-size: 12px;
+        line-height: 1;
+      }
+      .selects-default-content {
+        display: inline-block;
+      }
+      // ここまで
+      .form-top-content {
+        ul {
+          margin-top: 8px;
+          li {
+            display: inline-block;
+            vertical-align: middle;
+            // margin: 0 0 0 8px;
+            img {
+              // vertical-align: middle;
+            }
+          }
+        }
+      }
+      .form-middle-content {
+        .select-content {
+          height: 48px;
+          width: 130px;
+          padding:0 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+      }
+      .under-box {
+        margin: 8px 0 0;
+        position: relative;
+        &__inner-box {
+          text-align: right;
+          color: #0099e8;
+          font-size: 14px;
+          .question {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #0099e8;
+            color: white;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+      .add-btn {
+        display: block;
+        margin-bottom: 8px;
+        background-color: $main-red;
+        font-size: 14px;
+        color: white;
+        line-height: 48px;
+        text-align: center;
+      }
+    }
+  }
+}
