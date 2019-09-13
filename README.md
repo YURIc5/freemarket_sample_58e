@@ -7,8 +7,8 @@
 |password|string|null: false|
 |name|string|null: false|
 |name_kana|string|null: false|
-|birthday|string|null: false|
-|phone_number|string|null: false|
+|birthday|int|null: false|
+|phone_number|int|null: false|
 |address_id|references|null: false, foreign_key: true|
 |creditcard_id|references|null: false, foreign_key: true|
 

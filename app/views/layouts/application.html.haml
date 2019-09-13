@@ -10,6 +10,10 @@
   %body
     %header
       = render "/shared/header"
-    = yield
+
+      = yield 
+
     %footer
       = render "/shared/footer"
+    %global-footer
+      = render "/shared/sell-btn" 
