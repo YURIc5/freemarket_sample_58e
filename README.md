@@ -1,4 +1,4 @@
-## usersテーブル
+## userテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -10,7 +10,7 @@
 |birthday|int|null: false|
 |phone_number|int|null: false|
 |address_id|references|null: false, foreign_key: true|
-|creditcard_id|references|null: false, foreign_key: true|
+|card_id|references|null: false, foreign_key: true|
 
 ### Association
 - has_many :items
@@ -20,7 +20,7 @@
 - has_many :item_likes
 
 - has_one :address
-- has_one :creditcard
+- has_one :card
 
 
 
@@ -39,7 +39,7 @@
 
 
 
-## creditcardテーブル
+## cardテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -52,7 +52,7 @@
 - belongs_to :user
 
 
-## itemsテーブル
+## itemテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -78,7 +78,7 @@
 - has_one :purchase
 
 
-## commentsテーブル
+## commentテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -101,7 +101,7 @@
 - has_many :items
 - has_ancestry
 
-## item_likesテーブル
+## item_likeテーブル
 
 |Column|Type|Options|
 |------|----|-------|
