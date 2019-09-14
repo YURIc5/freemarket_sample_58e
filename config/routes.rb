@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   get 'users/phone' => 'users#phone' 
   resources :users, only: [:show] do
+    member do
+      get'profile'
+    end
     resources :cards, only: [:index, :new, :create, :delete]
   end
 
