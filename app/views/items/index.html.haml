@@ -1,0 +1,35 @@
+.main
+  .top-image
+    %img.top-image2{:alt => "", :src => "top_image.jpg"}/
+  .popular
+    %h2.category
+      人気のカテゴリー
+    .popularCategory
+      %ul.lists
+        %li.list
+          %a.tag1 レディース
+        %li.list
+          %a.tag2 メンズ
+        %li.list
+          %a.tag3 家電・スマホ・カメラ
+        %li.list
+          %a.tag4 おもちゃ・ホビー・グッズ
+  = render partial: 'shared/contents'
+
+  .popular
+    %h2.category
+      人気のブランド
+    .popularCategory
+      %ul.lists
+        %li.list
+          %a.tag1 シャネル
+        %li.list
+          %a.tag2 ルイヴィトン
+        %li.list
+          %a.tag3 シュプリーム
+        %li.list
+          %a.tag4 ナイキ
+  = render partial: 'shared/contents2'
+
+  %aside.sumaho
+    %img.bottom__image1{:alt => "", :src => "top_aside.png"}/

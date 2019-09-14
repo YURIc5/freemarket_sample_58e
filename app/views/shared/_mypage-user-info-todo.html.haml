@@ -1,0 +1,66 @@
+%section.mypage__contents
+  %ul.mypage__contents__tabs
+    %li.mypage__contents__tabs__info
+      %h3
+        = link_to "#" do           
+          お知らせ
+          %span.mypage__user__info__todo__tab
+    %li
+      %h3
+        = link_to "#" do
+          やることリスト
+          %span.mypage__user__info__todo__tab
+  .tab__content
+    %ul.mypage__user__info__list
+      %li
+        = link_to "#", class: "mypage__user__infos" do
+          %figure
+            = image_tag 'https://static.mercdn.net/images/mercari_profile.png', alt: "smallmerukariLogo"
+          .mypage__user__info
+            .mypage__user__info__text 事務局から個別メッセージ「ログイン通知」
+            %time
+              %i.icon__time
+              = fa_icon 'clock-o', class: 'icon'
+              %span 1 日前
+          %i.icon__arrow__right
+          = fa_icon 'chevron-right', class: 'arrow__right'
+      %li
+        = link_to "#", class: "mypage__user__infos" do
+          %figure
+            = image_tag 'https://static.mercdn.net/images/mercari_profile.png', alt: "smallmerukariLogo"
+          .mypage__user__info
+            .mypage__user__info__text 事務局から個別メッセージ「ログイン通知」
+            %time
+              %i.icon__time
+              = fa_icon 'clock-o', class: 'icon'
+              %span 1 日前
+          %i.icon__arrow__right
+          = fa_icon 'chevron-right', class: 'arrow__right'
+      %li
+        = link_to "#", class: "mypage__user__infos" do
+          %figure
+            = image_tag 'https://static.mercdn.net/images/mercari_profile.png', alt: "smallmerukariLogo"
+          .mypage__user__info
+            .mypage__user__info__text 【実は高く売れる！】遊び終わったゲームもバーコードで10秒出品♪
+            %time
+              %i.icon__time
+              = fa_icon 'clock-o', class: 'icon'
+              %span 2 日前
+          %i.icon__arrow__right
+          = fa_icon 'chevron-right', class: 'arrow__right'
+
+      %li
+        = link_to "#", class: "mypage__user__infos" do
+          %figure
+            = image_tag 'https://static.mercdn.net/images/mercari_profile.png', alt: "smallmerukariLogo"
+          .mypage__user__info
+            .mypage__user__info__text 事務局から個別メッセージ「ログイン通知」
+            %time
+              %i.icon__time
+              = fa_icon 'clock-o', class: 'icon'
+              %span 3 日前
+          %i.icon__arrow__right
+          = fa_icon 'chevron-right', class: 'arrow__right'
+      %li.mypage__link__more__list
+        = link_to "#" do
+          一覧を見る

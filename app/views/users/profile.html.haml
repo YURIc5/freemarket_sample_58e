@@ -1,0 +1,11 @@
+.profile-main-content
+  %h2.profile-header プロフィール
+  %form.profile-form-content
+    .profile-name-content
+      %figure
+        = image_tag '//static.mercdn.net/images/member_photo_noimage_thumb.png', width: "60", height: "60", alt: "user-icon"
+      %input.profile-name-input{type: "text", value: "", name: "nickname", placeholder: "例)AYA☆セール中",}
+    .profile-text-content
+      %textarea{placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+      =link_to "#", class: "content-btn" do
+        変更する
