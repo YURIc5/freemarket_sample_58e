@@ -2,18 +2,18 @@
   %ul.mypage__user__info__todo__tabs
     %li.mypage__user__info__tabs
       %h3
-        %a{href: "#"}              
+        = link_to "#" do              
           お知らせ
           %span.mypage__user__info__todo__tab
     %li
       %h3
-        %a{href: "#"}
+        = link_to "#" do
           やることリスト
           %span.mypage__user__info__todo__tab
   .tab__content
     %ul.mypage__user__info__list
       %li
-        %a.mypage__user__infos{href: "#"}
+        = link_to "#", class: "mypage__user__infos" do
           %figure
             %img{alt: "", "src": "https://static.mercdn.net/images/mercari_profile.png"}/
           .mypage__user__info
@@ -25,7 +25,7 @@
           %i.icon__arrow__right
           = fa_icon 'chevron-right', class: 'arrow__right'
       %li
-        %a.mypage__user__infos{href: "#"}
+        = link_to "#", class: "mypage__user__infos" do
           %figure
             %img{alt: "", "src": "https://static.mercdn.net/images/mercari_profile.png"}/
           .mypage__user__info
@@ -37,7 +37,7 @@
           %i.icon__arrow__right
           = fa_icon 'chevron-right', class: 'arrow__right'
       %li
-        %a.mypage__user__infos{href: "#"}
+        = link_to "#", class: "mypage__user__infos" do
           %figure
             %img{alt: "", "src": "https://static.mercdn.net/images/mercari_profile.png"}/
           .mypage__user__info
@@ -50,7 +50,7 @@
           = fa_icon 'chevron-right', class: 'arrow__right'
 
       %li
-        %a.mypage__user__infos{href: "#"}
+        = link_to "#", class: "mypage__user__infos" do
           %figure
             %img{alt: "", "src": "https://static.mercdn.net/images/mercari_profile.png"}/
           .mypage__user__info
@@ -62,4 +62,5 @@
           %i.icon__arrow__right
           = fa_icon 'chevron-right', class: 'arrow__right'
       %li.mypage__link__more__list
-        %a{href: "#"} 一覧を見る
+        = link_to "#" do
+          一覧を見る
