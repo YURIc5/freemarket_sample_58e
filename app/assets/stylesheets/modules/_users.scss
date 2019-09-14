@@ -66,14 +66,15 @@ body {
                     border: 0;
                     background: #eee;
                     font-size: 0;
-                    &__tabs__info {
+                    &__info {
                         background: #fff;
                         width: 50%;
                         display: inline-block;
                         text-align: center;
-                        vertical-align: top;         
+                        vertical-align: top;        
                         h3 {
                             font-size: 22px;
+                            font-weight: bold;
                             a {
                                 border-top: 2px solid #ea352d;
                                 position: relative;
@@ -83,7 +84,7 @@ body {
                                 line-height: 72px;  
                                 .mypage__user__info__todo__tab {
                                     top: 16px;
-                                    right: 2px;
+                                    right: 2px; 
                                 }                      
                             }
                         }
@@ -95,6 +96,7 @@ body {
                         vertical-align: top; 
                         h3 {
                             font-size: 22px;
+                            font-weight: bold;
                             a {
                                 position: relative;
                                 display: block;
@@ -301,17 +303,5 @@ body {
                 font-weight: bold;
             }
         }
-    }
-}
-.sumaho1{
-    max-width: 100%;
-    height: 300px;
-    padding: 51px 0px 0px;
-    img.bottom__image2 {
-      max-width: 100%;
-      height: 300px;
-      margin: 50px,0px;
-      padding: 0px;
-      
     }
 }
