@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get'profile'
     end
     resources :cards, only: [:index, :new, :create, :delete]
+    resources :addresses, only: [:new]
   end
 
   # resources :user do
