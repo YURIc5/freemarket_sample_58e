@@ -10,7 +10,7 @@
 |birthday|int||
 |phone_number|int||
 |address_id|references|foreign_key: true|
-|card_id|references|foreign_key: true|
+|creditcard_id|references|foreign_key: true|
 
 ### Association
 - has_many :items
@@ -20,7 +20,7 @@
 - has_many :item_likes
 
 - has_one :address
-- has_one :card
+- has_one :creditcard
 
 
 
