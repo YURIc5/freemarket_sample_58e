@@ -1,0 +1,114 @@
+.main__contents {
+  margin: 40px auto 0;
+  width: 1020px;
+  &__contents {
+    .chapter-container {
+      background-color: $white;
+      &__head {
+        font-size: 24px;
+        padding: 8px 24px;
+        border-bottom: 1px solid #f5f5f5;
+        text-align: center;
+      }
+      form.l-single-inner {
+        padding: 64px;
+        border-top: 1px solid #f5f5f5;
+        font-size: 14px;
+        div {
+          p{
+            margin: 8px 0 0;
+            line-height: 1.5;
+          }
+          a {
+            color: $light-blue;
+          }
+        }
+        .form-group {
+          margin: 40px 0 0;
+          label {
+            font-weight: 600;
+          }
+          select {
+            width: 100%;
+            -webkit-appearance: none;
+          }
+          .input-default {
+            box-sizing: border-box;
+            width: 100%;
+            margin: 8px 0 0;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: $white;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .select-default {
+            position: relative;
+            z-index: 2;
+            height: 48px;
+            padding: 0 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer;
+          }
+          &__select-wrap {
+            margin: 8px 0 0;
+            position: relative;
+            background-color: $white;
+            &__icon {
+              position: absolute;
+              right: 16px;
+              top: 50%;
+              z-index: 2;
+              color: #888;
+              font-size: 8px;
+            }
+          }
+        }
+        button {
+          margin: 40px 0 0 0;
+        }
+        .btn-default {
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          border: 1px solid transparent;
+          cursor: pointer;
+          text-align: center;
+        }
+        .btn-red {
+          background: #ea352d;
+          border: 1px solid $main-red;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .form-arbitrary {
+    background-color: #ccc;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: $white;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  label {
+    display: inline-block;
+  }
+  .clearfix {
+    @include clearfix;
+  }
+}
