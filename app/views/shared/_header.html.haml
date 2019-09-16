@@ -27,21 +27,30 @@
                 %span ブランドから探す
 
       .header-bottom__right
-        %ul
-          %li
-            = link_to "#" do
-              = fa_icon 'heart', class: "o_icon-gray"
-              %span いいね一覧
-          %li
-            = link_to "#" do
-              = fa_icon 'bell', class: "o_icon-gray"
-              %span お知らせ
-          %li
-            = link_to "#" do
-              = fa_icon 'check', class: "o_icon-gray"
-              %span やることリスト
-          %li
-            = link_to "#" do
-              -# %img.mypage-icon{:alt => "", :src => "https://static.mercdn.net/images/member_photo_noimage_thumb.png"}/
-              .header-bottom__right--image 
-              %span マイページ
+        - if user_signed_in?
+          %ul
+            %li
+              = link_to "#" do
+                = fa_icon 'heart', class: "o_icon-gray"
+                %span いいね一覧
+            %li
+              = link_to "#" do
+                = fa_icon 'bell', class: "o_icon-gray"
+                %span お知らせ
+            %li
+              = link_to "#" do
+                = fa_icon 'check', class: "o_icon-gray"
+                %span やることリスト
+            %li
+              = link_to "#" do
+                -# %img.mypage-icon{:alt => "", :src => "https://static.mercdn.net/images/member_photo_noimage_thumb.png"}/
+                .header-bottom__right--image 
+                %span マイページ
+        - else
+          %ul
+            %li
+              = link_to "new_user_session_path", class: "user-new-btn" do
+                新規会員登録
+            %li
+              = link_to "new_user_registration_path", class: "login-btn" do
+                ログイン
