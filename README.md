@@ -2,15 +2,15 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
-|mail|string|null: false|
-|password|string|null: false|
-|name|string|null: false|
-|name_kana|string|null: false|
-|birthday|int|null: false|
-|phone_number|int|null: false|
-|address_id|references|null: false, foreign_key: true|
-|card_id|references|null: false, foreign_key: true|
+|nickname|string||
+|mail|string||
+|password|string||
+|name|string||
+|name_kana|string||
+|birthday|int||
+|phone_number|int||
+|address_id|references|foreign_key: true|
+|card_id|references|foreign_key: true|
 
 ### Association
 - has_many :items
@@ -28,18 +28,18 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|postcode|int|null: false|
-|prefecture|string|null: false|
-|city|string|null: false|
-|block|int|null: false|
-|building|string|null: false|
+|postcode|int||
+|prefecture|string||
+|city|string||
+|block|int||
+|building|string||
 
 ### Association
 - belongs_to :user
 
 
 
-## cardテーブル
+## creditcardテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -65,7 +65,6 @@
 |price|int|null :false|
 |user_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
-|purchase_id|references|null: false, foreign_key: true|
 
 ### Association
 - has_many :comments
