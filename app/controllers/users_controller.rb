@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def signup
+  end
+
   def phone
     @user = User.new()
   end
