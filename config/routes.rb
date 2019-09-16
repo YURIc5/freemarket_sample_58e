@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root to: 'items#index'
 
   get 'users/phone' => 'users#phone' 
+  get 'users/signup' => 'users#signup' 
+
   resources :users, only: [:show] do
     member do
       get'profile'
