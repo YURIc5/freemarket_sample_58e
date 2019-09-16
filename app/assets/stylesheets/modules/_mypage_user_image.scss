@@ -1,0 +1,45 @@
+.mypage__user__image {
+  height: 200px;
+  position: relative;
+  padding: 20px;
+  background: url(https://msp.c.yimg.jp/yjimage?q=xogHhiMXyLF912UZcjJTIEMHugLtZCm6Ld4tBBdAjC3ofbvFMjLy5GLCB0sT69CWHLn0EPH64BHxmFNeYe12sTP9nbxWX7j.u9jjp077kSBkv8hA8CLxueSwR_smlmMJLe1cv5VWXZvVJvAwrw--&sig=138vjte96&x=259&y=194);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  a {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      color: #333;
+  }
+  figure {
+      overflow: hidden;
+      width: 60px;
+      height: 60px;
+      margin: 20px auto;
+      border-radius: 50%;
+  }
+      h2 {
+          margin: 8px 0 0;
+          font-size: 14px;
+      }
+      .user__evaluation__exhibit {
+          margin: 8px 0 0;
+          font-size: 0;
+          &__evaluation__exhibit {
+              display: inline-block;
+              font-size: 14px;
+              span {
+                  margin: 0 0 0 8px;
+                  font-size: 16px;
+              }
+          }
+          .left__margin {
+              margin: 0 0 0 16px;
+          }
+      }
+}

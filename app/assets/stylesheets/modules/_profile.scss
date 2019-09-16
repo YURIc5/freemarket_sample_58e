@@ -1,0 +1,66 @@
+.profile-main-content {
+  width: 700px;
+  .profile-header {
+    font-size: 24px;
+    padding: 8px 24px;
+    text-align: center;
+    font-weight: bold;
+    line-height: 1.4;
+    border: 1px solid #f5f5f5;
+  }
+  .profile-form-content {
+
+    .profile-name-content {
+      padding: 72px 16px 24px;
+      background: url(https://www.lafary.net/wp-content/uploads/2018/04/IMG_1843-1024x768.jpg);
+      text-align: center;
+      vertical-align: middle;
+      background-size: cover;
+      figure {
+        vertical-align: middle;
+        display: inline-block;
+        margin: 0;
+        img {
+          border-radius: 50%;
+          vertical-align: middle;
+        }
+      }
+      .profile-name-input {
+        width: 220px;
+        margin: 0 0 0 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 10px;
+        padding-bottom: 8px;
+        font-size: 16px;
+        border-radius: 4px;
+        
+      }
+    }
+  }
+  .profile-text-content {
+    padding: 40px 16px;
+    textarea {
+      min-height: 216px;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      line-height: 1.5;
+      box-sizing: border-box;
+    }
+    .content-btn {
+      width: 100%;
+      background-color: $main-red;
+      display: block;
+      margin: 16px 0 0;
+      color: white;
+      border: 1px solid $main-red;
+      line-height: 48px;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+}
