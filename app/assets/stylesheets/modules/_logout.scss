@@ -1,0 +1,20 @@
+.logout-content {
+  width: 700px;
+  background-color: white;
+  .inner-content {
+    padding: 64px;
+    .button-content {
+      width: 320px;
+      margin: 0 auto;
+      .logout-content {
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        text-align: center;
+        background-color: $main-red;
+        color: white;
+        font-size: 14px;
+      }
+    }
+  }
+}
