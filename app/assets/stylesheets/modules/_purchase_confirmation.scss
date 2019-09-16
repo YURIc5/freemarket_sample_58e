@@ -1,0 +1,180 @@
+.purchase__main__contents {
+  display: block;
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  .content {
+    width: 700px;
+    margin: auto;
+    padding-bottom: 40px;
+    background-color: #fff;
+    &__title {
+      padding: 16px;
+      font-size: 22px;
+      text-align: center;
+      line-height: 1.5;
+      font-weight: bold;
+      color: #333;
+    }
+    &__confirmations {
+      margin: 0;
+      text-align: center;
+      padding: 24px 12.5% 0;
+      border-top: 1px solid #f5f5f5;
+      &__confirmation {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 320px;
+        margin: auto;
+        &__item__image {
+          font-size: 22px;
+          img {
+            width: 64px;
+            vertical-align: middle;
+          }
+        }
+        &__item__explanation {
+          width: calc(100% - 80px);
+          margin: 0 0 0 16px;
+          text-align: left;
+          font-size: 16px;
+          line-height: 1.5;
+          font-weight: 600;
+          color: #333;
+        }
+        &__item__form {
+          width: 100%;
+          .item__price {
+            margin: 8px 0 0;
+            line-height: 1.5;
+            font-size: 22px;
+            font-weight: bold;
+            &__text {
+              margin: 0 0 0 8px;
+              font-size: 14px;
+              font-weight: 400;
+              display: inline-block;
+              color: #333;
+            }
+          }
+          .user__point {
+            background-color: #ccc;
+            margin: 16px 0 0;
+            &__text {
+              cursor: default;
+              padding: 16px;
+              border: 1px solid #ccc;
+              position: relative;
+              font-size: 14px;
+              font-weight: 100;
+              color: #333;
+            }
+          }
+          .payment {
+            display: table;
+            border-collapse: collapse;
+            width: 100%;
+            &__buy {
+              border: 0;
+              font-size: 18px;
+              font-weight: 600;
+              @include clearfix;
+              &__text {
+                display: table-cell;
+                float: left;
+                padding: 16px 0;
+                color: #333;
+              }
+              &__prices {
+                display: table-cell;
+                padding: 16px 0;
+                float: right;
+                &__price {
+                  font-size: 22px;
+                }
+              }
+            }
+          }
+          .buy__it {
+            background-color: #ccc;
+            margin: 16px 0 0;
+
+            &__action {
+              cursor: pointer;
+              background-color: #ea352d;
+              margin: 0 auto;
+              border: 1px solid #ea352d;
+              color: #fff;
+              height: 100%;
+              width: 100%;
+              padding: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .buy__user__info {
+    margin: auto;
+    padding: 20px 0 40px;
+    border-top: 1px solid #f5f5f5;
+    width: 700px;
+    background-color: #fff;
+
+    &__address {
+      max-width: 320px;
+      margin: 0 auto;
+      @include clearfix;
+      h3 {
+        margin: 0;
+        font-size: 14px;
+        color: #333;
+        font-weight: bold;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 100;
+      }
+      a {
+        float: right;
+        color: #0099e8;
+        font-size: 14px;
+      }
+    }
+  }
+  .buy__user__card {
+    margin: auto;
+    padding: 20px 0 40px;
+    border-top: 1px solid #f5f5f5;
+    width: 700px;
+    background-color: #fff;
+
+    &__info {
+      max-width: 320px;
+      margin: 0 auto;
+      @include clearfix;
+      h3 {
+        margin: 0;
+        font-size: 14px;
+        color: #333;
+        font-weight: bold;
+      }
+      p {
+        margin: 8px 0 0;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      img {
+        margin: auto;
+        padding: auto;
+        height: 16px;
+        width: 50px;
+      }
+      a {
+        float: right;
+        color: #0099e8;
+        font-size: 14px;
+      }
+    }
+  }
+}

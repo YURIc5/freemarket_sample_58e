@@ -12,4 +12,10 @@ class UsersController < ApplicationController
 
   def logout
   end
+
+  def buy
+    render :layout => 'buy'
+    # @user = User.new()
+  end
+
 end
