@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_122336) do
+ActiveRecord::Schema.define(version: 2019_09_16_094627) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "postcode", null: false
-    t.string "prefecture", null: false
-    t.string "city", null: false
-    t.integer "block", null: false
-    t.string "building", null: false
+    t.integer "postcode"
+    t.string "prefecture"
+    t.string "city"
+    t.integer "block"
+    t.string "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 2019_09_14_122336) do
   end
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "creditcard_number", null: false
-    t.integer "exp_month", null: false
-    t.integer "exp_year", null: false
-    t.string "name", null: false
+    t.integer "creditcard_number"
+    t.integer "exp_month"
+    t.integer "exp_year"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
