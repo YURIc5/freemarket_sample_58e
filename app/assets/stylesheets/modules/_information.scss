@@ -1,7 +1,9 @@
-.main__contents {
+.main-contents {
   margin: 40px auto 0;
   width: 1020px;
-  &__contents {
+  @include clearfix;
+  &__content {
+    float: right;
     .chapter-container {
       background-color: $white;
       &__head {
@@ -107,8 +109,5 @@
   }
   label {
     display: inline-block;
-  }
-  .clearfix {
-    @include clearfix;
   }
 }

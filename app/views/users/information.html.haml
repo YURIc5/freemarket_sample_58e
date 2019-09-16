@@ -1,9 +1,9 @@
 %body
-  %main.main__contents.crearfix
-    .main__contents__contents
+  %main.main-contents.crearfix
+    .main-contents__content
       %section.chapter-container
         %h2.chapter-container__head 本人情報の登録
-        %form.l-single-inner{action: "https://www.mercari.com/jp/mypage/identification/save/", method: "POST", novalidate: ""}
+        = form_for [@user,@address]  do |f|
           %div
             %p
               お客さまの本人情報をご登録ください。

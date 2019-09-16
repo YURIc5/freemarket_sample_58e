@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     member do
       get'profile'
       get'logout'
-      get'information'
     end
+    get'information' 
     resources :cards, only: [:index, :new, :create, :delete]
     resources :addresses, only: [:new]
     resources :items

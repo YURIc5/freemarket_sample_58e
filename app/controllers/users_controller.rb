@@ -17,5 +17,12 @@ class UsersController < ApplicationController
   end
 
   def information
+    @user = User.find(1)
+    @address = Address.new(address_params)
+  end
+
+  private
+  def address_params
+    
   end
 end
