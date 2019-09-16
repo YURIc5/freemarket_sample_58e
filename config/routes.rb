@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     member do
       get'profile'
     end
-    resources :cards, only: [:index, :new, :create, :delete]
+    resources :cards, only: [:index, :new, :create, :delete] do
+      resources :purchases, only: [:edit, :create]
+    end
   end
 
   # resources :user do

@@ -1,0 +1,137 @@
+.mypage__contents {
+  margin: 0;
+  background: #fff;
+  &__tabs {
+      border: 0;
+      background: #eee;
+      font-size: 0;
+      &__info {
+          background: #fff;
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top;        
+          h3 {
+              font-size: 22px;
+              font-weight: bold;
+              a {
+                  border-top: 2px solid #ea352d;
+                  position: relative;
+                  display: block;
+                  color: #333;
+                  font-size: 16px;
+                  line-height: 72px;  
+                  .mypage__user__info__todo__tab {
+                      top: 16px;
+                      right: 2px; 
+                  }                      
+              }
+          }
+      }
+      li {
+          width: 50%;
+          display: inline-block;
+          text-align: center;
+          vertical-align: top; 
+          h3 {
+              font-size: 22px;
+              font-weight: bold;
+              a {
+                  position: relative;
+                  display: block;
+                  color: #333;
+                  font-size: 16px;
+                  line-height: 72px;  
+                  .mypage__user__info__todo__tab {
+                      top: 16px;
+                      right: 2px;
+                  }                      
+              }
+          }    
+      }
+  }
+  .mypage__user__info__list {
+      display: block;
+      li {
+          position: relative;
+          border-bottom: 1px solid #eee;
+          .mypage__user__infos {
+              display: block;
+              padding: 16px;
+              color: #333;
+              figure {
+                  position: relative;
+                  overflow: hidden;
+                  float: left;
+                  width: 48px;
+                  height: 48px;
+                  margin: 0;
+                  padding: 0;
+                  img {
+                      position: absolute;
+                      top: 0;
+                      right: 0;
+                      bottom: 0;
+                      left: 0;
+                      z-index: 1;
+                      width: 100%;
+                      vertical-align: middle;
+                  }
+              }
+              .mypage__user__info {
+                  margin: 0 40px 0 68px;
+                  .mypage__user__info__text {
+                      overflow: hidden;
+                      display: block;
+                      display: -webkit-box;
+                      max-height: 4.4em;
+                  }
+                  time {
+                      display: inline-block;
+                      color: #888;
+                      .icon__time {
+                          margin: 0 8px 0 0;
+                          font-size: 16px;
+                          vertical-align: middle;
+                      }
+                      i {
+                          display: inline-block;
+                      }
+                      span {
+                          vertical-align: middle;
+                      }
+                      
+                  }
+              }
+              .icon__arrow__right {
+                  position: absolute;
+                  top: 50%;
+                  right: 16px;
+                  -webkit-transform: translate(0, -50%);
+                  transform: translate(0, -50%);
+              }
+              .arrow__right {
+                  position: absolute;
+                  top: 50%;
+                  right: 16px;
+                  -webkit-transform: translate(0, -50%);
+                  transform: translate(0, -50%);
+              }
+          }
+      }
+      .mypage__link__more__list {
+          border: 0;
+          position: relative;
+          padding: 16px;
+          a {
+              display: block;
+              height: 56px;
+              margin: 0 auto;
+              background: #eee;
+              color: #333;
+              line-height: 56px;
+              text-align: center;
+          }
+      }
+  }
+}
