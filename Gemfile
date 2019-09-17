@@ -75,3 +75,4 @@ gem 'haml-rails'
 gem 'ancestry'
 gem 'font-awesome-rails'
 gem 'devise'
+gem "gretel"
