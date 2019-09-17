@@ -11,9 +11,8 @@ Rails.application.routes.draw do
       get'logout'
       get'information'
     end
-    get'information' 
     resources :cards, only: [:index, :new, :create, :delete]
-    resources :addresses, only: [:new]
+    resources :addresses, only: [:new, :create, :edit, :update]
     resources :items
   end
 
