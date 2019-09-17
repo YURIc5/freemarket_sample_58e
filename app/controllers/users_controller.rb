@@ -15,4 +15,8 @@ class UsersController < ApplicationController
 
   def logout
   end
+
+  def buy
+    render :layout => 'buy'
+  end
 end
