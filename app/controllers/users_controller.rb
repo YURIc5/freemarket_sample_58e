@@ -21,4 +21,8 @@ class UsersController < ApplicationController
     @address = Address.new
   end
 
+  def buy
+    render :layout => 'buy'
+  end
+  
 end
