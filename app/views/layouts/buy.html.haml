@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FreemarketSample58e
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'purchase/purchases', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+    = render "/shared/sub_header"
+
+    = yield 
+
+    %footer
+      = render "/shared/sub_footer"
+    %global-footer
+      = render "/shared/sell-btn" 

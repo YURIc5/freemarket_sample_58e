@@ -1,0 +1,57 @@
+%main.purchase__main__contents
+  %section.content
+    %h2.content__title
+      購入内容の確認
+    %section.content__confirmations
+      .content__confirmations__confirmation
+        %h3.content__confirmations__confirmation__item__image
+          = image_tag '/sumahoring_sample.png'
+        %p.content__confirmations__confirmation__item__explanation
+          メタリック・スマホホールドリング　ゴールド
+        = form_with model: @parchase, class: "content__confirmations__confirmation__item__form" do |form| 
+          %p.item__price
+            ¥300
+            %span.item__price__text
+              送料込み
+          %ul.user__point
+            %li
+              .user__point__text
+                ポイントはありません
+          %ul.payment
+            %li.payment__buy
+              .payment__buy__text
+                支払い金額
+              .payment__buy__prices
+                %span.payment__buy__prices__price
+                  ¥300
+          %ul.buy__it
+            %li
+              = form.submit "購入する", class: "buy__it__action"
+  %section.buy__user__info
+    .buy__user__info__address
+      %h3
+        配送先
+      %p
+        〒123-1234 
+        %br
+        東京都渋谷区道玄坂○丁目○○番○○号
+        %br
+        かもかも
+      = link_to "#" do
+        変更する
+  %section.buy__user__card
+    .buy__user__card__info
+      %h3
+        支払い方法
+      %p
+        ************4020
+        %br
+        01/24
+      .card__image
+        = image_tag 'https://msp.c.yimg.jp/yjimage?q=6qPzFCMXyLEZcjIW0g5IB8PrBb7QHt3dHk_qCfdBvw6Qi06H6fGOIosFCV1YxfAzNB3eO2cnlGldv.4CbcUDQNbfDjEbTy7Vtx6sMNOMGFyJaV7c7SmWrrcmipzeyrOs_._RP4.zFR6SvX1l4A--&sig=138k967fh&x=300&y=97'
+      = link_to "#" do
+        変更する
+    
+
+
+  
