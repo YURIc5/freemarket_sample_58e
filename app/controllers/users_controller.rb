@@ -19,4 +19,11 @@ class UsersController < ApplicationController
   def buy
     render :layout => 'buy'
   end
+
+  def exhibit_list
+    @itemnames = Item.find(1)
+    @items = Item.find(1).pictures
+    @users = User.all
+    @pictures = Picture.find(3)
+  end
 end
