@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     member do
       get'profile'
       get'logout'
+      get'information'
       get 'buy'
       get 'exhibit_list'
     end
     resources :cards, only: [:index, :new, :create, :delete]
-    resources :addresses, only: [:new]
+    resources :addresses, only: [:new, :create, :edit, :update]
     resources :items
   end
 

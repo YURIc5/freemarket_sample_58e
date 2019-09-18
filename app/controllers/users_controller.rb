@@ -16,6 +16,11 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def information
+    @user = User.find(params[:id])
+    @address = Address.new
+  end
+
   def buy
     render :layout => 'buy'
   end
@@ -26,4 +31,5 @@ class UsersController < ApplicationController
     @users = User.all
     @pictures = Picture.find(3)
   end
+
 end
