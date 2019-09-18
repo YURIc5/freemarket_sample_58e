@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
   def index
+    @items = Item.find(1).pictures
   end
 
   def new
