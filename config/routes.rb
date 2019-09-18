@@ -15,7 +15,10 @@ Rails.application.routes.draw do
     end
     resources :cards, only: [:index, :new, :create, :delete]
     resources :addresses, only: [:new, :create, :edit, :update]
-    resources :items
+    resources :items do
+      resources :pictures
+    end
+
   end
 
   # resources :user do

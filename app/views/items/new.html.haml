@@ -3,7 +3,7 @@
   %main.single-main
     %section.l-single-container
       %h2.l-single-head 商品の情報を入力
-      = form_for [@user, @item] do |f|
+      = form_for [@user, @picture, @item] do |f|
         .sell-box
           %h3.uploud-header 出品画像
           %span.form-require 必須
@@ -12,9 +12,10 @@
             .uploud-container
               .uploud-container__have-items
             .uploud-dropbox
-              = f.file_field :name,class: 'uploud-dropfile'
-              %br/
-              %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+              = f.label :name, class: 'form__mask__image' do
+                = f.file_field :name, class: 'uploud-dropfile'
+                %br/
+                %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名
