@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get'logout'
       get'information'
       get 'buy'
+      get 'exhibit_list'
     end
     resources :cards, only: [:index, :new, :create, :delete]
     resources :addresses, only: [:new, :create, :edit, :update]
