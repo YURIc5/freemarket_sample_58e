@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   
   def index
+    @itemCategory1 = Item.recent1
+    @itemCategory2 = Item.recent2
+    @itemCategory3 = Item.recent3
+    @itemCategory4 = Item.recent4
   end
 
   def new
