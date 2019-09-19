@@ -1,5 +1,8 @@
-.logout-content
-  .inner-content
-    .button-content
-      =link_to "#", class: "logout-content" do
-        ログアウト
+%main.main__contents
+  = render "/shared/mypage-side-manu"
+  .main__contents__contents
+    .logout-content
+      .inner-content
+        .button-content
+          =link_to "#", class: "logout-content" do
+            ログアウト
