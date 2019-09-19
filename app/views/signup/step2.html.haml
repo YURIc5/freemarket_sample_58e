@@ -1,0 +1,20 @@
+%body
+  .single-container
+    = render partial: "shared/sub_header"
+    %main.single-main
+      %section.l-single-container
+        %h2.l-single-head.registration 電話番号の確認
+        .l-single-content
+          = form_for @user, url: signup_index_path, method: :post, html: {class: 'l-single-inner'} do |f|
+            .field
+              = f.label :携帯電話の番号
+              %spna.form-require 必須
+              %br/
+              = f.phone_field :phone_number, placeholder: "携帯電話の番号を入力" 
+              %p.l-single-text 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+
+              
+            .actions.btn-next
+              = f.submit "SMSを送信する", :class=>"btn-default btn-red"
+              %p.l-single-text 電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+    = render partial: "shared/sub_footer"
