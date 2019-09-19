@@ -5,7 +5,7 @@
       %section.l-single-container
         %h2.l-single-head.registration 住所入力
         .l-single-content
-          = form_for [@user,@address], :url => { :controller => :addresses, :action => :new },:html => {:class => "l-single-inner"} do |f|
+          = form_for [@address], url: user_addresses_path, method: :post, html: {class: 'l-single-inner'} do |f|
             .field
               = f.label :郵便番号
               %spna.form-require 必須
@@ -30,7 +30,7 @@
               = f.label :建物名
               %spna.form-any 任意
               %br/
-              = f.text_field :block, placeholder: "例 ）柳ビル103" 
+              = f.text_field :building, placeholder: "例 ）柳ビル103" 
               
             .actions.btn-next
               = f.submit "次へ住む", :class=>"btn-default btn-red"
