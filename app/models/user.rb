@@ -8,7 +8,10 @@ class User < ApplicationRecord
     has_many :evaluations
     has_many :purchases
     has_many :item_likes
+    has_many :pictures
   
     has_one :address
     has_one :creditcard
+
+    accepts_nested_attributes_for :pictures
 end
