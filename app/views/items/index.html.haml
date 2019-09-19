@@ -14,7 +14,51 @@
           %a.tag3 家電・スマホ・カメラ
         %li.list
           %a.tag4 おもちゃ・ホビー・グッズ
-  = render partial: 'shared/contents'
+  -# = render partial: 'shared/contents'
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          レディース新着アイテム
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory1.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
+
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          メンズ新着アイテム
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory2.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
+
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          家電・スマホ・カメラ新着アイテム
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory3.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
+
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          おもちゃ・ホビー・グッズ新着アイテム
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory4.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
+
 
   .popular
     %h2.category
@@ -29,7 +73,50 @@
           %a.tag3 シュプリーム
         %li.list
           %a.tag4 ナイキ
-  = render partial: 'shared/contents2'
+  -# = render partial: 'shared/contents2'
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          シャネル
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory1.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
+
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          ルイヴィトン
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory2.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
+
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          シュプリーム
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory3.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
+
+  .new
+    .item
+      .top
+        %h3.item__top__ladies
+          ナイキ
+        %a.item__top__mottomiru もっと見る
+      .box
+        .box__contents
+          - @itemCategory4.each do |item|
+            = render partial: 'shared/content', locals:{item: item}
 
   %aside.sumaho
     %img.bottom__image1{:alt => "", :src => "top_aside.png"}/
