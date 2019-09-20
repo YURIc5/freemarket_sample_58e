@@ -33,20 +33,20 @@ class SignupController < ApplicationController
       name: session[:name], 
       name_kana: session[:name_kana],
       birthday: session[:birthday],
-      phone_number: params[:user][:phone_number]
+      phone_number: user_params[:phone_number]
 
     )
     if @user.save
     # ログインするための情報を保管
       session[:id] = @user.id
-      redirect_to new_user_address_path
+      redirect_to new_user_address_path(session[:id])
     else
-      render '/addresses/new'
+      render '/users/signup'
     end
   end
   
   private
-  # 許可するキーを設定します
+  # 許可するキーを設定
   def user_params
     params.require(:user).permit(
       :nickname, 
