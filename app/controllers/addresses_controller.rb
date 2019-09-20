@@ -6,7 +6,8 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Adress.new(address_params)
+    @address = Address.new(address_params)
+    redirect_to new_user_card_path(session[:id])
   end
 
   def edit
