@@ -39,6 +39,7 @@ class SignupController < ApplicationController
     if @user.save
     # ログインするための情報を保管
       session[:id] = @user.id
+      sign_in(@user)
       redirect_to new_user_address_path(session[:id])
     else
       render '/users/signup'

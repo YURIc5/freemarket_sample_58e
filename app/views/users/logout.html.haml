@@ -4,5 +4,4 @@
     .logout-content
       .inner-content
         .button-content
-          =link_to "#", class: "logout-content" do
-            ログアウト
+          =link_to 'ログアウト','/users/sign_out',method: :delete, class: "logout-content"

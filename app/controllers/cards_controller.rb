@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = Card.new()
+    @card = Creditcard.new()
   end
 
   def create
