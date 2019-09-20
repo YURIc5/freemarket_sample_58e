@@ -2,13 +2,13 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string||
-|mail|string||
-|password|string||
-|name|string||
-|name_kana|string||
-|birthday|int||
-|phone_number|int||
+|nickname|string|null :false|
+|mail|string|null :false|
+|password|string|null :false|
+|name|string|null :false|
+|name_kana|string|null :false|
+|birthday|int|null :false|
+|phone_number|string|null :false|
 |address_id|references|foreign_key: true|
 |creditcard_id|references|foreign_key: true|
 
