@@ -7,7 +7,12 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    redirect_to new_user_card_path(session[:id])
+    if @address.save
+        session[:id] = params[:user_id]
+        redirect_to new_user_card_path(session[:id])
+      else
+        render '/users/signup'
+      end
   end
 
   def edit
@@ -23,8 +28,8 @@ class AddressesController < ApplicationController
       :prefecture, 
       :city, 
       :block, 
-      :building
-    )
+      :building,
+    ).merge(user_id: params[:user_id])
   end
 
 end

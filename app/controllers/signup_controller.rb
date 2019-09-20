@@ -18,11 +18,11 @@ class SignupController < ApplicationController
     @user = User.new # 新規インスタンス作成
   end
 
-  def step3
-    # step2で入力された値をsessionに保存
-    session[:phone_number] = user_params[:phone_number]
-    @user = User.new # 新規インスタンス作成
-  end
+  # def step3
+  #   # step2で入力された値をsessionに保存
+  #   session[:phone_number] = user_params[:phone_number]
+  #   @user = User.new # 新規インスタンス作成
+  # end
   
   def create
     @user = User.new(
@@ -33,7 +33,7 @@ class SignupController < ApplicationController
       name: session[:name], 
       name_kana: session[:name_kana],
       birthday: session[:birthday],
-      phone_number: user_params[:phone_number]
+      phone_number: params[:user][:phone_number]
 
     )
     if @user.save
