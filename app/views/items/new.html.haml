@@ -85,6 +85,7 @@
                     .price-mark ¥
                     .price-box
                       = f.number_field :price,class: 'input-default', placeholder: '例）300'
+                      -# 現段階でどちらを使用するか判断付きかねるため一旦コメントアウト
                       -# = f.text_field :price,class: 'input-default', placeholder: '例）300'
               %li.clearfix
                 .list-left 販売手数料(10%)
