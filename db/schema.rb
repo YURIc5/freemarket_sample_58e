@@ -35,20 +35,17 @@ ActiveRecord::Schema.define(version: 2019_09_20_060017) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "item_id_id", null: false
     t.bigint "item_id", null: false
     t.index ["item_id"], name: "index_comments_on_item_id"
-    t.index ["item_id_id"], name: "index_comments_on_item_id_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "creditcard_number"
-    t.integer "exp_month"
-    t.integer "exp_year"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "customer_id"
+    t.string "card_id"
   end
 
   create_table "item_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
