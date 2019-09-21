@@ -9,10 +9,12 @@
           %p 最大10枚までアップロードできます
           .dropbox-container.clearfix
             .uploud-container
-              .uploud-container__have-items
+              .uploud-container__have-items 
               = f.fields_for :pictures do |picture|
                 .uploud-dropbox
-                  = picture.file_field :name
+                  = picture.label :name
+                  = picture.file_field :name, multiple: true, name: 'pictures[name][]'
+                  -# = picture.file_field :name
                   -# = picture.hidden_field :id, value: picture.object.id
                   %br/
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
