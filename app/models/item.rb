@@ -25,4 +25,7 @@ class Item < ApplicationRecord
   scope :recent3, -> { category3.includ.seigen.narabikae }
   scope :recent4, -> { category4.includ.seigen.narabikae }
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
+
 end
