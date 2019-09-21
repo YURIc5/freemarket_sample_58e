@@ -4,11 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :items
-    has_many :comments
-    has_many :evaluations
-    has_many :purchases
-    has_many :item_likes
+  has_many :comments
+  has_many :evaluations
+  has_many :purchases
+  has_many :item_likes
+
+  has_one :address
+  has_one :creditcard
+
   
-    has_one :address
-    has_one :creditcard
 end

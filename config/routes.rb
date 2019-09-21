@@ -22,8 +22,11 @@ Rails.application.routes.draw do
     end
     resources :cards, only: [:index, :new, :create, :delete]
     resources :addresses, only: [:new, :create, :edit, :update]
-    resources :items
+    
+    resources :pictures
+
   end
+  resources :items 
 
   # resources :user do
   #   get 'new_phone_number' on: :member

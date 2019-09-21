@@ -1,13 +1,13 @@
 class Item < ApplicationRecord
   has_many :comments
   has_many :pictures
+  accepts_nested_attributes_for :pictures
   has_many :item_likes
 
   belongs_to :user
   belongs_to :category
 
   has_one :purchase
-
 
   scope :category1, -> { where(category_id: 1) }
   scope :category2, -> { where(category_id: 2) }
@@ -24,5 +24,8 @@ class Item < ApplicationRecord
   scope :recent2, -> { category2.includ.seigen.narabikae }
   scope :recent3, -> { category3.includ.seigen.narabikae }
   scope :recent4, -> { category4.includ.seigen.narabikae }
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :prefecture
 
 end

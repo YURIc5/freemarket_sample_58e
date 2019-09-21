@@ -1,32 +1,33 @@
 .single-container
-  = render 'shared/sub_header'
   %main.single-main
     %section.l-single-container
       %h2.l-single-head 商品の情報を入力
-      = form_for [@user, @item] do |f|
+      = form_for @item do |f|
         .sell-box
           %h3.uploud-header 出品画像
           %span.form-require 必須
           %p 最大10枚までアップロードできます
           .dropbox-container.clearfix
             .uploud-container
-              .uploud-container__have-items
-            .uploud-dropbox
-              = f.file_field :name,class: 'uploud-dropfile'
-              %br/
-              %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+              .uploud-container__have-items 
+              = f.fields_for :pictures do |picture|
+                .uploud-dropbox
+                  = picture.label :name
+                  = picture.file_field :name, multiple: true, name: 'pictures[name][]'
+                  %br/
+                  %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名
             %span.form-require 必須
             .input-box
-              = f.text_field :name,class: 'input-default', placeholder: '商品名（最大40文字まで）'
+              = f.text_field :name, class: 'input-default', placeholder: '商品名（最大40文字まで）'
               %br/
           .form-group
             = f.label :商品の説明
             %span.form-require 必須
             %br/
-            = f.text_field :name,class: 'textarea-default', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）&#13;&#10;2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわ&#13;&#10;せやすいのでおすすめです。）'.html_safe
+            = f.text_field :description, class: 'textarea-default', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）&#13;&#10;2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわ&#13;&#10;せやすいのでおすすめです。）'.html_safe
         .sell-content.clearfix
           %h3.sub-header 商品の詳細
           .form-box
@@ -36,15 +37,14 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :name,[ ['---','---'],['レディース','レディース'],['メンズ','メンズ'] ]
+                  = f.select :category_id,[ ['---','1'],['レディース','2'],['メンズ','3'] ]
             .form-group
               = f.label :商品の状態
               %span.form-require 必須
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  %select.select-default
-                    = f.select :name,[  ]
+                  = f.select :status,[ ['---',1],['新品、未使用','1'],['未使用に近い','2'],['目立った傷や汚れなし','3'],['やや傷や汚れあり','4'],['傷や汚れあり','5'],['全体的に状態が悪い','6'] ]
         .sell-content.clearfix
           %h3.sub-header 配送について
           = link_to '?','/jp/help_center/article/68/',class: 'form-question'
@@ -55,23 +55,21 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :name,[  ]
+                  = f.select :responsibility,[ ['---',1],['送料込み（出品者負担）','2'],['着払い負担（購入者負担）','3'] ]
             .form-group
               = f.label :配送元の地域
               %span.form-require 必須
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  %select.select-default
-                    = f.select :name,[  ]
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name
             .form-group
               = f.label :発送までの日数
               %span.form-require 必須
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  %select.select-default
-                    = f.select :name,[  ]
+                  = f.select :day,[ ['---',1],['1〜2日で発送','2'],['2〜3日で発送','3'],['4〜7日で発送','4'] ]
         .sell-content.clearfix
           %h3.sub-header 販売価格(300〜9,999,999)
           = link_to '?','/jp/help_center/article/64/',class: 'form-question'
@@ -86,7 +84,9 @@
                   .list-right.price-input
                     .price-mark ¥
                     .price-box
-                      = f.text_field :name,class: 'input-default', placeholder: '例）300'
+                      = f.number_field :price,class: 'input-default', placeholder: '例）300'
+                      -# 現段階でどちらを使用するか判断付きかねるため一旦コメントアウト
+                      -# = f.text_field :price,class: 'input-default', placeholder: '例）300'
               %li.clearfix
                 .list-left 販売手数料(10%)
                 .list-right -
@@ -110,5 +110,6 @@
               = link_to '加盟店規約','/jp/seller_terms/'
               に同意したことになります。
             = f.submit '出品する', class: 'btn-red'
+            = link_to '#' do
+              もどる
             = f.submit 'もどる', class: 'btn-grey'
-  = render 'shared/sub_footer'
