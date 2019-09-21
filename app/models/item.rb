@@ -8,6 +8,9 @@ class Item < ApplicationRecord
 
   has_one :purchase
 
+  # # アンセストリー
+  # belongs_to user, foreign_key: 'user_id'
+  # belongs_to :category
 
   scope :category1, -> { where(category_id: 1) }
   scope :category2, -> { where(category_id: 2) }
