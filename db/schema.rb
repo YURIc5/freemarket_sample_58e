@@ -46,12 +46,11 @@ ActiveRecord::Schema.define(version: 2019_09_20_092207) do
   end
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "creditcard_number"
-    t.integer "exp_month"
-    t.integer "exp_year"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "customer_id"
+    t.string "card_id"
   end
 
   create_table "item_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
