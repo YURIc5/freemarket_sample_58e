@@ -5,7 +5,7 @@
       %section.l-single-container
         %h2.l-single-head.registration 会員情報入力
         .l-single-content
-          = form_with model: @user,url: step2_signup_index_path, method: :get, class: 'l-single-inner', local: true do |f|
+          = form_with model: @user,url: phone_signup_index_path, method: :get, class: 'l-single-inner', local: true do |f|
             .field
               = f.label :ニックネーム
               %spna.form-require 必須
