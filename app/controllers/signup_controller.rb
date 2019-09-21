@@ -1,7 +1,7 @@
 class SignupController < ApplicationController
 
-  # 各アクションごとに新規インスタンスを作成します
-  # 各アクションごとに、遷移元のページのデータをsessionに保管していきます
+  # 各アクションごとに新規インスタンスを作成
+  # 各アクションごとに、遷移元のページのデータをsessionに保管
   def step1
     @user = User.new # 新規インスタンス作成
   end
@@ -18,12 +18,6 @@ class SignupController < ApplicationController
     @user = User.new # 新規インスタンス作成
   end
 
-  # def step3
-  #   # step2で入力された値をsessionに保存
-  #   session[:phone_number] = user_params[:phone_number]
-  #   @user = User.new # 新規インスタンス作成
-  # end
-  
   def create
     @user = User.new(
       nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
