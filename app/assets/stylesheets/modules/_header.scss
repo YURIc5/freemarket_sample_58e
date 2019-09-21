@@ -121,6 +121,25 @@
                 margin-left: 5px;
               }
             }
+            .user-new-btn {
+              padding: 8px 10px;
+              background-color: $main-red;
+              color: white;
+              font-size: 14px;
+              border-width: 1px;
+              border-style: solid;
+              border-color: $main-red;
+              border-radius: 4px;
+            }
+            .login-btn {
+              padding: 8px 10px;
+              background-color: white;
+              color: rgb(0, 149, 238);
+              border: 1px solid rgb(0, 149, 238);
+              border-radius: 4px;
+              
+
+            }
           }
           a:hover {
             i {
