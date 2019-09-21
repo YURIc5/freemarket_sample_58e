@@ -15,12 +15,7 @@ Rails.application.routes.draw do
     end
     resources :cards, only: [:index, :new, :create, :delete]
     resources :addresses, only: [:new, :create, :edit, :update]
-    resources :items do
-    #Ajaxで動くアクションのルートを作成
-    collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
-    end
+    resources :items
   end
 
   # resources :user do
