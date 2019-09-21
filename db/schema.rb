@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_20_060017) do
+
+ActiveRecord::Schema.define(version: 2019_09_21_100203) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postcode"
@@ -63,13 +64,13 @@ ActiveRecord::Schema.define(version: 2019_09_20_060017) do
     t.text "description", null: false
     t.integer "status", null: false
     t.boolean "responsibility", null: false
-    t.string "location", null: false
     t.integer "day", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -77,11 +78,9 @@ ActiveRecord::Schema.define(version: 2019_09_20_060017) do
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "item_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_pictures_on_item_id"
-    t.index ["user_id"], name: "index_pictures_on_user_id"
   end
 
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -123,7 +122,6 @@ ActiveRecord::Schema.define(version: 2019_09_20_060017) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "pictures", "items"
-  add_foreign_key "pictures", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
   add_foreign_key "users", "addresses"
