@@ -10,8 +10,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @user = User.find(params[:user_id])
-
-    @parents = Category.all.order("id ASC").limit(14)
   end
   
   def show
