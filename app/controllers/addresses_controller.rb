@@ -8,11 +8,11 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     if @address.save
-        session[:id] = params[:user_id]
-        redirect_to new_user_card_path(session[:id])
-      else
-        render '/users/signup'
-      end
+      session[:id] = params[:user_id]
+      redirect_to new_user_card_path(session[:id])
+    else
+      render '/users/signup'
+    end
   end
 
   def edit
