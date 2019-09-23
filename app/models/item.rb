@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   has_many :comments
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
   accepts_nested_attributes_for :pictures
   has_many :item_likes
 
@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :category
 
   has_one :purchase
+  accepts_nested_attributes_for :purchase
 
   scope :category1, -> { where(category_id: 1) }
   scope :category2, -> { where(category_id: 2) }

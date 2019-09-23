@@ -12,10 +12,9 @@
               .uploud-container__have-items 
               = f.fields_for :pictures do |picture|
                 .uploud-dropbox
-                  = picture.label :name
-                  = picture.file_field :name, multiple: true, name: 'pictures[name][]'
-                  %br/
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                  = picture.label :name
+                  = picture.file_field :name, accept: ".jpg, .jpeg, .png", multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名
@@ -37,7 +36,7 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                  = f.collection_select :category_id, Category.all, :id, :name, :prompt => "---"
             .form-group
               = f.label :商品の状態
               %span.form-require 必須
@@ -62,7 +61,7 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => '---'
             .form-group
               = f.label :発送までの日数
               %span.form-require 必須
@@ -84,16 +83,13 @@
                   .list-right.price-input
                     .price-mark ¥
                     .price-box
-                      = f.number_field :price,class: 'input-default', placeholder: '例）300'
-                      -# 現段階でどちらを使用するか判断付きかねるため一旦コメントアウト
-                      -# = f.text_field :price,class: 'input-default', placeholder: '例）300'
+                      = f.text_field :price,class: 'input-default', placeholder: '例）300'
               %li.clearfix
                 .list-left 販売手数料(10%)
-                .list-right -
+                .list-right-fee -
               %li.clearfix.bold
                 .list-left 販売利益
-                .list-right -
-
+                .list-right-profit -
         .sell-content.clearfix
           .sell-content__warning
             %p
