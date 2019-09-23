@@ -17,14 +17,15 @@ Rails.application.routes.draw do
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :items do
     #Ajaxで動くアクションのルートを作成
-    collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
+      collection do
+        get 'get_category_children', defaults: { format: 'json' }
+        get 'get_category_grandchildren', defaults: { format: 'json' }
+      end
     end
-  end
 
   # resources :user do
   #   get 'new_phone_number' on: :member
   # end
-
+  
+  end
 end
