@@ -8,14 +8,18 @@ class SignupController < ApplicationController
 
   def phone
     # step1で入力された値をsessionに保存
-    session[:nickname] = user_params[:nickname]
-    session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
-    session[:name] = user_params[:name]
-    session[:name_kana] = user_params[:name_kana]
-    session[:birthday] = user_params[:birthday]
-    @user = User.new # 新規インスタンス作成
+    if verify_recaptcha
+      session[:nickname] = user_params[:nickname]
+      session[:email] = user_params[:email]
+      session[:password] = user_params[:password]
+      session[:password_confirmation] = user_params[:password_confirmation]
+      session[:name] = user_params[:name]
+      session[:name_kana] = user_params[:name_kana]
+      session[:birthday] = user_params[:birthday]
+      @user = User.new # 新規インスタンス作成
+    else
+      render '/signup/member'
+    end
   end
 
   def create
