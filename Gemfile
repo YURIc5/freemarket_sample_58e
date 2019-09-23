@@ -52,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'rails-env-credentials'
 end
 
 group :development do
@@ -79,3 +80,5 @@ gem 'haml-rails'
 gem 'ancestry'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'payjp'
+gem 'jquery-rails'
