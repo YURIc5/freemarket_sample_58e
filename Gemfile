@@ -63,6 +63,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'erb2haml'
+  gem 'rails-erd'
 end
 
 group :test do
@@ -80,7 +81,7 @@ gem 'haml-rails'
 gem 'ancestry'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'ancestry'
 gem 'carrierwave'
 gem 'mini_magick'
-
 gem 'active_hash'
