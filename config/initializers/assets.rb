@@ -14,3 +14,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( purchase/purchases.css )
 # Rails.application.config.assets.unknown_asset_fallback = true
+Rails.application.config.assets.precompile += %w( user/users.css )
