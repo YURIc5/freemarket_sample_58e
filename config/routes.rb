@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get 'buy'
       get 'exhibit_list'
     end
-    resources :cards, only: [:index, :new, :create, :delete]
+    resources :cards, only: [:index,:show, :new, :create, :destroy]
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :pictures
     resources :items do
