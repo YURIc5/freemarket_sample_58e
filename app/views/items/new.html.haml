@@ -30,8 +30,8 @@
         .sell-content.clearfix
           %h3.sub-header 商品の詳細
           .form-box
-            .form-group.first-box
-              = f.label :カテゴリー
+            .form-group.first-box2
+              = f.label :カテゴリー, class: 'listing-default__label'
               %span.form-require 必須
               .select-box
                 .select-wrap
@@ -48,7 +48,7 @@
           %h3.sub-header 配送について
           = link_to '?','/jp/help_center/article/68/',class: 'form-question'
           .form-box
-            .form-group.first-box
+            .form-group.first-box3
               = f.label :配送料の負担
               %span.form-require 必須
               .select-box
@@ -74,7 +74,7 @@
           = link_to '?','/jp/help_center/article/64/',class: 'form-question'
           .form-box
             %ul.sell-price
-              %li.form-group.first-box 
+              %li.form-group.first-box
                 .clearfix
                   .list-left
                     = f.label class:'list-left' do
