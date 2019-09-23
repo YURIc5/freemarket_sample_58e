@@ -31,13 +31,13 @@
         .sell-content.clearfix
           %h3.sub-header 商品の詳細
           .form-box
-            .form-group.first-box
-              = f.label :カテゴリー
+            .form-group.first-box2
+              = f.label :カテゴリー, class: 'listing-default__label'
               %span.form-require 必須
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :category_id,[ ['---','1'],['レディース','2'],['メンズ','3'] ]
+                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
             .form-group
               = f.label :商品の状態
               %span.form-require 必須
@@ -49,7 +49,7 @@
           %h3.sub-header 配送について
           = link_to '?','/jp/help_center/article/68/',class: 'form-question'
           .form-box
-            .form-group.first-box
+            .form-group.first-box3
               = f.label :配送料の負担
               %span.form-require 必須
               .select-box
@@ -75,7 +75,7 @@
           = link_to '?','/jp/help_center/article/64/',class: 'form-question'
           .form-box
             %ul.sell-price
-              %li.form-group.first-box 
+              %li.form-group.first-box
                 .clearfix
                   .list-left
                     = f.label class:'list-left' do
