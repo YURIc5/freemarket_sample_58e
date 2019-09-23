@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.pictures.build
+    # @categorys = Category.all
+    # @categorys = Category.ransack(parent_id_null: true).result
     render :layout => 'sub'
   end
   
@@ -26,7 +28,7 @@ class ItemsController < ApplicationController
       item.pictures.build(name: image, item_id: item.id)
     end
     item.save
-    
+    binding.pry
     redirect_to new_item_path(@item)
   end
 
