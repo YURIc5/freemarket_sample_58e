@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_100203) do
+ActiveRecord::Schema.define(version: 2019_09_22_020149) do
+
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postcode"
@@ -43,12 +44,12 @@ ActiveRecord::Schema.define(version: 2019_09_21_100203) do
   end
 
   create_table "creditcards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "creditcard_number"
-    t.integer "exp_month"
-    t.integer "exp_year"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "customer_id"
+    t.string "card_token"
+    t.index ["user_id"], name: "index_creditcards_on_user_id"
   end
 
   create_table "item_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -119,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_09_21_100203) do
   add_foreign_key "addresses", "users"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
+  add_foreign_key "creditcards", "users"
   add_foreign_key "item_likes", "items"
   add_foreign_key "item_likes", "users"
   add_foreign_key "items", "categories"
