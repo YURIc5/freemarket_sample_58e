@@ -28,3 +28,5 @@
 
 /public/*.jpg
 /public/*.png
+
+.env
