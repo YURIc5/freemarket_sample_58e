@@ -7,6 +7,21 @@ class CardsController < ApplicationController
     @card = Creditcard.new()
   end
 
+
+  def show 
+    creditcard = Creditcard.where(user_id: current_user.id).first
+    if creditcard.blank?
+      redirect_to action: "new" 
+    else
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+      customer = Payjp::Customer.retrieve(creditcard.customer_id)
+      @creditcard_last4 = customer[:cards][:data][0]["last4"]
+      @creditcard_exp_month = customer[:cards][:data][0]["exp_month"].to_s
+      @creditcard_exp_year = customer[:cards][:data][0]["exp_year"].to_s.slice(2,3)
+      @creditcard_brand = customer[:cards][:data][0]["brand"]
+    end
+  end
+
   def create
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
     customer = Payjp::Customer.create(card: params[:payjpToken])
@@ -15,6 +30,7 @@ class CardsController < ApplicationController
   end
 
   def destroy
+    
   end
 
 end
