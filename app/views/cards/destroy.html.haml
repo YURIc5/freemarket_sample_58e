@@ -1,0 +1,13 @@
+%main.main__contents
+  = render "/shared/mypage-side-manu"
+  .main__contents__contents
+    .create-new-content
+      %h2 クレジット情報入力
+      = form_tag(user_cards_path, method: :delete, id: 'charge-form') do
+        .form-main-content
+          .form-top-content
+            .l-single-content
+              %h3 クレジットカード一覧
+            %button クレジットカードを追加する
+
+
