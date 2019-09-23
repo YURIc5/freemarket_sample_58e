@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def buy
-    render :layout => 'buy'
+    render :layout => 'sub'
   end
 
   def exhibit_list

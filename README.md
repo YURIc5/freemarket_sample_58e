@@ -132,7 +132,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |status|int|null: false|
-|user_id|references|null: false, foreign_key: true|
 |item_id|references|null: false, foreign_key: true|
 
 ### Association
@@ -145,7 +144,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|references|null: false, foreign_key: true|
 |item_id|references|null: false, foreign_key: true|
 
 ### Association

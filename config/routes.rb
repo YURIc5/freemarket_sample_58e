@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'items#index'
+  resources :signup do
+    collection do
+      get 'member'
+      get 'phone'
+      get 'done' # 登録完了後のページ
+    end
+  end
   
   get 'users/phone' => 'users#phone' 
   get 'users/signup' => 'users#signup' 
@@ -15,6 +22,7 @@ Rails.application.routes.draw do
     end
     resources :cards, only: [:index, :new, :create, :delete]
     resources :addresses, only: [:new, :create, :edit, :update]
+    resources :pictures
     resources :items do
     #Ajaxで動くアクションのルートを作成
       collection do
@@ -22,10 +30,6 @@ Rails.application.routes.draw do
         get 'get_category_grandchildren', defaults: { format: 'json' }
       end
     end
-
-  # resources :user do
-  #   get 'new_phone_number' on: :member
-  # end
-  
   end
+  resources :items 
 end
