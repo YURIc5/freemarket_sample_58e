@@ -36,16 +36,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @category = Category.find(1)
-    @user = User.find(1)
-  
     item = Item.new(item_params)
 
     params[:pictures][:name].each do |image|
       item.pictures.build(name: image, item_id: item.id)
     end
     item.save
-    
     redirect_to new_item_path(@item)
   end
 
