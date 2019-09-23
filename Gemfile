@@ -53,7 +53,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem 'rails-env-credentials'
 end
 
 group :development do
@@ -88,3 +87,4 @@ gem 'ancestry'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'active_hash'
+gem 'recaptcha', require: "recaptcha/rails"
