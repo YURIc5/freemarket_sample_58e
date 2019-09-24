@@ -138,6 +138,9 @@
           .icon-lock::before
             %span あんしん・あんぜんへの取り組み
 
+  = link_to user_item_path,method: :delete,class: "item-delete-btn" do
+    この商品を削除する
+
   .item-detail-message
     .message-container
       .message-content
