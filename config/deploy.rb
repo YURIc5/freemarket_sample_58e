@@ -34,7 +34,7 @@ set :default_env, {
 set :linked_files, %w{ config/secrets.yml }
 
 # 元々記述されていた after 「'deploy:publishing', 'deploy:restart'」以下を削除して、次のように書き換え
-
+# デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
@@ -52,14 +52,6 @@ namespace :deploy do
   end
   before :starting, 'deploy:upload'
   after :finishing, 'deploy:cleanup'
-end
-
-# デプロイ処理が終わった後、Unicornを再起動するための記述
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
 end
 
 #　Basic認証追加するための記述
