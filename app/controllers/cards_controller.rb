@@ -9,7 +9,7 @@ class CardsController < ApplicationController
 
 
   def show 
-    creditcard = Creditcard.where(user_id: current_user.id).first
+    creditcard = current_user.creditcard
     if creditcard.blank?
       redirect_to action: "new" 
     else
