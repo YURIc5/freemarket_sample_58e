@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   
   get 'users/phone' => 'users#phone' 
   get 'users/signup' => 'users#signup' 
-  resources :users, only: [:show] do
+  resources :users do
     member do
       get'profile'
       get'logout'
@@ -31,5 +31,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :items 
 end

@@ -41,8 +41,13 @@ class ItemsController < ApplicationController
     params[:pictures][:name].each do |image|
       item.pictures.build(name: image, item_id: item.id)
     end
-    item.save
-    redirect_to new_item_path(@item)
+    binding.pry
+    if item.save
+      redirect_to user_items_path
+    else
+      redirect_to new_user_item_path
+    end
+
   end
 
 

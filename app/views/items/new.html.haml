@@ -2,7 +2,7 @@
   %main.single-main
     %section.l-single-container
       %h2.l-single-head 商品の情報を入力
-      = form_for @item do |f|
+      = form_for @item, url: user_items_path do |f|
         .sell-box
           %h3.uploud-header 出品画像
           %span.form-require 必須
@@ -36,7 +36,7 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.collection_select :category_id, Category.all, :id, :name, :prompt => "---"
+                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
             .form-group
               = f.label :商品の状態
               %span.form-require 必須

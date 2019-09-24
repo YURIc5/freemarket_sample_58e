@@ -9,7 +9,7 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class='select-box' id= 'children_wrapper'>
                         <div class='select-wrap'>
-                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category]">
+                          <select class="listing-select-wrapper__box--select" id="child_category" name="item[category_id]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           </select>
@@ -22,7 +22,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='select-box' id= 'grandchildren_wrapper'>
                               <div class='select-wrap'>
-                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category]">
+                                <select class="listing-select-wrapper__box--select" id="grandchild_category" name="item[category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
