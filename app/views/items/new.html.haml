@@ -54,7 +54,9 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :responsibility, [ ['送料込み（出品者負担）','1'],['着払い負担（購入者負担）','2'] ]
+
+                  = f.select :delivery, @delivery_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'delivery_parent_category'}
+
             .form-group
               = f.label :配送元の地域
               %span.form-require 必須
