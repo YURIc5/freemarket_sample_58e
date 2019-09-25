@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+    # 3.times { @item.pictures.build }
     @item.pictures.build
     render :layout => 'sub'
   end

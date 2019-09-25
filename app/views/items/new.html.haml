@@ -10,11 +10,11 @@
           .dropbox-container.clearfix
             .uploud-container
               .uploud-container__have-items 
-              = f.fields_for :pictures do |picture|
                 .uploud-dropbox
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
-                  = picture.label :name
-                  = picture.file_field :name, accept: ".jpg, .jpeg, .png", multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
+                  = f.fields_for :pictures do |picture|
+                    = picture.label :name
+                    = picture.file_field :name, accept: ".jpg, .jpeg, .png", multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名
