@@ -14,6 +14,8 @@ class ItemsController < ApplicationController
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
 
+    #データベースから、親カテゴリーのみ抽出し、配列化
+    
     Category.where(ancestry: nil).map{|parent| @category_parent_array << parent.name}
   
     @item.pictures.build

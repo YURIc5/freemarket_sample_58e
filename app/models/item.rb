@@ -30,7 +30,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
-  # 現在バリデーションがうまく言っていないため、一旦コメントアウト
+  # バリデーションがうまくいかないため一旦コメントアウト
   # validates :name, presence: true, length: { maximum: 40 }
   # validates :description, presence: true, length: { maximum: 1000 }
   # validates :status, presence: true
