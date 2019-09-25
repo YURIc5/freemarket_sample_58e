@@ -14,19 +14,15 @@ class ItemsController < ApplicationController
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
 
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-
+    Category.where(ancestry: nil).map{|parent| @category_parent_array << parent.name}
+  
     @item.pictures.build
 
 
     @delivery_parent_array = ["---"]
 
-    Delivery.where(ancestry: nil).each do |parent|
-      @delivery_parent_array << parent.responsibility
-    end
+    Delivery.where(ancestry: nil).map{|parent| @delivery_parent_array << parent.responsibility}
+
 
     render :layout => 'sub'
   end
@@ -91,8 +87,6 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :delivery_id,
       pictures_attributes: [:name]).merge(user_id: @user.id)
-      
-    
   end
 
   def picture_params
