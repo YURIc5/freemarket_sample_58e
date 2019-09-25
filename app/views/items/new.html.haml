@@ -26,7 +26,7 @@
             = f.label :商品の説明
             %span.form-require 必須
             %br/
-            = f.text_field :description, class: 'textarea-default', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）&#13;&#10;2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわ&#13;&#10;せやすいのでおすすめです。）'.html_safe
+            = f.text_field :description, class: 'input-default', placeholder: '例）シャネル'.html_safe
         .sell-content.clearfix
           %h3.sub-header 商品の詳細
           .form-box
@@ -38,12 +38,26 @@
                   = fa_icon 'chevron-down',class:'icon'
                   = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
             .form-group
+              = f.label :サイズ
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :size,[ ['XXS(以下)','XXS(以下)'],['XS(SS)','XS(SS)'],['S','S'],['M','M'],['L','L'],['XL(LL)','XL(LL)'], ['2XL(3L)','2XL(3L)'], ['3XL(4L)','3XL(4L)'], ['4XL(5L)以上','4XL(5L)以上'], ['FREE SIZE','FREE SIZE'] ], {:prompt => '---'}
+            .form-group
+              = f.label :ブランド
+              %span.form-require 任意
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.text_field :brand,class: 'brandtextarea', placeholder: '例) シャネル'.html_safe
+            .form-group
               = f.label :商品の状態
               %span.form-require 必須
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :status,[ ['新品、未使用','1'],['未使用に近い','2'],['目立った傷や汚れなし','3'],['やや傷や汚れあり','4'],['傷や汚れあり','5'],['全体的に状態が悪い','6'] ], {:prompt => '---'}
+                  = f.select :status,[ ['新品、未使用','新品、未使用'],['未使用に近い','未使用に近い'],['目立った傷や汚れなし','目立った傷や汚れなし'],['やや傷や汚れあり','やや傷や汚れあり'],['傷や汚れあり','傷や汚れあり'],['全体的に状態が悪い','全体的に状態が悪い'] ], {:prompt => '---'}
         .sell-content.clearfix
           %h3.sub-header 配送について
           = link_to '?','/jp/help_center/article/68/',class: 'form-question'
@@ -54,9 +68,7 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-
                   = f.select :delivery, @delivery_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'delivery_parent_category'}
-
             .form-group
               = f.label :配送元の地域
               %span.form-require 必須

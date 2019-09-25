@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_114908) do
+ActiveRecord::Schema.define(version: 2019_09_25_061033) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postcode"
@@ -37,10 +37,8 @@ ActiveRecord::Schema.define(version: 2019_09_24_114908) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "item_id_id", null: false
     t.bigint "item_id", null: false
     t.index ["item_id"], name: "index_comments_on_item_id"
-    t.index ["item_id_id"], name: "index_comments_on_item_id_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -74,7 +72,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_114908) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.integer "status", null: false
+    t.string "status", null: false
     t.integer "day", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
@@ -83,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_09_24_114908) do
     t.datetime "updated_at", null: false
     t.integer "prefecture_id"
     t.string "brand"
-    t.integer "size"
+    t.string "size"
     t.bigint "delivery_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["delivery_id"], name: "index_items_on_delivery_id"

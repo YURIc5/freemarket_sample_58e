@@ -76,6 +76,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+    binding.pry
     @user = User.find(1)
     params.require(:item).permit(
       :name, 
@@ -88,6 +89,8 @@ class ItemsController < ApplicationController
       :category_id,
       :prefecture_id,
       :delivery_id,
+      :size,
+      :brand,
       pictures_attributes: [:name]).merge(user_id: @user.id)
   end
 
