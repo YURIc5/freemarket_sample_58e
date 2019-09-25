@@ -170,3 +170,23 @@ lady_tops.children.create([{:name=>"Tシャツ/カットソー(半袖/袖なし)
 # handmade_item = handmade.children.create(:name=>"ファッション/小物")
 # handmade_accessory = handmade.children.create(:name=>"アクセサリー/時計")
 # handmade_interior = handmade.children.create(:name=>"日用品/インテリア")
+
+
+seller = Delivery.create(:responsibility=>"送料込み(出品者負担)")
+buyer = Delivery.create(:responsibility=>"着払い(購入者負担)")
+
+
+seller_tops = seller.children.create(:responsibility=>"未定")
+seller_tops = seller.children.create(:responsibility=>"らくらくメルカリ便")
+seller_tops = seller.children.create(:responsibility=>"ゆうメール")
+seller_tops = seller.children.create(:responsibility=>"レターパック")
+seller_tops = seller.children.create(:responsibility=>"普通郵便(定形、定形外)")
+seller_tops = seller.children.create(:responsibility=>"クロネコヤマト")
+seller_tops = seller.children.create(:responsibility=>"ゆうパック")
+seller_tops = seller.children.create(:responsibility=>"クリックポスト")
+seller_tops = seller.children.create(:responsibility=>"ゆうパケット")
+
+buyer_tops = buyer.children.create(:responsibility=>"未定")
+buyer_tops = buyer.children.create(:responsibility=>"クロネコヤマト")
+buyer_tops = buyer.children.create(:responsibility=>"ゆうパック")
+buyer_tops = buyer.children.create(:responsibility=>"ゆうメール")
