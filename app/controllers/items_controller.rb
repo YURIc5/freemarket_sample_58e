@@ -76,7 +76,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    binding.pry
     @user = User.find(1)
     params.require(:item).permit(
       :name, 
