@@ -13,11 +13,21 @@ class ItemsController < ApplicationController
 
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
+
     #データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
     end
+
     @item.pictures.build
+
+
+    @delivery_parent_array = ["---"]
+
+    Delivery.where(ancestry: nil).each do |parent|
+      @delivery_parent_array << parent.responsibility
+    end
+
     render :layout => 'sub'
   end
   
@@ -25,6 +35,13 @@ class ItemsController < ApplicationController
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
+
+  def get_delivery_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @delivery_children = Delivery.find_by(responsibility: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+
 
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
@@ -36,6 +53,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    binding.pry
     item = Item.new(item_params)
 
     params[:pictures][:name].each do |image|
@@ -72,6 +90,7 @@ class ItemsController < ApplicationController
       :price, 
       :category_id,
       :prefecture_id,
+      :delivery_id,
       pictures_attributes: [:name]).merge(user_id: @user.id)
       
     
