@@ -6,6 +6,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+  belongs_to :delivery
 
   has_one :purchase
   accepts_nested_attributes_for :purchase

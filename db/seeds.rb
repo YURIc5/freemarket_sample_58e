@@ -7,18 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # 親
-lady = Category.create(:name=>"レディース")
-men = Category.create(:name=>"メンズ")
+lady = Category.create(name: "レディース")
+men = Category.create(name:"メンズ")
 # baby = Category.create(:name=>"ベビー・キッズ")
 # interior = Category.create(:name=>"インテリア")
 
 # 子
-lady_tops = lady.children.create(:name=>"トップス")
-lady_jacket = lady.children.create(:name=>"ジャケット/アウター")
+lady_tops = lady.children.create(name: "トップス")
+lady_jacket = lady.children.create(name: "ジャケット/アウター")
 # lady_pants = lady.children.create(:name=>"パンツ")
 # lady_skirt = lady.children.create(:name=>"スカート")
 
-men_tops = men.children.create(:name=>"トップス")
+men_tops = men.children.create(name: "トップス")
 # men_jacket = men.children.create(:name=>"ジャケット/アウター")
 # men_pants = men.children.create(:name=>"パンツ")
 # men_shose = men.children.create(:name=>"靴")
@@ -32,7 +32,7 @@ men_tops = men.children.create(:name=>"トップス")
 # interior_sofa = interior.children.create(:name=>"ソファ/ソファベッド")
 
 # 孫
-lady_tops.children.create([{:name=>"Tシャツ/カットソー(半袖/袖なし)"}, {:name=>"Tシャツ/カットソー(七分/長袖)"},{:name=>"その他"}])
+lady_tops.children.create([{name: "Tシャツ/カットソー(半袖/袖なし)"}, {name: "Tシャツ/カットソー(七分/長袖)"},{name: "その他"}])
 # lady_jacket.children.create([{:name=>"テーラードジャケット"}, {:name=>"ノーカラージャケット"}, {:name=>"Gジャン/デニムジャケット"},{:name=>"その他"}])
 
 
@@ -170,3 +170,23 @@ lady_tops.children.create([{:name=>"Tシャツ/カットソー(半袖/袖なし)
 # handmade_item = handmade.children.create(:name=>"ファッション/小物")
 # handmade_accessory = handmade.children.create(:name=>"アクセサリー/時計")
 # handmade_interior = handmade.children.create(:name=>"日用品/インテリア")
+
+
+seller = Delivery.create(responsibility: "送料込み(出品者負担)")
+buyer = Delivery.create(responsibility: "着払い(購入者負担)")
+
+
+seller_tops = seller.children.create(responsibility:"未定")
+seller_tops = seller.children.create(responsibility:"らくらくメルカリ便")
+seller_tops = seller.children.create(responsibility:"ゆうメール")
+seller_tops = seller.children.create(responsibility:"レターパック")
+seller_tops = seller.children.create(responsibility:"普通郵便(定形、定形外)")
+seller_tops = seller.children.create(responsibility:"クロネコヤマト")
+seller_tops = seller.children.create(responsibility:"ゆうパック")
+seller_tops = seller.children.create(responsibility:"クリックポスト")
+seller_tops = seller.children.create(responsibility:"ゆうパケット")
+
+buyer_tops = buyer.children.create(responsibility:"未定")
+buyer_tops = buyer.children.create(responsibility:"クロネコヤマト")
+buyer_tops = buyer.children.create(responsibility:"ゆうパック")
+buyer_tops = buyer.children.create(responsibility:"ゆうメール")
