@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2019_09_26_024852) do
     t.integer "status", null: false
     t.integer "day", null: false
     t.integer "price", null: false
-    t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
+    t.integer "user_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "prefecture_id"
@@ -84,9 +84,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_024852) do
     t.integer "size"
     t.bigint "delivery_id"
     t.integer "buyer_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["delivery_id"], name: "index_items_on_delivery_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -124,9 +122,7 @@ ActiveRecord::Schema.define(version: 2019_09_26_024852) do
   add_foreign_key "creditcards", "users"
   add_foreign_key "item_likes", "items"
   add_foreign_key "item_likes", "users"
-  add_foreign_key "items", "categories"
   add_foreign_key "items", "deliveries"
-  add_foreign_key "items", "users"
   add_foreign_key "pictures", "items"
   add_foreign_key "users", "addresses"
   add_foreign_key "users", "creditcards"
