@@ -97,7 +97,7 @@
       .sales-point-message
         P1,000 をお持ちです
         .sales-point-message:after
-    =link_to "https://www.mercari.com/jp/transaction/buy/m95010021448/",class: "item-buy-btn" do
+    = link_to buy_user_path,method: :get,class: "item-buy-btn" do
       購入画面に進む
 
 
