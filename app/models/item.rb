@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_one :purchase
   accepts_nested_attributes_for :purchase
 
-  scope :category1, -> { where(category_id: 1) }
+  scope :category1, -> { where(category_id:53..55) }
   scope :category2, -> { where(category_id: 2) }
   scope :category3, -> { where(category_id: 3) }
   scope :category4, -> { where(category_id: 4) }
