@@ -251,3 +251,20 @@
     position: absolute;
   }
 }
+
+.brandtextarea{
+  margin: 8px 0 0;
+  position: relative;
+  background: #fff;
+  width: 91%;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}

@@ -88,6 +88,8 @@ class ItemsController < ApplicationController
       :category_id,
       :prefecture_id,
       :delivery_id,
+      :size,
+      :brand,
       pictures_attributes: [:name]).merge(user_id: @user.id)
   end
 
