@@ -30,7 +30,12 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    
+    creditcard = Creditcard.where(user_id: current_user.id).first
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    customer = Payjp::Customer.retrieve(creditcard.customer_id)
+    customer.delete
+    creditcard.delete
+    redirect_to action: "new"
   end
 
 end
