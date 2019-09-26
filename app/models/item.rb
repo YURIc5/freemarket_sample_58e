@@ -7,9 +7,8 @@ class Item < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :delivery
+  belongs_to :buyer, class_name: "User"
 
-  has_one :purchase
-  accepts_nested_attributes_for :purchase
 
   scope :category1, -> { where(category_id: 1) }
   scope :category2, -> { where(category_id: 2) }
