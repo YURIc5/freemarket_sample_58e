@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_22_020149) do
+ActiveRecord::Schema.define(version: 2019_09_24_114908) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "postcode"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 2019_09_22_020149) do
     t.index ["user_id"], name: "index_creditcards_on_user_id"
   end
 
+  create_table "deliveries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "responsibility"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_deliveries_on_ancestry"
+  end
+
   create_table "item_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "item_id", null: false
@@ -65,7 +73,6 @@ ActiveRecord::Schema.define(version: 2019_09_22_020149) do
     t.string "name", null: false
     t.text "description", null: false
     t.integer "status", null: false
-    t.boolean "responsibility", null: false
     t.integer "day", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
@@ -73,7 +80,11 @@ ActiveRecord::Schema.define(version: 2019_09_22_020149) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "prefecture_id"
+    t.string "brand"
+    t.integer "size"
+    t.bigint "delivery_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["delivery_id"], name: "index_items_on_delivery_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -123,6 +134,7 @@ ActiveRecord::Schema.define(version: 2019_09_22_020149) do
   add_foreign_key "item_likes", "items"
   add_foreign_key "item_likes", "users"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "deliveries"
   add_foreign_key "items", "users"
   add_foreign_key "pictures", "items"
   add_foreign_key "purchases", "items"
