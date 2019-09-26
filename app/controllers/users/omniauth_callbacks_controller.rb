@@ -1,31 +1,39 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  def facebook
+    callback_for(:facebook)
+  end
+  
+  def google_oauth2
+    callback_for(:google)
+  end
 
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
+  def callback_for(provider)
+    @user = User.find_for_oauth(request.env["omniauth.auth"])
+    provider = @user[:provider]
+    uid = @user[:uid]
+    email = @user[:email]
+    name = @user[:name]
+    password = @user[:password]
+    password_confirmation = @user[:password]
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+    #DBに保存済かどうかを判定する
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication
+    else
+        session[:email] = @user[:email]
+        session[:password] = @user[:password]
+        session[:password_confirmation] = @user[:password]
+        session[:name] = @user[:name]
+        session[:provider] = @user[:provider]
+        session[:uid] = @user[:uid]
+        @user = User.new
+      render '/signup/member'
+    end
+  end
 
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
-
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
-
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
-
-  # protected
-
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+  def failure
+    redirect_to root_path
+  end
 end

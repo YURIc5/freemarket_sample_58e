@@ -1,34 +1,45 @@
 class SignupController < ApplicationController
 
-  # 各アクションごとに新規インスタンスを作成
-  # 各アクションごとに、遷移元のページのデータをsessionに保管
   def member
-    @user = User.new # 新規インスタンス作成
+    # 新規インスタンス作成
+    @user = User.new
   end
 
   def phone
-    # step1で入力された値をsessionに保存
-    session[:nickname] = user_params[:nickname]
-    session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
-    session[:name] = user_params[:name]
-    session[:name_kana] = user_params[:name_kana]
-    session[:birthday] = user_params[:birthday]
-    @user = User.new # 新規インスタンス作成
+  # memberで入力された値をsessionに保存
+
+    #email登録の場合
+    if session[:uid].nil?
+      session[:nickname] = user_params[:nickname]
+      session[:email] = user_params[:email]
+      session[:password] = user_params[:password]
+      session[:password_confirmation] = user_params[:password_confirmation]
+      session[:name] = user_params[:name]
+      session[:name_kana] = user_params[:name_kana]
+      session[:birthday] = user_params[:birthday]
+    else
+      #SNS認証の場合
+      session[:nickname] = user_params[:nickname]
+      session[:name_kana] = user_params[:name_kana]
+      session[:birthday] = user_params[:birthday]
+    end
+    # 新規インスタンス作成
+    @user = User.new
   end
 
   def create
+    # sessionに保存された値をインスタンスに渡す
     @user = User.new(
-      nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
+      nickname: session[:nickname], 
       email: session[:email],
       password: session[:password],
       password_confirmation: session[:password_confirmation],
       name: session[:name], 
       name_kana: session[:name_kana],
       birthday: session[:birthday],
+      provider: session[:provider],
+      uid: session[:uid],
       phone_number: params[:user][:phone_number]
-
     )
     if @user.save
     # ログインするための情報を保管
@@ -51,7 +62,9 @@ class SignupController < ApplicationController
       :name, 
       :name_kana,
       :birthday, 
-      :phone_number
+      :phone_number,
+      :uid,
+      :provider
     )
   end
 end
