@@ -10,25 +10,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def callback_for(provider)
-    @user = User.find_for_oauth(request.env["omniauth.auth"])
-    provider = @user[:provider]
-    uid = @user[:uid]
-    email = @user[:email]
-    name = @user[:name]
-    password = @user[:password]
-    password_confirmation = @user[:password]
-
+    @omniauth = (request.env["omniauth.auth"])
+    @user = User.find_for_oauth(@omniauth)
     #DBに保存済かどうかを判定する
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
     else
-        session[:email] = @user[:email]
-        session[:password] = @user[:password]
-        session[:password_confirmation] = @user[:password]
-        session[:name] = @user[:name]
-        session[:provider] = @user[:provider]
-        session[:uid] = @user[:uid]
-        @user = User.new
+      session[:provider] = @user[:provider]
+      session[:uid] = @user[:uid]
       render '/signup/member'
     end
   end

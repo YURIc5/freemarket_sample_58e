@@ -15,17 +15,14 @@ class User < ApplicationRecord
       #登録済みのUserか確認
       user = User.where(uid: auth.uid, provider: auth.provider).first
       #登録済みのUserではなかった場合
-      unless user
-        user = {
-          uid:          auth.uid,
-          provider:     auth.provider,
-          email:        auth.info.email,
-          name:         auth.info.name,
-          password:     Devise.friendly_token[0, 20]
-        }
+      unless user.present?
+        user = User.new(
+          nickname: auth.info.name,
+          email: auth.info.email,
+          uid: auth.uid,
+          provider: auth.provider
+        )
       end
-      user
+      return user
     end
-
 end
-
