@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+
+  before_action :set_item, only: [:show, :destroy, :buy, :pay]
   
   def index
     @itemCategory1 = Item.recent1
@@ -48,7 +50,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -66,7 +67,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     # ↓ログイン機能実装後コメントアウトを外します
     # @item.destroy if @item.user == current_user
     @item.destroy
@@ -74,7 +74,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @item = Item.find(params[:id])
     @address = current_user.address
 
     creditcard = current_user.creditcard
@@ -89,7 +88,6 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    @item = Item.find(params[:id])
     @item.buyer_id = current_user.id
     @item.save
 
@@ -125,5 +123,10 @@ class ItemsController < ApplicationController
   def picture_params
     params.require(:item).permit(pictures_attributes:[:name])
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
 
