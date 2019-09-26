@@ -73,6 +73,34 @@ class ItemsController < ApplicationController
     redirect_to controller: 'items', action: 'index'
   end
 
+  def buy
+    @item = Item.find(params[:id])
+    @address = current_user.address
+
+    creditcard = current_user.creditcard
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    customer = Payjp::Customer.retrieve(creditcard.customer_id)
+    @creditcard_last4 = customer[:cards][:data][0]["last4"]
+    @creditcard_exp_month = customer[:cards][:data][0]["exp_month"].to_s
+    @creditcard_exp_year = customer[:cards][:data][0]["exp_year"].to_s.slice(2,3)
+    @creditcard_brand = customer[:cards][:data][0]["brand"]
+
+    render :layout => 'sub'
+  end
+
+  def pay
+    @item = Item.find(params[:id])
+    @item.buyer_id = current_user.id
+    @item.save
+
+    creditcard = current_user.creditcard
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    Payjp::Charge.create(
+    :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :customer => creditcard.customer_id, #顧客ID
+    :currency => 'jpy', #日本円
+  )
+  end
 
   private
 
