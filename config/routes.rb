@@ -17,14 +17,16 @@ Rails.application.routes.draw do
       get'profile'
       get'logout'
       get'information'
-      get 'buy'
       get 'exhibit_list'
     end
     resources :cards, only: [:index,:show, :new, :create, :destroy]
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :pictures
     resources :items do
-    #Ajaxで動くアクションのルートを作成
+      member do
+        get 'buy'
+        post 'pay'
+      end
       collection do
         get 'get_category_children', defaults: { format: 'json' }
         get 'get_category_grandchildren', defaults: { format: 'json' }

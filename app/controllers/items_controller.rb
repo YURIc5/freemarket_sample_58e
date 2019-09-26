@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+
+  before_action :set_item, only: [:show, :destroy, :buy, :pay]
   
   def index
     @itemCategory1 = Item.recent1
@@ -48,7 +50,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def create
@@ -66,13 +67,38 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     # ↓ログイン機能実装後コメントアウトを外します
     # @item.destroy if @item.user == current_user
     @item.destroy
     redirect_to controller: 'items', action: 'index'
   end
 
+  def buy
+    @address = current_user.address
+
+    creditcard = current_user.creditcard
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    customer = Payjp::Customer.retrieve(creditcard.customer_id)
+    @creditcard_last4 = customer[:cards][:data][0]["last4"]
+    @creditcard_exp_month = customer[:cards][:data][0]["exp_month"].to_s
+    @creditcard_exp_year = customer[:cards][:data][0]["exp_year"].to_s.slice(2,3)
+    @creditcard_brand = customer[:cards][:data][0]["brand"]
+
+    render :layout => 'sub'
+  end
+
+  def pay
+    @item.buyer_id = current_user.id
+    @item.save
+
+    creditcard = current_user.creditcard
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+    Payjp::Charge.create(
+    :amount => @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :customer => creditcard.customer_id, #顧客ID
+    :currency => 'jpy', #日本円
+  )
+  end
 
   private
 
@@ -97,5 +123,10 @@ class ItemsController < ApplicationController
   def picture_params
     params.require(:item).permit(pictures_attributes:[:name])
   end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
 
