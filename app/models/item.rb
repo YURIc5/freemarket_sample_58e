@@ -19,10 +19,10 @@ class Item < ApplicationRecord
   
 
 
-  scope :category1, -> { where(category_id: 3..75) }
-  scope :category2, -> { where(category_id: 76..134) }
-  scope :category3, -> { where(category_id: 135..173) }
-  scope :category4, -> { where(category_id: 4) }
+  scope :category1, -> { where(category_id: 14..85) }
+  scope :category2, -> { where(category_id: 86..144) }
+  scope :category3, -> { where(category_id: 404..435) }
+  scope :category4, -> { where(category_id: 301..371) }
 
   scope :includ, -> { includes(:pictures) }
 
