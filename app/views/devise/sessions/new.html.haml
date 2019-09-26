@@ -10,8 +10,7 @@
           = link_to user_facebook_omniauth_authorize_path,method: :post, id:'#facebook-login', class: 'btn-default btn-sns btn-sns-facebook' do
             =fa_icon 'facebook-square',class:'icon'
             Facebookでログイン
-          = link_to user_google_oauth2_omniauth_authorize_path,id:'#google-login',method: :post, class: 'btn-default btn-sns.btn-sns-google' do
-            =image_tag '/google.svg'
+          = link_to user_google_oauth2_omniauth_authorize_path,id:'#google-login',method: :post, class: 'btn-default btn-sns btn-sns-google' do
             Googleでログイン
         = form_for(resource, as: resource_name, html: {class: "login-form-inner"}, url: session_path(resource_name)) do |f|
           .field
@@ -19,7 +18,7 @@
           .field
             = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード"
           .actions
-            = f.submit "ログイン", :class=>"login-submit btn-default btn-red"
+            = f.submit "ログイン", class: "login-submit btn-default btn-red"
         = render "devise/shared/links"
         
       = render partial: "shared/sub_footer"
