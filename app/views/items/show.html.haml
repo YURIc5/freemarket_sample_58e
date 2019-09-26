@@ -1,30 +1,31 @@
 .item-show-main
   %section.item-box-container
-    %h1.item-name COACH/ショルダーバッグ
+    %h1.item-name 
+      = @item.name
     .item-main-content
       .item-photo
         .owl-carousel.owl-loaded.owl-drag
           .owl-stage-outer
             .owl-item
               .owl-item-inner.is-higher-height
-                %img.owl-lazy{alt: "COACH ☆ コーチ ハンド/ショルダーバッグ", "data-src": "https://static.mercdn.net/item/detail/orig/photos/m95010021448_1.jpg?1560301518", src: "https://static.mercdn.net/item/detail/orig/photos/m95010021448_1.jpg?1560301518"}/
+                = image_tag "#{@item.pictures.first.name}", class: "%img.owl-lazy"
           .owl-dots
             .owl-dot
               %span
               .owl-dot-inner
-                %img.is-higher-height{src: "https://static.mercdn.net/item/detail/orig/photos/m95010021448_1.jpg?1560301518"}/
+                = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
             .owl-dot.active
               %span
               .owl-dot-inner
-                %img.is-higher-height{src: "https://static.mercdn.net/item/detail/orig/photos/m95010021448_2.jpg?1560301518"}/
+              = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
             .owl-dot
               %span
               .owl-dot-inner
-                %img.is-higher-height{src: "https://static.mercdn.net/item/detail/orig/photos/m95010021448_3.jpg?1560301518"}/
+                = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
             .owl-dot
               %span
               .owl-dot-inner
-                %img.is-higher-height{src: "https://static.mercdn.net/item/detail/orig/photos/m95010021448_4.jpg?1560301518"}/
+                = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
 
       %table.item-detail-table
         %tbody
@@ -32,7 +33,7 @@
             %th 出品者
             %td
               =link_to "https://www.mercari.com/jp/u/191455761/",class: "contents__btn" do
-                カズ
+                = @item.user.name
               %div
                 .item-user-ratings
                   %i.icon-good
@@ -50,16 +51,16 @@
             %th カテゴリー
             %td
               =link_to "https://www.mercari.com/jp/category/1/",class: "contents__btn" do
-                レディース
+                = @item.category.parent.parent.name
                 %br
               
               =link_to "https://www.mercari.com/jp/category/20/",class: "item-detail-table-sub-category" do
                 %i.icon-arrow-right
-                バッグ
+                = @item.category.parent.name
                 %br
               =link_to "https://www.mercari.com/jp/category/214/",class: "item-detail-table-sub-sub-category" do
                 %i.icon-arrow-right
-                ショルダーバッグ
+                = @item.category.name
                 %br
 
               
@@ -90,7 +91,8 @@
 
 
     .item-price-box
-      %span.item-price.bold ¥18,800
+      %span.item-price.bold
+        = "¥#{@item.price}"
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
     .text-center
@@ -103,19 +105,7 @@
 
     .item-description.f14
       %p.item-description-inner
-        新品、未使用です。
-        参考 購入価格 アメリカ＄450.00＝約 ¥50400円 
-        %br/
-        新品、未使用、タグが付いたままの状態です。COACH コーチのバンドバック/ショルダーバッグ
-        片紐が付いてますのでショルダーとしても使えます。
-        アメリカ ニューヨークCOACH直営店で購入しました正規品です。
-        %br/
-        型番  :     F36606
-        カラー :  ピンク
-        サイズ :  約 縦27cm×横37cm×まち10cm
-        使用開閉 : マグネット
-        外側 :  ファスナーポケット2ヶ所
-        内側 :  ファスナーポケット1ヵ所
+        = @item.description
 
 
     .item-button-container
