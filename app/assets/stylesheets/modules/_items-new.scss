@@ -36,19 +36,19 @@
               }
             }
             .uploud-dropbox {
-              float: right;
-              width: 83%;
-              margin-right: 10px;
-              padding: 40px;
+              float: center;
+              width: 100%;
               position: relative;
-              min-height: 100px;
+              min-height: 150px;
               background: #f5f5f5;
               border: 1px dashed #ccc;
               font-size: 0;
               text-align: center;
               cursor: pointer;
               .uploud-dropfile {
-                display: none;
+                width: 100%;
+                height: 150px;
+                opacity: 0;
               }
               pre {
                 position: absolute;
@@ -129,6 +129,14 @@
             
           }
           .first-box {
+            margin: 0;
+            border: 0;
+          }
+          .first-box2 {
+            margin: 0;
+            border: 0;
+          }
+          .first-box3 {
             margin: 0;
             border: 0;
           }
@@ -235,4 +243,28 @@
       }
     }
   }
+  #delivery_label{
+    margin: 40px 10px 0 0;
+  }
+  #delivery_require{
+    margin: 40px 0 0; 
+    position: absolute;
+  }
+}
+
+.brandtextarea{
+  margin: 8px 0 0;
+  position: relative;
+  background: #fff;
+  width: 91%;
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
 }

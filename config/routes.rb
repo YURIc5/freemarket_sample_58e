@@ -14,21 +14,26 @@ Rails.application.routes.draw do
   
   get 'users/phone' => 'users#phone' 
   get 'users/signup' => 'users#signup' 
-  resources :users, only: [:show] do
+  resources :users do
     member do
       get'profile'
       get'logout'
       get'information'
-      get 'buy'
       get 'exhibit_list'
     end
-    resources :cards, only: [:index, :new, :create, :delete]
+    resources :cards, only: [:index,:show, :new, :create, :destroy]
     resources :addresses, only: [:new, :create, :edit, :update]
-    resources :items
+    resources :pictures
+    resources :items do
+      member do
+        get 'buy'
+        post 'pay'
+      end
+      collection do
+        get 'get_category_children', defaults: { format: 'json' }
+        get 'get_category_grandchildren', defaults: { format: 'json' }
+        get 'get_delivery_children', defaults: { format: 'json' }
+      end
+    end
   end
-
-  # resources :user do
-  #   get 'new_phone_number' on: :member
-  # end
-
 end
