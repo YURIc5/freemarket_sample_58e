@@ -11,18 +11,14 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @user = User.find(params[:user_id])
+    @item.pictures.build
 
     #セレクトボックスの初期値設定
     @category_parent_array = ["---"]
 
     #データベースから、親カテゴリーのみ抽出し、配列化
-    
     Category.where(ancestry: nil).map{|parent| @category_parent_array << parent.name}
   
-    @item.pictures.build
-
-
     @delivery_parent_array = ["---"]
 
     Delivery.where(ancestry: nil).map{|parent| @delivery_parent_array << parent.responsibility}
@@ -58,11 +54,12 @@ class ItemsController < ApplicationController
     params[:pictures][:name].each do |image|
       item.pictures.build(name: image, item_id: item.id)
     end
-    if item.save
+     if item.save
       redirect_to user_items_path
     else
       redirect_to new_user_item_path
     end
+  
 
   end
 
@@ -103,13 +100,10 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    @user = User.find(1)
     params.require(:item).permit(
       :name, 
       :description, 
       :status, 
-      :responsibility, 
-      :location, 
       :day, 
       :price, 
       :category_id,
@@ -117,7 +111,7 @@ class ItemsController < ApplicationController
       :delivery_id,
       :size,
       :brand,
-      pictures_attributes: [:name]).merge(user_id: @user.id)
+      pictures_attributes: [:name]).merge(user_id: current_user.id)
   end
 
   def picture_params
