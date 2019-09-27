@@ -6,6 +6,7 @@ class AddressesController < ApplicationController
   end
 
   def create
+    binding.pry
     @address = Address.new(address_params)
     if @address.save
       session[:id] = params[:user_id]
@@ -25,7 +26,7 @@ class AddressesController < ApplicationController
   def address_params
     params.require(:address).permit(
       :postcode, 
-      :prefecture, 
+      :prefecture_id,
       :city, 
       :block, 
       :building,

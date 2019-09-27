@@ -15,7 +15,8 @@
               = f.label :都道府県
               %spna.form-require 必須
               %br/
-              = f.select :prefecture, [ ['-----','-----'], ['東京','東京'], ['福岡','福岡'] ]
+              = fa_icon 'chevron-down',class:'icon'
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => '---'
             .field
               = f.label :市区町村 
               %spna.form-require 必須
