@@ -4,9 +4,10 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :pictures
   has_many :item_likes
 
-  belongs_to :user
-  belongs_to :category
-  belongs_to :delivery
+  belongs_to :user, class_name: "User", optional: true
+  belongs_to :category,optional: true
+  belongs_to :delivery,optional: true
+  has_one :buyer, class_name: "User"
 
   has_one :purchase
   accepts_nested_attributes_for :purchase

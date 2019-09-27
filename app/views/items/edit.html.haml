@@ -1,0 +1,125 @@
+.single-container
+  %main.single-main
+    %section.l-single-container
+      %h2.l-single-head 商品の情報を入力
+      = form_for @item, url: user_item_path(current_user), html: {class: 'edit_item', id: 'edit_item'} do |f|
+        .sell-box
+          %h3.uploud-header 出品画像
+          %span.form-require 必須
+          %p 最大10枚までアップロードできます
+          .dropbox-container.clearfix
+            .uploud-container
+              .uploud-container__have-items 
+                .uploud-dropbox
+                  %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+                  = f.fields_for :pictures do |picture|
+                    = picture.label :name
+                    = picture.file_field :name, accept: ".jpg, .jpeg, .png", multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
+        .sell-content.clearfix
+          .form-group.first-box
+            = f.label :商品名
+            %span.form-require 必須
+            .input-box
+              = f.text_field :name, class: 'input-default', placeholder: '商品名（最大40文字まで）'
+              %br/
+          .form-group
+            = f.label :商品の説明
+            %span.form-require 必須
+            %br/
+            = f.text_field :description, class: 'input-default', placeholder: '商品の説明（必須1,000文字）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'.html_safe
+        .sell-content.clearfix
+          %h3.sub-header 商品の詳細
+          .form-box
+            .form-group.first-box2
+              = f.label :カテゴリー, class: 'listing-default__label'
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category2'}
+            .form-group
+              = f.label :サイズ
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :size, Item.sizes.keys, {:prompt => "---"}
+            .form-group
+              = f.label :ブランド
+              %span.form-require 任意
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.text_field :brand,class: 'brandtextarea', placeholder: '例) シャネル'.html_safe
+            .form-group
+              = f.label :商品の状態
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :status, Item.statuses.keys, {:prompt => "---"}
+        .sell-content.clearfix
+          %h3.sub-header 配送について
+          = link_to '?','/jp/help_center/article/68/',class: 'form-question'
+          .form-box
+            .form-group.first-box3
+              = f.label :配送料の負担
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :delivery, @delivery_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'delivery_parent_category2'}
+            .form-group
+              = f.label :配送元の地域
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => '---'
+            .form-group
+              = f.label :発送までの日数
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :day,[['1〜2日で発送','1'],['2〜3日で発送','2'],['4〜7日で発送','3']], {:prompt => '---'}
+        .sell-content.clearfix
+          %h3.sub-header 販売価格(300〜9,999,999)
+          = link_to '?','/jp/help_center/article/64/',class: 'form-question'
+          .form-box
+            %ul.sell-price
+              %li.form-group.first-box
+                .clearfix
+                  .list-left
+                    = f.label class:'list-left' do
+                      価格
+                      %span.form-require 必須
+                  .list-right.price-input
+                    .price-mark ¥
+                    .price-box
+                      = f.text_field :price,class: 'input-default', placeholder: '例）300'
+              %li.clearfix
+                .list-left 販売手数料(10%)
+                .list-right-fee -
+              %li.clearfix.bold
+                .list-left 販売利益
+                .list-right-profit -
+        .sell-content.clearfix
+          .sell-content__warning
+            %p
+              = link_to '禁止されている出品','/jp/help_center/getting_started/prohibited_items/',  target:'_blank'
+              、
+              = link_to '行為','/jp/help_center/getting_started/prohibited_conduct/', target:'_blank'
+              を必ずご確認ください。
+            %p
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              = link_to '偽ブランドの販売','/jp/help_center/getting_started/counterfeit_goods/', target: '_blank'
+              は犯罪であり処罰される可能性があります。
+            %p
+              また、出品をもちまして
+              = link_to '加盟店規約','/jp/seller_terms/'
+              に同意したことになります。
+            = f.submit '変更する', class: 'btn-red'
+            = link_to '#' do
+              もどる
+            = f.submit 'もどる', class: 'btn-grey'
