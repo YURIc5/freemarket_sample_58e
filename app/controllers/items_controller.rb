@@ -17,12 +17,8 @@ class ItemsController < ApplicationController
     @category_parent_array = ["---"]
 
     #データベースから、親カテゴリーのみ抽出し、配列化
-    
     Category.where(ancestry: nil).map{|parent| @category_parent_array << parent.name}
   
-    
-
-
     @delivery_parent_array = ["---"]
 
     Delivery.where(ancestry: nil).map{|parent| @delivery_parent_array << parent.responsibility}
@@ -54,11 +50,13 @@ class ItemsController < ApplicationController
 
   def create
     item = Item.new(item_params)
+    binding.pry
 
     params[:pictures][:name].each do |image|
       item.pictures.build(name: image, item_id: item.id)
     end
      if item.save
+      binding.pry
       redirect_to user_items_path
     else
       redirect_to new_user_item_path
@@ -104,7 +102,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    @user = current_user
+    # @user = current_user
     params.require(:item).permit(
       :name, 
       :description, 
@@ -116,7 +114,7 @@ class ItemsController < ApplicationController
       :delivery_id,
       :size,
       :brand,
-      pictures_attributes: [:name]).merge(user_id: @user.id)
+      pictures_attributes: [:name]).merge(user_id: current_user.id)
   end
 
   def picture_params
