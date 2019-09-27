@@ -100,7 +100,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    # @user = current_user
     params.require(:item).permit(
       :name, 
       :description, 
