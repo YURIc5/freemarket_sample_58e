@@ -59,7 +59,6 @@ class ItemsController < ApplicationController
       item.pictures.build(name: image, item_id: item.id)
     end
      if item.save
-      binding.pry
       redirect_to user_items_path
     else
       redirect_to new_user_item_path
