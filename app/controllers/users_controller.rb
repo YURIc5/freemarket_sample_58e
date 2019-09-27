@@ -21,10 +21,6 @@ class UsersController < ApplicationController
     @address = Address.new
   end
 
-  def buy
-    render :layout => 'sub'
-  end
-
   def exhibit_list
     @itemnames = Item.find(1)
     @items = Item.find(1).pictures

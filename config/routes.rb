@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks'
+    }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'items#index'
   resources :signup do
@@ -17,7 +19,6 @@ Rails.application.routes.draw do
       get'profile'
       get'logout'
       get'information'
-      get 'buy'
       get 'exhibit_list'
 
       
@@ -27,7 +28,10 @@ Rails.application.routes.draw do
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :pictures
     resources :items do
-    #Ajaxで動くアクションのルートを作成
+      member do
+        get 'buy'
+        post 'pay'
+      end
       collection do
         get 'get_category_children', defaults: { format: 'json' }
         get 'get_category_grandchildren', defaults: { format: 'json' }
