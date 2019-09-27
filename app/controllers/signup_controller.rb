@@ -1,14 +1,12 @@
 class SignupController < ApplicationController
 
-  # 各アクションごとに新規インスタンスを作成
-  # 各アクションごとに、遷移元のページのデータをsessionに保管
   def member
-    @user = User.new # 新規インスタンス作成
+    # 新規インスタンス作成
+    @user = User.new
   end
 
   def phone
-    # step1で入力された値をsessionに保存
-    if verify_recaptcha
+    # memberで入力された値をsessionに保存
       session[:nickname] = user_params[:nickname]
       session[:email] = user_params[:email]
       session[:password] = user_params[:password]
@@ -16,24 +14,39 @@ class SignupController < ApplicationController
       session[:name] = user_params[:name]
       session[:name_kana] = user_params[:name_kana]
       session[:birthday] = user_params[:birthday]
-      @user = User.new # 新規インスタンス作成
-    else
-      render '/signup/member'
-    end
+    # 新規インスタンス作成
+    @user = User.new
   end
 
   def create
-    @user = User.new(
-      nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
-      email: session[:email],
-      password: session[:password],
-      password_confirmation: session[:password_confirmation],
-      name: session[:name], 
-      name_kana: session[:name_kana],
-      birthday: session[:birthday],
-      phone_number: params[:user][:phone_number]
-
-    )
+    # SNS認証
+    if session[:uid].present? && session[:provider].present?
+      password = Devise.friendly_token.first(7)
+      @user = User.new(
+        nickname: session[:nickname], 
+        email: session[:email],
+        password: password,
+        password_confirmation: password,
+        name: session[:name], 
+        name_kana: session[:name_kana],
+        birthday: session[:birthday],
+        provider: session[:provider],
+        uid: session[:uid],
+        phone_number: params[:user][:phone_number]
+      )
+    else
+    # email登録
+      @user = User.new(
+        nickname: session[:nickname], 
+        email: session[:email],
+        password: session[:password],
+        password_confirmation: session[:password_confirmation],
+        name: session[:name], 
+        name_kana: session[:name_kana],
+        birthday: session[:birthday],
+        phone_number: params[:user][:phone_number]
+      )
+    end
     if @user.save
     # ログインするための情報を保管
       session[:id] = @user.id
@@ -45,7 +58,7 @@ class SignupController < ApplicationController
   end
   
   private
-  # 許可するキーを設定
+    # 許可するキーを設定
   def user_params
     params.require(:user).permit(
       :nickname, 

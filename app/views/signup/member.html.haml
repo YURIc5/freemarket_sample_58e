@@ -10,26 +10,26 @@
               = f.label :ニックネーム
               %spna.form-require 必須
               %br/
-              = f.text_field :nickname 
+              = f.text_field :nickname,autofocus: true
             .field
               = f.label :メールアドレス
               %spna.form-require 必須
               %br/
-              = f.email_field :email, autofocus: true, autocomplete: "email"
-            .field
-              = f.label :パスワード
-              %spna.form-require 必須
-              - if @minimum_password_length
-                %em
-                  (#{@minimum_password_length} characters minimum)
-              %br/
-              = f.password_field :password, autocomplete: "new-password"
-            .field
-              = f.label :パスワード確認
-              %spna.form-require 必須
-              %br/
-              = f.password_field :password_confirmation, autocomplete: "new-password"
-
+              = f.email_field :email, autocomplete: "email"
+            -if @omniauth.nil?
+              .field
+                = f.label :パスワード
+                %spna.form-require 必須
+                - if @minimum_password_length
+                  %em
+                    (#{@minimum_password_length} characters minimum)
+                %br/
+                = f.password_field :password
+              .field
+                = f.label :パスワード確認
+                %spna.form-require 必須
+                %br/
+                = f.password_field :password_confirmation
             .field
               %h3 本人確認
               %p.l-single-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
@@ -39,7 +39,6 @@
               %spna.form-require 必須
               %br/
               = f.text_field :name
-
             .field
               = f.label :お名前カナ
               %spna.form-require 必須
@@ -57,6 +56,6 @@
             %p.l-single-text.text-center「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
             
             .actions.btn-next
-              = f.submit "次へ進む", :class=>"btn-default btn-red"
+              = f.submit "次へ進む", class: "btn-default btn-red"
           
     = render partial: "shared/sub_footer"

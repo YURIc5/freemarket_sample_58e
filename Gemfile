@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -81,6 +82,10 @@ gem 'haml-rails'
 gem 'ancestry'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'payjp'
 gem 'jquery-rails'
 gem 'ancestry'
