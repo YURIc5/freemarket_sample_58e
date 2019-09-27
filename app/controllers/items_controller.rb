@@ -110,8 +110,6 @@ class ItemsController < ApplicationController
       :name, 
       :description, 
       :status, 
-      # :responsibility, 
-      # :location, 
       :day, 
       :price, 
       :category_id,
@@ -119,7 +117,6 @@ class ItemsController < ApplicationController
       :delivery_id,
       :size,
       :brand,
-      # :buyer_id,
       pictures_attributes: [:name]).merge(user_id: @user.id)
   end
 

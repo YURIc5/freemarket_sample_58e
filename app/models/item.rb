@@ -7,9 +7,7 @@ class Item < ApplicationRecord
   belongs_to :user, class_name: "User"
   belongs_to :category
   belongs_to :delivery
-  # belongs_to :buyer, class_name: "User"
   has_one :buyer, class_name: "User"
-  # belongs_to :user, class_name: "User"
 
 
   enum status:{"新品、未使用": 1, "未使用に近い": 2, "目立った傷や汚れなし": 3, "やや傷や汚れあり": 4, "傷や汚れあり": 5, "全体的に状態が悪い": 6}
