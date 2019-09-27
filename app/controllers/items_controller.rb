@@ -48,6 +48,29 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def edit
+    @item = Item.find_by(id: params[:id])
+    @user = User.find(params[:user_id])
+    @pictures = @item.pictures
+    @big_categories = Category.where(ancestry: nil)
+    @item_category = @item.category
+    #セレクトボックスの初期値設定
+    @category_parent_array = ["---"]
+    #データベースから、親カテゴリーのみ抽出し、配列化
+    Category.where(ancestry: nil).map{|parent| @category_parent_array << parent.name}
+    @item.pictures.build
+    @delivery_parent_array = ["---"]
+    Delivery.where(ancestry: nil).map{|parent| @delivery_parent_array << parent.responsibility}
+    render :layout => 'sub'
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update!(item_params)
+    redirect_to root_path
+  end
+
+
   def create
     item = Item.new(item_params)
 
@@ -121,6 +144,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
+  
 end
 
