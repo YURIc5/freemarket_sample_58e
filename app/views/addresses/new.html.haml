@@ -15,8 +15,9 @@
               = f.label :都道府県
               %spna.form-require 必須
               %br/
-              = fa_icon 'chevron-down',class:'icon'
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => '---'
+              .select-default
+                = fa_icon 'chevron-down',class:'icon'
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name, :prompt => '---'
             .field
               = f.label :市区町村 
               %spna.form-require 必須
@@ -34,5 +35,5 @@
               = f.text_field :building, placeholder: "例 ）柳ビル103" 
               
             .actions.btn-next
-              = f.submit "次へ住む", :class=>"btn-default btn-red"
+              = f.submit "次へ住む", class: "btn-default btn-red"
     = render partial: "shared/sub_footer"

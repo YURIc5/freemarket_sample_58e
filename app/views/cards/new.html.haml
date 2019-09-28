@@ -32,9 +32,11 @@
              
             .selects-content
               .left-content.selects-default-content
+                = fa_icon 'chevron-down',class:'icon'
                 = select_tag 'exp_month', options_for_select({"1": 1,"2": 2,"3": 3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9,"10":10,"11":11,"12":12}), class: "exp_month left-select select-content", id: "payment_expiration_date_1i"
                 %span 月
               .right-content.selects-default-content
+                = fa_icon 'chevron-down',class:'icon'
                 = select_tag 'exp_year', options_for_select({"19": 2019,"20": 2020,"21": 2021,"22":2022,"23":2023,"24":2024,"25":2025,"26":2026,"27":2027,"28":2028}), class: "exp_year right-select select-content", id: "payment_expiration_date_2i"
                 %span 年
           .form-bottom-content.default-content 
