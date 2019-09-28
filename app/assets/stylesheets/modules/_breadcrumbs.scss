@@ -1,26 +1,32 @@
 .breadcrumbs {
-    position: relative;
-    border-top: 1px solid $light-grey;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-    background-color: $white;
-    ul {
-      width: 1020px;
-      margin: 0 auto;
-      padding: 16px 0;
-      li {
-        display: inline-block;
-        font-size: 14px;
-        line-height: 1.2;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        .breadcrumbs-list{
-          a{
-            color: #333;
-          }
+  position: relative;
+  border-top: 1px solid $light-grey;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  background-color: $white;
+  ul {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    li {
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      .breadcrumbs-list{
+        a{
+          color: #333;
+          padding: 5px;
         }
       }
-      li.first-child {
-        font-weight: 600;
-      }
     }
+    span.current {
+      padding: 5px;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    
   }
+}
