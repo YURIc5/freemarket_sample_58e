@@ -128,8 +128,22 @@
         font-size: 16px;
         font-weight: bold;
       }
-      select {
-        -webkit-appearance: none;
+      
+      .select-default{
+        position: relative;
+        .icon {
+          position: absolute;
+          right: 16px;
+          top: 50%;
+          z-index: 2;
+          color: #888;
+          font-size: 8px;
+          cursor: pointer;
+        }
+        select {
+          -webkit-appearance: none;
+          cursor: pointer;
+        }
       }
     }
     .field label {
