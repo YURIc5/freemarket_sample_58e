@@ -78,7 +78,6 @@
             %th 配送料の負担
             %td 
               = @item.delivery.parent.responsibility
-              -# = @item.category.parent.parent.name
           %tr
             %th 配送の方法
             %td 
@@ -87,7 +86,6 @@
             %th 配送元地域
             %td
               =link_to "https://www.mercari.com/jp/brand/539/",class: "" do
-                -# = @item.prefecture_id.name
                 = Prefecture.find(@item.prefecture_id)[:name]
           %tr
             %th 発送日の目安
