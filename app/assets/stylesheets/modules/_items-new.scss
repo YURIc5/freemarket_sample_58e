@@ -20,22 +20,31 @@
         .sell-box {
           width: 620px;
           padding: 40px;
+          // display: flex;
           h3.uploud-header {
             font-size: 16px;
             font-weight: bold;
             display: inline-block;
           }
-          .dropbox-container {
+          .dropzone-container {
             display: block;
             width: 620px;
-            .uploud-contaner {
-              display: inline;
+            display: flex;
+            // display: inline-block;
+            #preview {
+              display: flex;
+              // width: 620px;
+              // -webkit-flex-direction: row;
+              // flex-direction: row;
+            }
+            .dropzone-area {
+              width: 620px;
               &__have-item {
                 float: left;
                 display: block;
               }
             }
-            .uploud-dropbox {
+            .input_area {
               float: center;
               width: 100%;
               position: relative;
@@ -45,9 +54,9 @@
               font-size: 0;
               text-align: center;
               cursor: pointer;
-              .uploud-dropfile {
-                width: 100%;
-                height: 150px;
+              .upload-image {
+                // width: 100%;
+                // height: 150px;
                 opacity: 0;
               }
               pre {

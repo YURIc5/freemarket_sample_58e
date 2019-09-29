@@ -53,6 +53,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+
     
     @user = User.find(params[:user_id])
     
@@ -70,7 +71,7 @@ class ItemsController < ApplicationController
   def update
     
     @item = Item.find(params[:id])
-    if params[:pictures][:name] == nil
+    if params[:pictures] == nil
       @item.update(update_params)
       redirect_to edit_user_item_path
     elsif params[:pictures][:name] != nil
@@ -78,25 +79,45 @@ class ItemsController < ApplicationController
       @item.pictures.destroy_all
       params[:pictures][:name].each do |image|
         @item.pictures.create(name: image, item_id: @item.id)
-        binding.pry
+        redirect_to user_items_path
       end
     end
-
-    redirect_to root_path
   end
 
 
   def create
-    item = Item.new(create_params)
 
-    params[:pictures][:name].each do |image|
-      item.pictures.build(name: image, item_id: item.id)
-    end
-     if item.save
-      redirect_to user_items_path
-    else
+    @item = Item.new(create_params)
+    # binding.pry
+
+    if params[:pictures] == nil
       redirect_to new_user_item_path
+    else
+      params[:pictures][:name].each do |image|
+        @item.pictures.build(name: image, item_id: @item.id)
+      end
+      if @item.save
+        redirect_to root_path
+      else
+        redirect_to new_user_item_path
     end
+  end
+  
+    # @item = Item.new(create_params)
+    # # binding.pry
+
+    # if params[:pictures] == nil
+    #   redirect_to new_user_item_path
+    # else
+    #   params[:pictures][:name].each do |image|
+    #     @item.pictures.build(name: image, item_id: @item.id)
+    #   end
+    # end
+    #  if @item.save
+    #   redirect_to root_path
+    # else
+    #   redirect_to new_user_item_path
+    # end
   
 
   end

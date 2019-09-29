@@ -7,14 +7,17 @@
           %h3.uploud-header 出品画像
           %span.form-require 必須
           %p 最大10枚までアップロードできます
-          .dropbox-container.clearfix
-            .uploud-container
-              .uploud-container__have-items 
-                .uploud-dropbox
-                  %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
-                  = f.fields_for :pictures do |picture|
-                    = picture.label :name
-                    = picture.file_field :name, multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
+          = f.fields_for :pictures do |picture|
+            .dropzone-container.clearfix
+              #preview
+              .dropzone-area
+                = picture.label :name, class: "dropzone-box", for: "upload-image" do
+                  .input_area
+                    %pre
+                      :preserve
+                        ドラッグアンドドロップまたは
+                        クリックしてファイルをアップロード
+                    = picture.file_field :name, multiple: true, name: 'pictures[name][]', id: "upload-image", class: "upload-image", 'data-image': 0
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名

@@ -40,15 +40,16 @@ class Item < ApplicationRecord
   
   
   
-  # バリデーションがうまくいかないため一旦コメントアウト
-  # validates :name, presence: true, length: { maximum: 40 }
-  # validates :description, presence: true, length: { maximum: 1000 }
-  # validates :status, presence: true
+  #バリデーションがうまくいかないため一旦コメントアウト
+  validates :name, presence: true, length: { maximum: 40 }
+  validates :description, presence: true, length: { maximum: 1000 }
+  validates :status, presence: true
   # validates :responsibility, presence: true
-  # validates :day, presence: true
-  # validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  # validates :category_id, presence: true
-  # validates :prefecture_id, presence:true
-  # validates :pictures, presence:true
-
+  validates :day, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+  validates :category_id, presence: true
+  validates :prefecture_id, presence:true
+  validates :user_id, presence:true
+  validates :delivery_id, presence:true
+  validates :pictures, presence:true
 end
