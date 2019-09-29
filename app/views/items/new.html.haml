@@ -14,7 +14,7 @@
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
                   = f.fields_for :pictures do |picture|
                     = picture.label :name
-                    = picture.file_field :name, accept: ".jpg, .jpeg, .png", multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
+                    = picture.file_field :name, multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名

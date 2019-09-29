@@ -12,9 +12,12 @@
               .uploud-container__have-items 
                 .uploud-dropbox
                   %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
-                  = f.fields_for :pictures do |picture|
-                    = picture.label :name
-                    = picture.file_field :name, accept: ".jpg, .jpeg, .png", multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
+                  = f.fields_for :pictures do |picture| 
+                    = picture.file_field :name, multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
+                    .image_up_box
+                      = image_tag(picture.object.name.url)
+                    .delete_btm_box
+                      = link_to '削除', picture_destroy_user_item_path, method: :delete, class: "delete_btm"
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名
@@ -36,7 +39,15 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category2'}
+                  = f.select :category, options_for_select(@category_parent_array.map{|c|[c, {}]}, @item.category.parent.parent.name), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+              .select-box#children_wrapper
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :category, options_for_select(@category_children.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.parent.id), {}, {class: 'listing-select-wrapper__box--select', id: 'child_category'}
+              .select-box#grandchildren_wrapper
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :category, options_for_select(@category_grandchildren.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.id), {}, {class: 'listing-select-wrapper__box--select', id: 'grandchild_category'}
             .form-group
               = f.label :サイズ
               %span.form-require 必須
@@ -68,7 +79,14 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :delivery, @delivery_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'delivery_parent_category2'}
+                  = f.select :delivery, options_for_select(@delivery_parent_array.map{|c|[c, {}]}, @item.delivery.parent.responsibility), {}, {class: 'listing-select-wrapper__box--select', id: 'delivery_parent_category'}
+            .form-group.first-box3#delivery_label
+              = f.label :配送の方法
+              %span.form-require 必須
+              .select-box
+                .select-wrap
+                  = fa_icon 'chevron-down',class:'icon'
+                  = f.select :delivery, options_for_select(@delivery_children.map{|c|[c[:responsibility], c[:id], {'data-delivery'=>c[:id], 'id'=>c[:id]}]}, @item.delivery.id), {}, {class: 'listing-select-wrapper__box--select', id: 'delivery_parent_category2'}
             .form-group
               = f.label :配送元の地域
               %span.form-require 必須
