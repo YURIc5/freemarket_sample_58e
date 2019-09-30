@@ -22,10 +22,8 @@ class UsersController < ApplicationController
   end
 
   def exhibit_list
-    @itemnames = Item.find(1)
-    @items = Item.find(1).pictures
-    @users = User.all
-    @pictures = Picture.find(3)
+    @items = Item.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
 end

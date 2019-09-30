@@ -35,7 +35,7 @@ $(function(){
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'get_category_children',
+        url: '/users/:user_id/items/get_category_children',
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
@@ -63,7 +63,7 @@ $(function(){
     var childId = $(this).val(); //選択された子カテゴリーのidを取得
     if (childId != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/users/:user_id/items/get_category_grandchildren',
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
@@ -80,6 +80,7 @@ $(function(){
       })
       .fail(function(){
         alert('カテゴリー取得に失敗しました');
+
       })
     }else{
       $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する

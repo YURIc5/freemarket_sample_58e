@@ -26,7 +26,7 @@ $(function(){
     var parentCategory = document.getElementById('delivery_parent_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'get_delivery_children',
+        url: '/users/:user_id/items/get_delivery_children',
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
