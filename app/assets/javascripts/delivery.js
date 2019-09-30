@@ -23,7 +23,6 @@ $(function(){
   }
 
   $('#delivery_parent_category').on('change', function(){
-    console.log('aaa');
     var parentCategory = document.getElementById('delivery_parent_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
