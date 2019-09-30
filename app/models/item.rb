@@ -50,5 +50,5 @@ class Item < ApplicationRecord
   validates :prefecture_id, presence:true
   validates :user_id, presence:true
   validates :delivery_id, presence:true
-  # validates :pictures, presence:true
+
 end

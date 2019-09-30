@@ -23,8 +23,6 @@ class UsersController < ApplicationController
 
   def exhibit_list
     @items = Item.find(current_user.id)
-    # @items = Item.find(user_id: current_user.id)
-    # @items = Item.find(params[:id])
     @user = User.find(params[:id])
   end
 

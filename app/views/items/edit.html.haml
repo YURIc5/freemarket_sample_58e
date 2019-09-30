@@ -18,13 +18,6 @@
                         ドラッグアンドドロップまたは
                         クリックしてファイルをアップロード
                     = picture.file_field :name, multiple: true, name: 'pictures[name][]', id: "upload-image", class: "upload-image", 'data-image': 0
-          -# .dropbox-container.clearfix
-          -#   .uploud-container
-          -#     .uploud-container__have-items 
-          -#       .uploud-dropbox
-          -#         %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
-          -#         = f.fields_for :pictures do |picture| 
-          -#           = picture.file_field :name, multiple: true, name: 'pictures[name][]', class: "uploud-dropfile", 'data-image': 0
         .sell-content.clearfix
           .form-group.first-box
             = f.label :商品名
