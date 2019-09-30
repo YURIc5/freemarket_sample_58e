@@ -18,7 +18,7 @@
           出品する
           = fa_icon 'chevron-right', class: 'side__arrow__right'
       %li
-        = link_to "/users/:id/exhibit_list", class: "mypage__side__nav__list" do
+        = link_to exhibit_list_user_path(current_user), class: "mypage__side__nav__list" do
           出品した商品 - 出品中
           = fa_icon 'chevron-right', class: 'side__arrow__right'
       %li

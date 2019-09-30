@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :destroy, :buy, :pay]
   
+  
   def index
     @itemCategory1 = Item.recent1
     @itemCategory2 = Item.recent2
@@ -73,7 +74,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if params[:pictures] == nil
       @item.update(update_params)
-      redirect_to edit_user_item_path
+      redirect_to user_items_path
     elsif params[:pictures][:name] != nil
       @item.update(item_params)
       @item.pictures.destroy_all
@@ -88,8 +89,6 @@ class ItemsController < ApplicationController
   def create
 
     @item = Item.new(create_params)
-    # binding.pry
-
     if params[:pictures] == nil
       redirect_to new_user_item_path
     else
@@ -97,27 +96,11 @@ class ItemsController < ApplicationController
         @item.pictures.build(name: image, item_id: @item.id)
       end
       if @item.save
-        redirect_to root_path
+        redirect_to user_items_path
       else
         redirect_to new_user_item_path
     end
   end
-  
-    # @item = Item.new(create_params)
-    # # binding.pry
-
-    # if params[:pictures] == nil
-    #   redirect_to new_user_item_path
-    # else
-    #   params[:pictures][:name].each do |image|
-    #     @item.pictures.build(name: image, item_id: @item.id)
-    #   end
-    # end
-    #  if @item.save
-    #   redirect_to root_path
-    # else
-    #   redirect_to new_user_item_path
-    # end
   
 
   end
