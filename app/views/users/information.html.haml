@@ -1,70 +1,8 @@
--# %body
--#   %main.main-contents.crearfix
--#     .main-contents__content
--#       %section.chapter-container
--#         %h2.chapter-container__head 本人情報の登録
--#         -# フォームの値は仮なので修正が必要です
--#         = form_for [@user, @address], html: {class: 'l-single-inner'} do |f|
--#           %div
--#             %p
--#               お客さまの本人情報をご登録ください。
--#               %br>/
--#               登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
--#             %p.text-right
--#               = link_to '/jp/help_center/article/495/', target:'_blank' do
--#                 本人確認書類のアップロードについて
--#                 = fa_icon 'arrow-right',class:'icon'
--#           .form-group
--#             = f.label :お名前
--#             %p
--#             = current_user.name
--#           .form-group
--#             = f.label :お名前カナ
--#             %p
--#             = current_user.name_kana
--#           .form-group
--#             = f.label :生年月日
--#             %p
--#             = current_user.birthday
--#           .form-group
--#             = f.label :郵便番号
--#             %span.form-arbitrary 任意
--#             %br/
--#             = f.text_field :postcode, class: 'input-default', placeholder: "例 ）1234567"
--#           .form-group
--#             = f.label :都道府県
--#             %span.form-arbitrary 任意
--#             .form-group__select-wrap
--#               = fa_icon 'chevron-down', class:'form-group__select-wrap__icon'
--#               = f.select :prefecture, [ ['-----','-----'], ['東京','東京'], ['福岡','福岡'],['沖縄','沖縄'] ],{},{class: 'select-default'}
--#           .form-group
--#             = f.label :市区町村
--#             %span.form-arbitrary 任意
--#             %br/
--#             = f.text_field :city, class: 'input-default', placeholder: "例 ）横浜市緑区"
--#           .form-group
--#             = f.label :番地
--#             %span.form-arbitrary 任意
--#             %br/
--#             = f.text_field :block, class: 'input-default', placeholder: "例 ）青山1-1-1"
--#           .form-group
--#             = f.label :建物名
--#             %span.form-arbitrary 任意
--#             %br/
--#             = f.text_field :block, class: 'input-default', placeholder: "例 ）柳ビル103" 
--#           = f.submit '登録する',class:'btn-default btn-red'
--#           .form-group.text-right
--#             %p
--#               = link_to '/jp/help_center/article/423/',target: '_blank' do
--#                 本人情報の登録について
--#                 = fa_icon 'arrow-right',class:'icon'
--#     = render "/shared/mypage-side-manu"
 %body
   %main.main-contents.crearfix
     .main-contents__content
       %section.chapter-container
         %h2.chapter-container__head 本人情報の登録
-        -# フォームの値は仮なので修正が必要です
         = form_for [@user, @address], html: {class: 'l-single-inner'} do |f|
           %div
             %p
