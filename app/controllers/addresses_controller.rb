@@ -7,6 +7,7 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
+    binding.pry
     if @address.save
       session[:id] = params[:user_id]
       redirect_to new_user_card_path(session[:id])

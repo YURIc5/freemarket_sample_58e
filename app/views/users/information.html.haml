@@ -5,7 +5,6 @@
     .main-contents__content
       %section.chapter-container
         %h2.chapter-container__head 本人情報の登録
-        -# フォームの値は仮なので修正が必要です
         = form_for [@user, @address], html: {class: 'l-single-inner'} do |f|
           %div
             %p
@@ -18,14 +17,16 @@
                 = fa_icon 'arrow-right',class:'icon'
           .form-group
             = f.label :お名前
-            %p  てすとなまえ
+            %p
+            = current_user.name
           .form-group
             = f.label :お名前カナ
-            %p 
-              テストナマエ
+            %p
+            = current_user.name_kana
           .form-group
             = f.label :生年月日
-            %p 1900/01/01
+            %p
+            = current_user.birthday
           .form-group
             = f.label :郵便番号
             %span.form-arbitrary 任意
@@ -34,9 +35,9 @@
           .form-group
             = f.label :都道府県
             %span.form-arbitrary 任意
-            .form-group__select-wrap
-              = fa_icon 'chevron-down', class:'form-group__select-wrap__icon'
-              = f.select :prefecture, [ ['-----','-----'], ['東京','東京'], ['福岡','福岡'],['沖縄','沖縄'] ],{},{class: 'select-default'}
+            .select-default
+              = fa_icon 'chevron-down', class:'icon'
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: '---'
           .form-group
             = f.label :市区町村
             %span.form-arbitrary 任意
@@ -59,5 +60,6 @@
                 本人情報の登録について
                 = fa_icon 'arrow-right',class:'icon'
     = render "/shared/mypage-side-manu"
+
 
 
