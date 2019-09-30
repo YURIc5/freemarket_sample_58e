@@ -94,3 +94,4 @@ gem 'mini_magick'
 gem 'active_hash'
 gem 'recaptcha', require: "recaptcha/rails"
 gem 'fog-aws'
+gem "gretel"
