@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :item do
-    # id { Faker::Time.between(from: DateTime.now - 2, to: DateTime.now) }
-    # user
 
     name                     {"アイテム名"}
     description              {"お気に入り"}

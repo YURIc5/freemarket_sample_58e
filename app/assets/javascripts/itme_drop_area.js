@@ -1,5 +1,8 @@
 $(document).on('turbolinks:load', function(){
   var dropzone = $('.dropzone-area');
+  
+  // のちに挑戦するためコメントアウトはそのままでお願いします（鴨井）
+
   // var dropzone2 = $('.dropzone-area2');
   // var dropzone_box = $('.dropzone-box');
   var images = [];

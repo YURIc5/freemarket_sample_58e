@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :destroy, :buy, :pay]
-  
+
   
   def index
     @itemCategory1 = Item.recent1
@@ -70,14 +70,19 @@ class ItemsController < ApplicationController
   end
 
   def update
-    
+
     @item = Item.find(params[:id])
+    # もしピクチャーが何も変更されていなければ
     if params[:pictures] == nil
+      # アイテムの変更のみ保存
       @item.update(update_params)
       redirect_to user_items_path
+      # ピクチャーが変更されていれば
     elsif params[:pictures][:name] != nil
       @item.update(item_params)
+      # 一旦登録されているピクチャーを捨てて
       @item.pictures.destroy_all
+      # 新たに写真を登録する
       params[:pictures][:name].each do |image|
         @item.pictures.create(name: image, item_id: @item.id)
         redirect_to user_items_path
@@ -89,9 +94,11 @@ class ItemsController < ApplicationController
   def create
 
     @item = Item.new(create_params)
+    # もしピクチャーがなければ
     if params[:pictures] == nil
       redirect_to new_user_item_path
     else
+      # 登録された写真を配列から取り出しピクチャーテーブルへ保存
       params[:pictures][:name].each do |image|
         @item.pictures.build(name: image, item_id: @item.id)
       end
