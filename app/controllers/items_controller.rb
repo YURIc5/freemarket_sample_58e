@@ -94,6 +94,7 @@ class ItemsController < ApplicationController
   def create
 
     @item = Item.new(create_params)
+    binding.pry
     # もしピクチャーがなければ
     if params[:pictures] == nil
       redirect_to new_user_item_path
@@ -102,6 +103,7 @@ class ItemsController < ApplicationController
       params[:pictures][:name].each do |image|
         @item.pictures.build(name: image, item_id: @item.id)
       end
+      binding.pry
       if @item.save
         redirect_to user_items_path
       else
@@ -151,6 +153,7 @@ class ItemsController < ApplicationController
   private
 
   def create_params
+    binding.pry
     params.require(:item).permit(
       :name, 
       :description, 

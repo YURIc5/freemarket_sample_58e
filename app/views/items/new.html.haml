@@ -85,7 +85,7 @@
               .select-box
                 .select-wrap
                   = fa_icon 'chevron-down',class:'icon'
-                  = f.select :day,[['1〜2日で発送','1'],['2〜3日で発送','2'],['4〜7日で発送','3']], {:prompt => '---'}
+                  = f.select :day, Item.days.keys, {:prompt => "---"}
         .sell-content.clearfix
           %h3.sub-header 販売価格(300〜9,999,999)
           = link_to '?','/jp/help_center/article/64/',class: 'form-question'
