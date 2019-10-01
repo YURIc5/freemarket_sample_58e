@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
       
     end
-    
+
     resources :cards, only: [:index,:show, :new, :create, :destroy]
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :pictures

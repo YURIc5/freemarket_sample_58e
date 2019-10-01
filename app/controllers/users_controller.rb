@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def signup
+    render layout:'sub'
   end
 
   def phone
