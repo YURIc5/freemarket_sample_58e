@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:show, :destroy, :buy, :pay]
-
+  before_action :set_item, only: [:show, :destroy, :buy, :pay, :update, :edit]
+  before_action :authenticate_user!, only: [:new]
   
   def index
     @itemCategory1 = Item.recent1
@@ -24,8 +24,8 @@ class ItemsController < ApplicationController
 
     Delivery.where(ancestry: nil).map{|parent| @delivery_parent_array << parent.responsibility}
 
-
     render layout:'sub'
+
   end
   
   def get_category_children
@@ -50,10 +50,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
-
-    
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     
     @category_parent_array = ['---']
     # #データベースから、親カテゴリーのみ抽出し、配列化
@@ -67,13 +64,11 @@ class ItemsController < ApplicationController
   end
 
   def update
-
-    @item = Item.find(params[:id])
     # もしピクチャーが何も変更されていなければ
     if params[:pictures] == nil
       # アイテムの変更のみ保存
       @item.update(update_params)
-      redirect_to user_items_path
+      redirect_to edit_item_path
       # ピクチャーが変更されていれば
     elsif params[:pictures][:name] != nil
       @item.update(item_params)
@@ -82,8 +77,10 @@ class ItemsController < ApplicationController
       # 新たに写真を登録する
       params[:pictures][:name].each do |image|
         @item.pictures.create(name: image, item_id: @item.id)
-        redirect_to user_items_path
+        redirect_to root_path
       end
+    else
+      recirect_to edit_item_path
     end
   end
 
@@ -100,7 +97,7 @@ class ItemsController < ApplicationController
         @item.pictures.build(name: image, item_id: @item.id)
       end
       if @item.save
-        redirect_to user_items_path
+        redirect_to root_path
       else
         redirect_to new_user_item_path
     end

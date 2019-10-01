@@ -2,7 +2,7 @@
   %main.single-main
     %section.l-single-container
       %h2.l-single-head 商品の情報を入力
-      = form_for @item, url: user_items_path do |f|
+      = form_for @item do |f|
         .sell-box
           %h3.uploud-header 出品画像
           %span.form-require 必須
@@ -122,6 +122,6 @@
               = link_to '加盟店規約','/jp/seller_terms/'
               に同意したことになります。
             = f.submit '出品する', class: 'btn-red'
-            = link_to user_path(current_user), class: "btn-grey" do
-              もどる
+            = link_to root_path, class: "btn-grey" do
+              トップページに戻る
 

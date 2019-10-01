@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get 'done' # 登録完了後のページ
     end
   end
+
+  resources :items, only: [:index, :new, :show, :edit, :update, :create, :destroy]
   
   get 'users/phone' => 'users#phone' 
   get 'users/signup' => 'users#signup' 
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
     resources :cards, only: [:index,:show, :new, :create, :destroy]
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :pictures
-    resources :items do
+    resources :items, only: [:buy, :pay] do
       member do
         get 'buy'
         post 'pay'
