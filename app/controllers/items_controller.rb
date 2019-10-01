@@ -31,7 +31,6 @@ class ItemsController < ApplicationController
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-    # binding.pry
   end
 
    # 子カテゴリーが選択された後に動くアクション
@@ -44,8 +43,6 @@ class ItemsController < ApplicationController
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @delivery_children = Delivery.find_by(responsibility: "#{params[:parent_name]}", ancestry: nil).children
   end
-
-
 
  
 
@@ -94,7 +91,6 @@ class ItemsController < ApplicationController
   def create
 
     @item = Item.new(create_params)
-    binding.pry
     # もしピクチャーがなければ
     if params[:pictures] == nil
       redirect_to new_user_item_path
@@ -103,7 +99,6 @@ class ItemsController < ApplicationController
       params[:pictures][:name].each do |image|
         @item.pictures.build(name: image, item_id: @item.id)
       end
-      binding.pry
       if @item.save
         redirect_to user_items_path
       else
@@ -153,7 +148,6 @@ class ItemsController < ApplicationController
   private
 
   def create_params
-    binding.pry
     params.require(:item).permit(
       :name, 
       :description, 

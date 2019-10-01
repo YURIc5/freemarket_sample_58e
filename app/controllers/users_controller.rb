@@ -22,8 +22,7 @@ class UsersController < ApplicationController
   end
 
   def exhibit_list
-    @items = Item.find(current_user.id)
     @user = User.find(params[:id])
+    @items = Item.where(user_id: current_user.id)
   end
-
 end
