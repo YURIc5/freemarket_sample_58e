@@ -1,5 +1,5 @@
 .box__contents__content
-  = link_to user_item_path(current_user,item.id),method: :get,class: "contentlink" do
+  = link_to user_item_path(item,item.id),method: :get,class: "contentlink" do
     %figure.figure
       %figcaption
         %span
