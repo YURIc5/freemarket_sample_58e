@@ -1,5 +1,5 @@
 class SignupController < ApplicationController
-
+  layout 'sub'
   def member
     # 新規インスタンス作成
     @user = User.new

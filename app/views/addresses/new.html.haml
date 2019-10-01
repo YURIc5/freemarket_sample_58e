@@ -1,6 +1,5 @@
 %body
   .single-container
-    = render partial: "shared/sub_header"
     %main.single-main
       %section.l-single-container
         %h2.l-single-head.registration 住所入力
@@ -10,7 +9,7 @@
               = f.label :郵便番号
               %spna.form-require 必須
               %br/
-              = f.text_field :postcode, placeholder: "例 ）123-4567" 
+              = f.text_field :postcode, placeholder: "例 ）1234567" 
             .field
               = f.label :都道府県
               %spna.form-require 必須
@@ -36,4 +35,3 @@
               
             .actions.btn-next
               = f.submit "次へ住む", class: "btn-default btn-red"
-    = render partial: "shared/sub_footer"
