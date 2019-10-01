@@ -18,6 +18,5 @@
 
     %footer
       = render "/shared/footer"
-    -if controller.controller_name != "signup" && "devise" && "address" || (controller.controller_name == "items" && controller.action_name != "new") && ( controller.controller_name =="card" && controller.action_name != "new" && "create") || (controller.controller_name == "user" && controller.action_name != "signup")
-      %global-footer
-        = render "/shared/sell-btn" 
+    %global-footer
+      = render "/shared/sell-btn" 

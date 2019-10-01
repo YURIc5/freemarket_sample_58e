@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
     Delivery.where(ancestry: nil).map{|parent| @delivery_parent_array << parent.responsibility}
 
 
-    render :layout => 'sub'
+    render layout:'sub'
   end
   
   def get_category_children
