@@ -3,7 +3,7 @@
   %ul.mypage__user__transactions__tabs
     %li.mypage__user__exhibit__now
       %h3.mypage__user__exhibit__now__tab.exhibit__active
-        = link_to "#" do
+        = link_to exhibit_list_user_path do
           出品中
     %li.mypage__user__exhibit__now
       %h3
@@ -14,15 +14,16 @@
         = link_to "#" do
           売却済
   .mypage__user__tab__content
+  - if @items != nil
     - @items.each do |item|
       %ul.mypage__user__tab__content__now
         %li
-          = link_to "#", class:"content__now__item" do
+          = link_to user_item_path(current_user, item.id), class:"content__now__item" do
             .content__now__item__figure
-              = image_tag item.name, class:"content__now__item__image"
+              = image_tag "#{item.pictures.first.name}", class:"content__now__item__image"
             .content__now__item__area
               .content__now__item__area__name
-                = @itemnames.name
+                = item.name
               .content__now__item__area__reactions
                 %span.content__now__item__area__reactions__reaction
                   %i.fa.fa-heart-o
@@ -31,19 +32,9 @@
                 %span.content__now__item__area__reactions__reaction
                   %i.fa.fa-comment-o
                   %span.reaction__int
-                    0
-            %i.fa.fa-chevron-right                    
-              -# = fa_icon 'like-boder', class: 'icon'
-    -# %ul.mypage__user__tab__content__infos.active
-    -#   %li.mypage__user__tab__content__infos__info 出品中の商品がありません
-
-
-
-
-      -# - current_user.groups.each do |group|
-      -# .chat__side__groups__group
-      -#   = link_to group_messages_path(group) do
-      -#     .chat__side__groups__group__name
-      -#       = group.name
-      -#     .chat__side__groups__group__latest__message
-      -#       = group.show_last_message
+                    0  
+                  - if @user.sold_items != nil
+                    出品中
+                  - elsif @user.saling_items != nil
+                    売約済み
+            %i.fa.fa-chevron-right
