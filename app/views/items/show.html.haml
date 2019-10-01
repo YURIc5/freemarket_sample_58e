@@ -100,11 +100,12 @@
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
     .text-center
+    - if @item.user_id != current_user.id
       .sales-point-message
         P1,000 をお持ちです
         .sales-point-message:after
-    =link_to "https://www.mercari.com/jp/transaction/buy/m95010021448/",class: "item-buy-btn" do
-      購入画面に進む
+      =link_to buy_user_item_path(current_user, @item),class: "item-buy-btn" do
+        購入画面に進む
 
 
     .item-description.f14
@@ -131,12 +132,16 @@
         =link_to "https://www.mercari.com/jp/safe/description/", class: "icon-lock",target: "_blank" do
           .icon-lock::before
             %span あんしん・あんぜんへの取り組み
-
-  = link_to edit_user_item_path,method: :get,class: "item-delete-btn" do
-    この商品を編集する
-
-  = link_to user_item_path,method: :delete,class: "item-delete-btn" do
-    この商品を削除する
+  - if @item.buyer_id != nil
+    .buyed_message
+      購入されました
+  - else
+    - if @item.user_id == current_user.id
+      = link_to edit_item_path,method: :get,class: "item-delete-btn" do
+        この商品を編集する
+    - if @item.user_id == current_user.id
+      = link_to item_path,method: :delete,class: "item-delete-btn" do
+        この商品を削除する
 
   .item-detail-message
     .message-container

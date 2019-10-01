@@ -18,7 +18,7 @@
     - @items.each do |item|
       %ul.mypage__user__tab__content__now
         %li
-          = link_to user_item_path(current_user, item.id), class:"content__now__item" do
+          = link_to item_path(item), class:"content__now__item" do
             .content__now__item__figure
               = image_tag "#{item.pictures.first.name}", class:"content__now__item__image"
             .content__now__item__area
@@ -33,8 +33,8 @@
                   %i.fa.fa-comment-o
                   %span.reaction__int
                     0  
-                  - if @user.sold_items != nil
+                  - if item.buyer_id == nil
                     出品中
-                  - elsif @user.saling_items != nil
+                  - elsif item.buyer_id != nil 
                     売約済み
             %i.fa.fa-chevron-right

@@ -26,7 +26,10 @@
                 %span.payment__buy__prices__price
                   ¥
                   = @item.price
-          = link_to "購入する", pay_user_item_path, method: :post,class: "buy__it__action"
+          - if @creditcard_last4 == nil
+            = link_to "カード情報が未入力です", buy_user_item_path(current_user), method: :post,class: "buy__it__action"
+          - else
+            = link_to "購入する", pay_user_item_path, method: :post,class: "buy__it__action"
 
   %section.buy__user__info
     .buy__user__info__address
@@ -34,14 +37,15 @@
         配送先
       %p
         〒
-        = @address.postcode
-        %br
-        = @address.prefecture
-        = @address.city
-        = @address.block
-        %br
-        = current_user.name
-      = link_to "#" do
+        - if @address.present?
+          = @address.postcode
+          %br
+          = Prefecture.find(@address.prefecture_id)[:name]
+          = @address.city
+          = @address.block
+          %br
+          = current_user.name
+      = link_to buy_user_item_path(current_user) do
         変更する
   %section.buy__user__card
     .buy__user__card__info
@@ -49,36 +53,40 @@
         支払い方法
       .settings-payment-num 
         %p 
+        - if @creditcard_last4.present?
           **** **** ****
           = @creditcard_last4
           %br
-          = @creditcard_exp_month
-          \/
-          = @creditcard_exp_year 
+          - if @creditcard_exp_month.present?
+            = @creditcard_exp_month
+            \/
+          - if @creditcard_exp_year.present?
+            = @creditcard_exp_year 
         %ul
-        - case @creditcard_brand
-        - when "Visa" then
-          %ol
-            =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2482339763', width: "49",height: "20",alt: ""
-        - when "MasterCard" then
-          %ol
-            =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2482339763',width: "34",height: "20",alt: ""
-        - when "Saison" then  
-          %ol
-            =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2482339763',width: "30",height: "20",alt: ""
-        - when "Jcb" then  
-          %ol
-            =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2482339763',width: "32",height: "20",alt: ""
-        - when "AmericanExpress" then  
-          %ol
-            =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2482339763',width: "21",height: "20",alt: ""
-        - when "DinersClub" then  
-          %ol
-            =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2482339763',width: "32",height: "20",alt: ""
-        - when "Discover" then  
-          %ol
-            =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2482339763',width: "32",height: "20",alt: ""
-      = link_to "#" do
+        - if @creditcard_brand.present?
+          - case @creditcard_brand
+          - when "Visa" then
+            %ol
+              =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/visa.svg?2482339763', width: "49",height: "20",alt: ""
+          - when "MasterCard" then
+            %ol
+              =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/master-card.svg?2482339763',width: "34",height: "20",alt: ""
+          - when "Saison" then  
+            %ol
+              =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/saison-card.svg?2482339763',width: "30",height: "20",alt: ""
+          - when "Jcb" then  
+            %ol
+              =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/jcb.svg?2482339763',width: "32",height: "20",alt: ""
+          - when "AmericanExpress" then  
+            %ol
+              =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/american_express.svg?2482339763',width: "21",height: "20",alt: ""
+          - when "DinersClub" then  
+            %ol
+              =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?2482339763',width: "32",height: "20",alt: ""
+          - when "Discover" then  
+            %ol
+              =image_tag 'https://www-mercari-jp.akamaized.net/assets/img/card/discover.svg?2482339763',width: "32",height: "20",alt: ""
+      = link_to buy_user_item_path(current_user) do
         変更する
     
 
