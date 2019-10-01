@@ -1,4 +1,10 @@
-= link_to '#',class:'sell-btn' do
-  .sell-btn__word 出品
-  = fa_icon 'camera',class:'sell-btn__icon'
+-if user_signed_in?
+  = link_to  new_user_item_path(current_user.id),class:'sell-btn' do
+    .sell-btn__word 出品
+    = fa_icon 'camera',class:'sell-btn__icon'
+- else
+  = link_to new_user_session_path,class:'sell-btn' do
+    .sell-btn__word 出品
+    = fa_icon 'camera',class:'sell-btn__icon'
+  
   

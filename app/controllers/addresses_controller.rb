@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-
+  layout 'sub'
   def new
     @user = User.find(params[:user_id])
     @address = Address.new
