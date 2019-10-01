@@ -15,7 +15,6 @@
                   .input_area
                     %pre
                       :preserve
-                        ドラッグアンドドロップまたは
                         クリックしてファイルをアップロード
                     = picture.file_field :name, multiple: true, name: 'pictures[name][]', id: "upload-image", class: "upload-image", 'data-image': 0
         .sell-content.clearfix
@@ -29,7 +28,7 @@
             = f.label :商品の説明
             %span.form-require 必須
             %br/
-            = f.text_field :description, class: 'input-default', placeholder: '商品の説明（必須1,000文字）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'.html_safe
+            = f.text_field :description, class: 'textarea-default', placeholder: '商品の説明（必須1,000文字）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'.html_safe
         .sell-content.clearfix
           %h3.sub-header 商品の詳細
           .form-box
@@ -123,6 +122,6 @@
               = link_to '加盟店規約','/jp/seller_terms/'
               に同意したことになります。
             = f.submit '出品する', class: 'btn-red'
-            = link_to '#' do
+            = link_to user_path(current_user), class: "btn-grey" do
               もどる
-            = f.submit 'もどる', class: 'btn-grey'
+

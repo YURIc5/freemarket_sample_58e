@@ -44,8 +44,6 @@ class ItemsController < ApplicationController
     @delivery_children = Delivery.find_by(responsibility: "#{params[:parent_name]}", ancestry: nil).children
   end
 
-
-
  
 
   def show
