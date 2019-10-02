@@ -104,7 +104,10 @@
             .sales-point-message:after
         - else
           .sales-point-massage
-        - if user_signed_in? && @item.user_id != current_user.id && current_user.creditcard == nil
+        - if @item.user_id != nil
+          .buyed_message
+            売り切れました
+        - elsif user_signed_in? && @item.user_id != current_user.id && current_user.creditcard == nil
           = link_to new_user_card_path(current_user),class: "item-buy-btn" do
             購入画面に進むカード登録画面
         - elsif user_signed_in? && @item.user_id != current_user.id && current_user.creditcard != nil
@@ -123,6 +126,9 @@
           この商品を編集する 
         = link_to item_path,method: :delete,class: "item-delete-btn" do
           この商品を削除する
+    - else
+      = link_to root_path, class: "item-delete-btn" do
+        トップへ戻る
 
     .item-description.f14
       %p.item-description-inner
@@ -148,27 +154,19 @@
         =link_to "https://www.mercari.com/jp/safe/description/", class: "icon-lock",target: "_blank" do
           .icon-lock::before
             %span あんしん・あんぜんへの取り組み
-  - if @item.buyer_id != nil
-    .buyed_message
-      売り切れました
-  -else
-    - if @item.user_id == current_user
-      = link_to edit_item_path,method: :get,class: "item-delete-btn" do
-        この商品を編集する
-      = link_to item_path,method: :delete,class: "item-delete-btn" do
-        この商品を削除する
-
-  .item-detail-message
-    .message-container
-      .message-content
-        %form.message-form{action: "", method: ""}
-          %input{name: "__csrf_value", type: "hidden", value: "c4ef71dd1bf937e255edf491fe58d1524c28427897da890a46b22af3f9c5e9cd14cc826c77f8380ee5fa42e40d86ccd00465ca8c17798797a3da10d151ac47a1d"}/
-          %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          %input{name: "item_id", type: "hidden", value: "m95010021448"}/
-          %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
-          %textarea.textarea-default{name: "body", type: "text", value: ""}
-          %button.message-submit.btn-default.btn-gray{type: "submit"}
-            %span コメントする
+  
+  - if @item.user_id != current_user.id
+    .item-detail-message
+      .message-container
+        .message-content
+          %form.message-form{action: "", method: ""}
+            %input{name: "__csrf_value", type: "hidden", value: "c4ef71dd1bf937e255edf491fe58d1524c28427897da890a46b22af3f9c5e9cd14cc826c77f8380ee5fa42e40d86ccd00465ca8c17798797a3da10d151ac47a1d"}/
+            %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %input{name: "item_id", type: "hidden", value: "m95010021448"}/
+            %input{name: "redirect_url_key", type: "hidden", value: "item_detail"}/
+            %textarea.textarea-default{name: "body", type: "text", value: ""}
+            %button.message-submit.btn-default.btn-gray{type: "submit"}
+              %span コメントする
 
   %ul.nav-item-link-prev-next.clearfix
     %li.nav-item-link-prev
