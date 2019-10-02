@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :name, presence: true, format: { with: kanji }
   validates :name_kana, presence: true, format: { with: kana }
-  validates :birthday, presence: true
+  validates :birthday, presence: true,length: { is:8 }
   validates :phone_number, presence: true, length: { is: 11 }
   validates :password_confirmation, presence: true
   

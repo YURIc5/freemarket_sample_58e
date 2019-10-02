@@ -102,5 +102,11 @@ describe User do
       user.valid?
       expect(user.errors[:password_confirmation]).to include("can't be blank")
     end
+
+    it "birthdayが8文字以外なら登録不可" do
+      user = build(:user, birthday: "1234567")
+      user.valid?
+      expect(user.errors[:birthday]).to include("is the wrong length (should be 8 characters)")
+    end
   end
 end
