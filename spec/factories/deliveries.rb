@@ -1,5 +1,5 @@
-FactoryBot.define do
-  factory :delivery do
-    responsibility { "MyString" }
-  end
-end
+# FactoryBot.define do
+#   factory :delivery do
+#     responsibility { "MyString" }
+#   end
+# end
