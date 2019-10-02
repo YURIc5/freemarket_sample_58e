@@ -47,6 +47,8 @@ class ItemsController < ApplicationController
  
 
   def show
+    @user = User.find(current_user.id)
+    @creditcard = Creditcard.where(user_id: current_user.id)
   end
 
   def edit
