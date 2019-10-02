@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user
 
   def signup
     render layout:'sub'
@@ -26,4 +27,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = Item.where(user_id: current_user.id)
   end
+
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
 end
