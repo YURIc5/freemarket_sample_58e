@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
     if params[:pictures] == nil
       # アイテムの変更のみ保存
       @item.update(update_params)
-      redirect_to edit_item_path
+      redirect_to root_path
       # ピクチャーが変更されていれば
     elsif params[:pictures][:name] != nil
       @item.update(item_params)

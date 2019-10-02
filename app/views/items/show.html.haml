@@ -96,22 +96,24 @@
         = "¥#{@item.price}"
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
-    - if @item.user_id != current_user
+    - if @item.user_id != current_user.id
       .text-center
         - if user_signed_in? && @item.user_id != current_user
           .sales-point-message
             P1,000 をお持ちです
-        .sales-point-message:after
+            .sales-point-message:after
+        - else
+          .sales-point-massage
         - if user_signed_in? && @item.user_id != current_user.id && current_user.creditcard == nil
-          = link_to new_user_card_path,class: "item-buy-btn" do
-            購入画面に進む
-        - if user_signed_in? && @item.user_id != current_user.id && current_user.creditcard != nil
-          = link_to buy_user_item_path(current_user, @item),class: "item-buy-btn" do
+          = link_to new_user_card_path(current_user),class: "item-buy-btn" do
+            購入画面に進むカード登録画面
+        - elsif user_signed_in? && @item.user_id != current_user.id && current_user.creditcard != nil
+          = link_to buy_user_item_path(current_user, @item), class: "item-buy-btn" do
             購入画面に進む
         - else 
           =link_to user_session_path,class: "item-buy-btn" do
-            購入画面に進む
-    - if @item.user_id == current_user
+            購入画面に進むログイン
+    - elsif @item.user_id == current_user.id
       .sales-point-message:after
       - if @item.buyer_id != nil
         .buyed_message
