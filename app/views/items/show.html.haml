@@ -96,9 +96,9 @@
         = "¥#{@item.price}"
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
-    - if @item.user_id != current_user.id
+    - if @item.user_id != current_user
       .text-center
-        - if user_signed_in? && @item.user_id != current_user.id
+        - if user_signed_in? && @item.user_id != current_user
           .sales-point-message
             P1,000 をお持ちです
         .sales-point-message:after
@@ -111,7 +111,7 @@
         - else 
           =link_to user_session_path,class: "item-buy-btn" do
             購入画面に進む
-    - if @item.user_id == current_user.id
+    - if @item.user_id == current_user
       .sales-point-message:after
       - if @item.buyer_id != nil
         .buyed_message
