@@ -32,7 +32,7 @@
           %tr
             %th 出品者
             %td
-              =link_to "https://www.mercari.com/jp/u/191455761/",class: "contents__btn" do
+              =link_to "",class: "contents__btn" do
                 = @item.user.name
               %div
                 .item-user-ratings
@@ -50,15 +50,15 @@
           %tr
             %th カテゴリー
             %td
-              =link_to "https://www.mercari.com/jp/category/1/",class: "contents__btn" do
+              =link_to "",class: "contents__btn" do
                 = @item.category.parent.parent.name
                 %br
               
-              =link_to "https://www.mercari.com/jp/category/20/",class: "item-detail-table-sub-category" do
+              =link_to "",class: "item-detail-table-sub-category" do
                 %i.icon-arrow-right
                 = @item.category.parent.name
                 %br
-              =link_to "https://www.mercari.com/jp/category/214/",class: "item-detail-table-sub-sub-category" do
+              =link_to "",class: "item-detail-table-sub-sub-category" do
                 %i.icon-arrow-right
                 = @item.category.name
                 %br
@@ -67,7 +67,7 @@
           %tr
             %th ブランド
             %td
-              =link_to "https://www.mercari.com/jp/brand/539/",class: "" do
+              =link_to "",class: "" do
                 %div
                 = @item.brand
           %tr
@@ -85,7 +85,7 @@
           %tr
             %th 配送元地域
             %td
-              =link_to "https://www.mercari.com/jp/brand/539/",class: "" do
+              =link_to "",class: "" do
                 = Prefecture.find(@item.prefecture_id)[:name]
           %tr
             %th 発送日の目安
@@ -159,7 +159,7 @@
   .item-detail-message
     .message-container
       .message-content
-        %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method: "POST"}
+        %form.message-form{action: "", method: ""}
           %input{name: "__csrf_value", type: "hidden", value: "c4ef71dd1bf937e255edf491fe58d1524c28427897da890a46b22af3f9c5e9cd14cc826c77f8380ee5fa42e40d86ccd00465ca8c17798797a3da10d151ac47a1d"}/
           %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
           %input{name: "item_id", type: "hidden", value: "m95010021448"}/
@@ -170,10 +170,10 @@
 
   %ul.nav-item-link-prev-next.clearfix
     %li.nav-item-link-prev
-      =link_to "https://item.mercari.com/jp/m98456629363/", class: "i.icon-arrow-left" do
+      =link_to "", class: "i.icon-arrow-left" do
         スカート スカッツ
     %li.nav-item-link-next
-      =link_to "https://item.mercari.com/jp/m16116597761/", class: "i.icon-arrow-right" do
+      =link_to "", class: "i.icon-arrow-right" do
         ワンピース
 
   .item-social-media-box
