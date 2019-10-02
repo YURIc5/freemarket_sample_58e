@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :destroy, :buy, :pay, :update, :edit]
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :buy]
   
   def index
     @itemCategory1 = Item.recent1
@@ -47,8 +47,7 @@ class ItemsController < ApplicationController
  
 
   def show
-    @user = User.find(current_user.id)
-    @creditcard = Creditcard.where(user_id: current_user.id)
+    
   end
 
   def edit
@@ -92,7 +91,7 @@ class ItemsController < ApplicationController
     @item = Item.new(create_params)
     # もしピクチャーがなければ
     if params[:pictures] == nil
-      redirect_to new_user_item_path
+      redirect_to new_item_path
     else
       # 登録された写真を配列から取り出しピクチャーテーブルへ保存
       params[:pictures][:name].each do |image|
@@ -101,7 +100,7 @@ class ItemsController < ApplicationController
       if @item.save
         redirect_to root_path
       else
-        redirect_to new_user_item_path
+        redirect_to new_item_path
     end
   end
   
@@ -118,7 +117,6 @@ class ItemsController < ApplicationController
   
 
   def buy
-    @address = current_user.address
 
     creditcard = current_user.creditcard
     Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)

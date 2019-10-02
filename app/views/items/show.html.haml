@@ -91,9 +91,6 @@
             %th 発送日の目安
             %td 
               = @item.day
-
-
-
     .item-price-box
       %span.item-price.bold
         = "¥#{@item.price}"
@@ -101,20 +98,29 @@
       %span.item-shipping-fee 送料込み
     - if @item.user_id != current_user.id
       .text-center
-
-        - if @user.creditcard_id != nil
+        - if user_signed_in? && @item.user_id != current_user.id
           .sales-point-message
             P1,000 をお持ちです
         .sales-point-message:after
-        - if @creditcard != nil
-          =link_to buy_user_item_path(current_user, @item),class: "item-buy-btn" do
+        - if user_signed_in? && @item.user_id != current_user.id && current_user.creditcard == nil
+          = link_to new_user_card_path,class: "item-buy-btn" do
             購入画面に進む
-        - else
-          =link_to item_path(@item),class: "item-buy-btn" do
-            %p 購入できません
-          %p.error_message
-            ※クレジットカードの登録をしてください
-
+        - if user_signed_in? && @item.user_id != current_user.id && current_user.creditcard != nil
+          = link_to buy_user_item_path(current_user, @item),class: "item-buy-btn" do
+            購入画面に進む
+        - else 
+          =link_to user_session_path,class: "item-buy-btn" do
+            購入画面に進む
+    - if @item.user_id == current_user.id
+      .sales-point-message:after
+      - if @item.buyer_id != nil
+        .buyed_message
+          売り切れました
+      - else 
+        = link_to edit_item_path,method: :get,class: "item-delete-btn" do
+          この商品を編集する 
+        = link_to item_path,method: :delete,class: "item-delete-btn" do
+          この商品を削除する
 
     .item-description.f14
       %p.item-description-inner
@@ -143,11 +149,10 @@
   - if @item.buyer_id != nil
     .buyed_message
       売り切れました
-  - else
-    - if @item.user_id == current_user.id
+  -else
+    - if @item.user_id == current_user
       = link_to edit_item_path,method: :get,class: "item-delete-btn" do
         この商品を編集する
-    - if @item.user_id == current_user.id
       = link_to item_path,method: :delete,class: "item-delete-btn" do
         この商品を削除する
 

@@ -37,14 +37,13 @@
         配送先
       %p
         〒
-        - if @address.present?
-          = @address.postcode
-          %br
-          = Prefecture.find(@address.prefecture_id)[:name]
-          = @address.city
-          = @address.block
-          %br
-          = current_user.name
+        = current_user.address.postcode
+        %br
+        = Prefecture.find(current_user.address.prefecture_id)[:name]
+        = current_user.address.city
+        = current_user.address.block
+        %br
+        = current_user.name
       = link_to buy_user_item_path(current_user) do
         変更する
   %section.buy__user__card
