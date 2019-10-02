@@ -269,7 +269,7 @@ Devise.setup do |config|
   #                 Rails.application.secrets.facebook_client_secret
 
   config.omniauth :facebook,ENV['FACEBOOK_APP_ID'],ENV['FACEBOOK_APP_SECRET']
-  config.omniauth :google_oauth2,ENV['GOOGLE_CLIENT_ID'],ENV['GOOGLE_CLIENT_SECRET']
+  config.omniauth :google_oauth2,ENV['GOOGLE_CLIENT_ID'],ENV['GOOGLE_CLIENT_SECRET'],{:skip_jwt => true }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
