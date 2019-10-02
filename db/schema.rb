@@ -95,6 +95,8 @@ ActiveRecord::Schema.define(version: 2019_09_28_030213) do
     t.index ["item_id"], name: "index_pictures_on_item_id"
   end
 
+
+
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider"
     t.string "uid"
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 2019_09_28_030213) do
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
+
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -145,7 +148,6 @@ ActiveRecord::Schema.define(version: 2019_09_28_030213) do
   add_foreign_key "items", "deliveries"
   add_foreign_key "pictures", "items"
   add_foreign_key "sns_credentials", "users"
-  add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
   add_foreign_key "users", "addresses"
   add_foreign_key "users", "creditcards"
