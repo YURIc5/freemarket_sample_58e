@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
+         kanji = /\A[一-龥]+\z/
+         kana = /\A[ァ-ヶー－]+\z/
+
   has_many :items
     has_many :comments
     has_many :evaluations
@@ -10,6 +13,14 @@ class User < ApplicationRecord
     has_many :item_likes
     has_one :address
     has_one :creditcard
+
+  validates :nickname, presence: true
+  validates :name, presence: true, format: { with: kanji }
+  validates :name_kana, presence: true, format: { with: kana }
+  validates :birthday, presence: true,length: { is:8 }
+  validates :phone_number, presence: true, length: { is: 11 }
+  validates :password_confirmation, presence: true
+  
   
     def self.find_for_oauth(auth)
       #登録済みのUserか確認

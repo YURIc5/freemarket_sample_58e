@@ -267,6 +267,7 @@ Devise.setup do |config|
   # config.omniauth :facebook,
   #                 Rails.application.secrets.facebook_client_id,
   #                 Rails.application.secrets.facebook_client_secret
+
   config.omniauth :facebook, Rails.application.credentials.omniauth[:FACEBOOK_APP_ID], Rails.application.credentials.omniauth[:FACEBOOK_APP_SECRET]
   config.omniauth :google_oauth2, Rails.application.credentials.omniauth[:GOOGLE_CLIENT_ID], Rails.application.credentials.omniauth[:GOOGLE_CLIENT_SECRET]
   # ==> Warden configuration
