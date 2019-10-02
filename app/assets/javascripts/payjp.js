@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
   $(document).on("click", "#submit-button", function(e) {
 
     e.preventDefault();
-    form.find("input[type=submit]").prop("disabled", true);
+    form.find("input[type=submit]").prop("disabled", false);
 
     var card = {
         number: $("#payment_card_no").val(),

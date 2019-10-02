@@ -95,6 +95,19 @@
       }
       .selects-default-content {
         display: inline-block;
+        position: relative;
+        .icon {
+          position: absolute;
+          right: 35px;
+          top: 45%;
+          z-index: 2;
+          color: #888;
+          font-size: 8px;
+          cursor: pointer;
+        }
+        select {
+          -webkit-appearance: none;
+        }
       }
       // ここまで
       .form-top-content {
@@ -117,6 +130,7 @@
           padding:0 16px;
           border: 1px solid #ccc;
           border-radius: 4px;
+          cursor: pointer;
         }
       }
       .under-box {

@@ -1,6 +1,5 @@
 %body
   .single-container
-    = render partial: "shared/sub_header"
     %main.single-main
       %section.l-single-container
         %h2.l-single-head.registration 電話番号の確認
@@ -17,4 +16,3 @@
             .actions.btn-next
               = f.submit "SMSを送信する", class: "btn-default btn-red"
               %p.l-single-text 電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
-    = render partial: "shared/sub_footer"

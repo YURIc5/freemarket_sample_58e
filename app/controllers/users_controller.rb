@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def signup
+    render layout:'sub'
   end
 
   def phone
@@ -22,10 +23,7 @@ class UsersController < ApplicationController
   end
 
   def exhibit_list
-    @itemnames = Item.find(1)
-    @items = Item.find(1).pictures
-    @users = User.all
-    @pictures = Picture.find(3)
+    @user = User.find(params[:id])
+    @items = Item.where(user_id: current_user.id)
   end
-
 end

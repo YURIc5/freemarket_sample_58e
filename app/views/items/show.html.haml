@@ -69,24 +69,28 @@
             %td
               =link_to "https://www.mercari.com/jp/brand/539/",class: "" do
                 %div
-                  コーチ
+                = @item.brand
           %tr
             %th 商品の状態
-            %td 新品、未使用
+            %td 
+              = @item.status
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td 
+              = @item.delivery.parent.responsibility
           %tr
             %th 配送の方法
-            %td らくらくメルカリ便
+            %td 
+              = @item.delivery.responsibility
           %tr
             %th 配送元地域
             %td
               =link_to "https://www.mercari.com/jp/brand/539/",class: "" do
-                埼玉県
+                = Prefecture.find(@item.prefecture_id)[:name]
           %tr
             %th 発送日の目安
-            %td 1~2日で発送
+            %td 
+              = @item.day
 
 
 
@@ -95,12 +99,21 @@
         = "¥#{@item.price}"
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
-    .text-center
-      .sales-point-message
-        P1,000 をお持ちです
+    - if @item.user_id != current_user.id
+      .text-center
+
+        - if @user.creditcard_id != nil
+          .sales-point-message
+            P1,000 をお持ちです
         .sales-point-message:after
-    =link_to "https://www.mercari.com/jp/transaction/buy/m95010021448/",class: "item-buy-btn" do
-      購入画面に進む
+        - if @creditcard != nil
+          =link_to buy_user_item_path(current_user, @item),class: "item-buy-btn" do
+            購入画面に進む
+        - else
+          =link_to item_path(@item),class: "item-buy-btn" do
+            %p 購入できません
+          %p.error_message
+            ※クレジットカードの登録をしてください
 
 
     .item-description.f14
@@ -127,9 +140,16 @@
         =link_to "https://www.mercari.com/jp/safe/description/", class: "icon-lock",target: "_blank" do
           .icon-lock::before
             %span あんしん・あんぜんへの取り組み
-
-  = link_to user_item_path,method: :delete,class: "item-delete-btn" do
-    この商品を削除する
+  - if @item.buyer_id != nil
+    .buyed_message
+      売り切れました
+  - else
+    - if @item.user_id == current_user.id
+      = link_to edit_item_path,method: :get,class: "item-delete-btn" do
+        この商品を編集する
+    - if @item.user_id == current_user.id
+      = link_to item_path,method: :delete,class: "item-delete-btn" do
+        この商品を削除する
 
   .item-detail-message
     .message-container

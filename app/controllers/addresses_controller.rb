@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-
+  layout 'sub'
   def new
     @user = User.find(params[:user_id])
     @address = Address.new
@@ -25,7 +25,7 @@ class AddressesController < ApplicationController
   def address_params
     params.require(:address).permit(
       :postcode, 
-      :prefecture, 
+      :prefecture_id,
       :city, 
       :block, 
       :building,

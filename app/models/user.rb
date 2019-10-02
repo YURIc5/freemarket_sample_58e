@@ -37,9 +37,18 @@ class User < ApplicationRecord
       return user
     end
 
-  has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
-  has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "user_id", class_name: "Item"
-  has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "user_id", class_name: "Item"
+  has_many :buyed_items, foreign_key: 'buyer_id', class_name: 'Item'
+  has_many :saling_items, -> { where('buyer_id is NULL') }, foreign_key: 'user_id', class_name: 'Item'
+  has_many :sold_items, -> { where('buyer_id is not NULL') }, foreign_key: 'user_id', class_name: 'Item'
+
+
+  has_one :address
+  has_one :creditcard
+
+#   "から'に変更したためコメントアウト(挙動に問題なければ削除します)
+#   has_many :buyed_items, foreign_key: "buyer_id", class_name: "Item"
+#   has_many :saling_items, -> { where("buyer_id is NULL") }, foreign_key: "user_id", class_name: "Item"
+#   has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "user_id", class_name: "Item"
 
  
 end
