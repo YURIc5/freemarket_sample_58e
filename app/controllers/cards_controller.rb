@@ -5,7 +5,6 @@ class CardsController < ApplicationController
 
   def new
     @card = Creditcard.new()
-    render layout:'sub'
   end
 
 
@@ -28,7 +27,6 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.create(card: params[:payjpToken])
     @creditcard = Creditcard.new(user_id: current_user.id, customer_id: customer.id, card_token: params[:payjpToken])
     redirect_to root_path unless @creditcard.save
-    render layout:'sub'
   end
 
   def destroy
