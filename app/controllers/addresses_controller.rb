@@ -11,7 +11,8 @@ class AddressesController < ApplicationController
       session[:id] = params[:user_id]
       redirect_to new_user_card_path(session[:id])
     else
-      render '/users/signup'
+      
+      render :new
     end
   end
 

@@ -28,11 +28,12 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|postcode|int||
-|prefecture|string||
-|city|string||
-|block|int||
-|building|string||
+|postcode|string|
+|city|string|
+|block|string|
+|building|string|
+|user_id|references|foreign_key: true|
+|prefecture_id|int|
 
 ### Association
 - belongs_to :user
