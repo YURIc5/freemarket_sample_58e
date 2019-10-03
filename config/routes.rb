@@ -29,10 +29,12 @@ Rails.application.routes.draw do
     resources :cards, only: [:index,:show, :new, :create, :destroy]
     resources :addresses, only: [:new, :create, :edit, :update]
     resources :pictures
-    resources :items, only: [:buy, :pay] do
+    resources :items, only: [:buy, :pay, :stop, :start] do
       member do
         get 'buy'
         post 'pay'
+        post 'stop'
+        post 'start'
       end
       collection do
         get 'get_category_children', defaults: { format: 'json' }

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:show, :destroy, :buy, :pay, :update, :edit]
+  before_action :set_item, only: [:show, :destroy, :buy, :pay, :update, :edit, :stop, :start]
   before_action :authenticate_user!, only: [:new, :buy]
   
   def index
@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
  
 
   def show
-    
+    @pictures = Picture.where(item_id: @item.id).limit(4)
   end
 
   def edit
@@ -101,11 +101,25 @@ class ItemsController < ApplicationController
         redirect_to root_path
       else
         redirect_to new_item_path
+      end
     end
+  end
+
+  def stop
+
+    @item.update(stop: 2)
+    redirect_to root_path
+
+  end
+
+  def start
+    @item.update(stop: 1)
+    redirect_to root_path
+
   end
   
 
-  end
+  
 
   def destroy
     # ↓ログイン機能実装後コメントアウトを外します
@@ -144,6 +158,7 @@ class ItemsController < ApplicationController
 
   private
 
+
   def create_params
     params.require(:item).permit(
       :name, 
@@ -156,7 +171,7 @@ class ItemsController < ApplicationController
       :delivery_id,
       :size,
       :brand,
-      pictures_attributes: [:name]).merge(user_id: current_user.id)
+      pictures_attributes: [:name]).merge(user_id: current_user.id, stop: 1)
   end
 
   def item_params

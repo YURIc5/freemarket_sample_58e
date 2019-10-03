@@ -8,24 +8,13 @@
           .owl-stage-outer
             .owl-item
               .owl-item-inner.is-higher-height
-                = image_tag "#{@item.pictures.first.name}", class: "%img.owl-lazy"
-          .owl-dots
-            .owl-dot
-              %span
-              .owl-dot-inner
-                = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
-            .owl-dot.active
-              %span
-              .owl-dot-inner
-              = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
-            .owl-dot
-              %span
-              .owl-dot-inner
-                = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
-            .owl-dot
-              %span
-              .owl-dot-inner
-                = image_tag "#{@item.pictures.first.name}", class: "%img.is-higher-height"
+                = image_tag "#{@item.pictures.first.name}", class: "owl-lazy"
+          - @pictures.each do |picture|
+            .owl-dots
+              .owl-dot
+                %span
+                .owl-dot-inner
+                  = image_tag "#{picture.name}", class: "is-higher-height"
 
       %table.item-detail-table
         %tbody
@@ -123,7 +112,12 @@
           この商品を編集する 
         = link_to item_path,method: :delete,class: "item-delete-btn" do
           この商品を削除する
-
+          - if @item.stop == 1
+            = link_to stop_user_item_path(current_user, @item), method: :POST,  class: "item-delete-btn" do
+              公開を停止する
+          - elsif @item.stop == 2
+            = link_to start_user_item_path(current_user, @item), method: :POST, class: "item-delete-btn" do
+              公開を再開する
     .item-description.f14
       %p.item-description-inner
         = @item.description
