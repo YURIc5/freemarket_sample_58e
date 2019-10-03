@@ -1,9 +1,0 @@
-.box__contents__content
-  %a.contentlink
-    %figure.figure
-      %figcaption
-        %span
-          = item.description
-      .tag
-        %span{"aria-label" => "Price"} ¥ #{item.price}
-        = image_tag "#{item.pictures.first.name}", class: 'tag__image'
