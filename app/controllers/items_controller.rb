@@ -71,15 +71,16 @@ class ItemsController < ApplicationController
       @item.update(update_params)
       redirect_to root_path
       # ピクチャーが変更されていれば
-    elsif params[:pictures][:name] != nil
+    elsif params[:pictures] != nil
       @item.update(item_params)
       # 一旦登録されているピクチャーを捨てて
       @item.pictures.destroy_all
       # 新たに写真を登録する
       params[:pictures][:name].each do |image|
         @item.pictures.create(name: image, item_id: @item.id)
-        redirect_to root_path
+        
       end
+      redirect_to root_path
     else
       recirect_to edit_item_path
     end
