@@ -85,7 +85,7 @@
         = "¥#{@item.price}"
       %span.item-tax (税込)
       %span.item-shipping-fee 送料込み
-    - if @item.user_id != current_user.id
+    - if user_signed_in? || @item.user_id != current_user
       .text-center
         - if user_signed_in? && @item.user_id != current_user
           .sales-point-message
@@ -93,7 +93,7 @@
             .sales-point-message:after
         - else
           .sales-point-massage
-        - if @item.user_id != nil
+        - if @item.buyer_id != nil
           .buyed_message
             売り切れました
         - elsif user_signed_in? && @item.user_id != current_user.id && current_user.creditcard == nil
@@ -105,12 +105,12 @@
         - else 
           =link_to user_session_path,class: "item-buy-btn" do
             購入画面に進むログイン
-    - elsif @item.user_id == current_user.id
+    - elsif @item.user_id == current_user
       .sales-point-message:after
       - if @item.buyer_id != nil
         .buyed_message
           売り切れました
-      - else 
+      - else
         = link_to edit_item_path,method: :get,class: "item-delete-btn" do
           この商品を編集する 
         = link_to item_path,method: :delete,class: "item-delete-btn" do
@@ -150,7 +150,7 @@
           .icon-lock::before
             %span あんしん・あんぜんへの取り組み
   
-  - if @item.user_id != current_user.id
+  - if @item.user_id != current_user
     .item-detail-message
       .message-container
         .message-content
