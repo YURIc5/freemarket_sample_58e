@@ -33,19 +33,30 @@
 
   %section.buy__user__info
     .buy__user__info__address
-      %h3
-        配送先
-      %p
-        〒
-        = current_user.address.postcode
-        %br
-        = Prefecture.find(current_user.address.prefecture_id)[:name]
-        = current_user.address.city
-        = current_user.address.block
-        %br
-        = current_user.name
-      = link_to buy_user_item_path(current_user) do
-        変更する
+      - if current_user.address != nil
+        %h3
+          配送先
+        %p
+          〒
+          = current_user.address.postcode
+          %br
+          = Prefecture.find(current_user.address.prefecture_id)[:name]
+          = current_user.address.city
+          = current_user.address.block
+          %br
+          = current_user.name
+        = link_to buy_user_item_path(current_user) do
+          変更する
+      - else
+        %h3
+          配送先
+        %p
+          〒
+          %br
+          %br
+          = current_user.name
+        = link_to buy_user_item_path(current_user) do
+          登録する
   %section.buy__user__card
     .buy__user__card__info
       %h3
