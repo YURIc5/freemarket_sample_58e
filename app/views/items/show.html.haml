@@ -8,7 +8,7 @@
           .owl-stage-outer
             .owl-item
               .owl-item-inner.is-higher-height
-                = image_tag "#{@item.pictures.first.name}", class: "owl-lazy"
+                = image_tag "#{@item.pictures.last.name}", class: "owl-lazy"
           - @pictures.each do |picture|
             .owl-dots
               .owl-dot

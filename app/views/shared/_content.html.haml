@@ -6,4 +6,4 @@
           = item.description
       .tag
         %span{"aria-label" => "Price"} ¥ #{item.price}
-        = image_tag "#{item.pictures.first.name}", class: 'tag__image'
+        = image_tag "#{item.pictures.last.name}", class: 'tag__image'
