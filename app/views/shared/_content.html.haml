@@ -3,7 +3,7 @@
     %figure.figure
       %figcaption
         %span
-          = item.description
+          = item.name
       .tag
         %span{"aria-label" => "Price"} ¥ #{item.price}
         = image_tag "#{item.pictures.last.name}", class: 'tag__image'
