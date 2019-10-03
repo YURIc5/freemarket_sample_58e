@@ -23,12 +23,15 @@
 /public/assets
 .byebug_history
 
+
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
 /public/uploads*
 /public/*.jpg
 /public/*.png
+
 
 .env
 # Ignore master key for decrypting credentials and more.

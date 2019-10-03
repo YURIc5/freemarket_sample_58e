@@ -252,6 +252,9 @@
           font-size: 12px;
           vertical-align: top;
         }
+        .form-require-gray {
+          background-color: #aaa;
+        }
         .clearfix {
           @include clearfix;
         }

@@ -51,7 +51,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:user_id])
     
     @category_parent_array = ['---']
     # #データベースから、親カテゴリーのみ抽出し、配列化
@@ -124,7 +123,6 @@ class ItemsController < ApplicationController
 
   def destroy
     # ↓ログイン機能実装後コメントアウトを外します
-    # @item.destroy if @item.user == current_user
     @item.destroy
     redirect_to controller: 'items', action: 'index'
   end
@@ -141,7 +139,6 @@ class ItemsController < ApplicationController
     @creditcard_exp_year = customer[:cards][:data][0]["exp_year"].to_s.slice(2,3)
     @creditcard_brand = customer[:cards][:data][0]["brand"]
 
-    render :layout => 'sub'
   end
 
   def pay
