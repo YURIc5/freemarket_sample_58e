@@ -22,7 +22,7 @@ class AddressesController < ApplicationController
   end
 
   private
-  # 許可するキーを設定します
+  
   def address_params
     params.require(:address).permit(
       :postcode, 
