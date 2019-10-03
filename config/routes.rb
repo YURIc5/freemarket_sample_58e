@@ -22,7 +22,6 @@ Rails.application.routes.draw do
       get'logout'
       get'information'
       get 'exhibit_list'
-
       
     end
 

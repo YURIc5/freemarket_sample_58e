@@ -5,7 +5,6 @@ describe User do
       user = build(:user)
       expect(user).to be_valid
     end
-
     it "ニックネームが空なら登録不可" do
       user = build(:user, nickname: "")
       user.valid?
