@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_10_02_133507) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,25 +96,6 @@ ActiveRecord::Schema.define(version: 2019_10_02_133507) do
     t.index ["item_id"], name: "index_pictures_on_item_id"
   end
 
-  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
-  end
-
-  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "status", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "item_id", null: false
-    t.index ["item_id"], name: "index_purchases_on_item_id"
-    t.index ["user_id"], name: "index_purchases_on_user_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -147,8 +127,6 @@ ActiveRecord::Schema.define(version: 2019_10_02_133507) do
   add_foreign_key "item_likes", "users"
   add_foreign_key "items", "deliveries"
   add_foreign_key "pictures", "items"
-  add_foreign_key "purchases", "items"
-  add_foreign_key "purchases", "users"
   add_foreign_key "users", "addresses"
   add_foreign_key "users", "creditcards"
 end
