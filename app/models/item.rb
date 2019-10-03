@@ -27,10 +27,11 @@ class Item < ApplicationRecord
 
   scope :narabikae, -> { order(id: :desc) }
   scope :buyeditem, -> { where(buyer_id: nil) }
-  scope :recent1, -> { category1.includ.seigen.narabikae.buyeditem }
-  scope :recent2, -> { category2.includ.seigen.narabikae.buyeditem }
-  scope :recent3, -> { category3.includ.seigen.narabikae.buyeditem }
-  scope :recent4, -> { category4.includ.seigen.narabikae.buyeditem }
+  scope :stopitem, -> { where(stop: 1) }
+  scope :recent1, -> { category1.includ.seigen.narabikae.buyeditem.stopitem }
+  scope :recent2, -> { category2.includ.seigen.narabikae.buyeditem.stopitem }
+  scope :recent3, -> { category3.includ.seigen.narabikae.buyeditem.stopitem }
+  scope :recent4, -> { category4.includ.seigen.narabikae.buyeditem.stopitem }
 
   
 

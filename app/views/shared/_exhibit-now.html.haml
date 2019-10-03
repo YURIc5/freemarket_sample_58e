@@ -33,7 +33,9 @@
                   %i.fa.fa-comment-o
                   %span.reaction__int
                     0  
-                  - if item.buyer_id == nil
+                  - if item.stop == 2
+                    公開停止中
+                  - elsif item.buyer_id == nil
                     出品中
                   - elsif item.buyer_id != nil 
                     売約済み

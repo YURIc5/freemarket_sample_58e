@@ -67,6 +67,15 @@
           height: 100%;
           position: relative;
           width: 100%;
+          overflow: hidden;
+          .owl-lazy {
+            display: block;
+            transition-duration: 0.9s;
+            &:hover {
+              transform: scale(1.3);	/*画像の拡大率*/
+              transition-duration: 0.6s;	/*変化に掛かる時間*/
+            }
+          }
         }
       }
     }
@@ -74,71 +83,38 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-.owl-lazy{
-  opacity: 1;
-  text-align:center;
-  height: 100%;
-  margin: 0px 25px 0px 25px
-}
-
-
 .owl-dots{
   line-height: 0;
   background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
   border-style: solid;
   border-width: 0;
   box-sizing: inherit;
-  display: block;
+  display: inline;
   cursor: auto;
   .owl-dot{
+    width: 100%;
     opacity: 1;
     cursor: default;
-    width: 60px;
-    height: 60px;
+    width: 71px;
+    height: 71px;
     max-height: none;
     position: relative;
     overflow: hidden;
     display: inline-block;
 
-    // .owl-dot-inner{
-    //   .is-higher-height{
-
-    //   }
-    // }
+    .owl-dot-inner{
+      cursor: pointer;
+      .is-higher-height{
+        width: 100%;
+        display: block;
+        transition-duration: 0.3s;
+        &:hover {
+          transform: scale(1.3);	
+          transition-duration: 0.3s;	
+        }
+      }
+    }
   }
-  
-  // .owl-dot.active{
-  //   .owl-dot-inner{
-  //     .is-higher-height{
-
-  //     }
-  //   }
-  // }
-  // .owl-dot{
-  //   .owl-dot-inner{
-  //     .is-higher-height{
-
-  //     }
-  //   }
-  // }
-  // .owl-dot{
-  //   .owl-dot-inner{
-  //     .is-higher-height{
-
-  //     }
-  //   }
-  // }
 }
 
 .item-detail-table{
